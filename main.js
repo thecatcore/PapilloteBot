@@ -12,15 +12,17 @@ db.defaults({
   .write()
 
 var bot = new Discord.Client();
-var prefix = ("+");
+var prefix = (config.prefix);
 var randnum = 0
 
 var citationnumber = db.get('citations').map('citation_value').value();
 
-bot.login('MzkxMjkyNDU4MDc3NzgyMDE2.DRWjBQ.HqnLS_BQIaMQRuVYAXTMkIJjllI')
+bot.login(config.token)
 .then(() => {
   console.log('Bot logged in');
   onLogin();
+  const channel = bot.channels.get(config.channel);
+  channel.send("Je suis connecté vous pouvez désormais utiliser mes commandes :-)");
 })
 .catch(() => {
   console.log('Error login');
