@@ -1,31 +1,25 @@
 const Discord = require('discord.js');
-const low = require('lowdb');
-const FileSync = require('lowdb/adapters/FileSync');
 const schedule = require('node-schedule');
-
-const adapter = new FileSync('database.json');
-const db = low(adapter);
-
-db.defaults({
-    citations: []
-  })
-  .write()
+const config = require('./config.json');
+const db = require('./src/db');
+const addcitation = require('./src/commands/addcitations');
 
 var bot = new Discord.Client();
-var prefix = (config.prefix);
-var randnum = 0
+var prefix = config.prefix;
+var randnum = 0;
 
-var citationnumber = db.get('citations').map('citation_value').value();
+db.init();
 
 bot.login(config.token)
 .then(() => {
   console.log('Bot logged in');
-  onLogin();
   const channel = bot.channels.get(config.channel);
   channel.send("Je suis connecté vous pouvez désormais utiliser mes commandes :-)");
+
+  onLogin();
 })
-.catch(() => {
-  console.log('Error login');
+.catch((error) => {
+  console.error(error);
 });
 
 bot.on('ready', () => {
@@ -60,28 +54,17 @@ function onLogin() {
     switch (args[0].toLowerCase()) {
 
       case "addcitation":
-        var value = message.content.substr(10);
-        var contributor = message.author.toString();
-        var number = db.get('citations').map('id').value();
-        console.log(value);
-        message.reply("Ajout de la citation à la base de données")
-
-        db.get('citations')
-          .push({
-            citation_value: value,
-            citation_contributor: contributor
-          })
-          .write()
-
+        addcitation(db, message);
         break;
 
       case "tellcitation":
-
         citation_random();
         console.log(randnum);
 
-        var citation = db.get(`citations[${randnum}].citation_value`).toString().value();
-        var contributor_citation = db.get(`citations[${randnum}].citation_contributor`).toString().value();
+        const citation = db.getOneCitationById(randnum);
+        const citationValue = citation.citation_value;
+        const contributor_citation = citation.citation_contributor;
+
         console.log(citation);
 
 
@@ -102,7 +85,8 @@ function onLogin() {
 
 function citation_random(min, max) {
   min = Math.ceil(0);
-  max = Math.floor(32);
+  console.log(db.getCountOfCitations());
+  max = Math.floor(db.getCountOfCitations());
   randnum = Math.floor(Math.random() * (max - min) + min);
 }
 
@@ -110,17 +94,18 @@ function tellcitation() {
   citation_random();
   console.log(randnum);
 
-  var citation = db.get(`citations[${randnum}].citation_value`).toString().value();
-  var contributor_citation = db.get(`citations[${randnum}].citation_contributor`).toString().value();
+  const citation = db.getOneCitationById(randnum);
+  const citationValue = citation.citation_value;
+  const contributor_citation = citation.citation_contributor;
+
   console.log(citation);
 
-  var tellcitation_embed = new Discord.RichEmbed()
+  const tellcitation_embed = new Discord.RichEmbed()
     .setColor('#D9F200')
     .setImage("https://omnilogie.fr/images/O/e239ced74cfc679e987778a89a95ebe0.jpg")
-    .addField("Citation de l'heure :", `${citation}`)
+    .addField("Citation de l'heure :", `${citationValue}`)
     .addField("Contributeur :", `${contributor_citation}`)
     .setTimestamp();
-
     
     const channel = bot.channels.get('230688990913757185');
     channel.send(tellcitation_embed)
