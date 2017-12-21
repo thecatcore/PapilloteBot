@@ -1,2 +1,2 @@
 # PapilloteBot
-A Papillote Discord Bot
+A Papillote Discord Bot space
