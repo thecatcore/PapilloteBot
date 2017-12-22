@@ -1,6 +1,6 @@
 // Add a citation 
 const addcitation = (db, message) => {
-  const value = message.content.substr(10);
+  const value = message.content.substr(13);
   const contributor = message.author.toString();
 
   console.log(value);
