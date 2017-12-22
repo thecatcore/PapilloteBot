@@ -3,10 +3,11 @@ const schedule = require('node-schedule');
 const config = require('./config.json');
 const db = require('./src/db');
 const addcitation = require('./src/commands/addcitations');
+const help = require('./src/commands/help');
+const tell_citation = require('./src/commands/tellcitation');
 
 var bot = new Discord.Client();
 var prefix = config.prefix;
-var randnum = 0;
 
 db.init();
 
@@ -43,12 +44,7 @@ function onLogin() {
     var args = message.content.substring(prefix.length).split(" ");
 
     if (message.content === prefix + "help") {
-      var help_embed = new Discord.RichEmbed()
-        .setColor('#D9F200')
-        .addField("Prefix", "c'est le signe + ")
-        .addField("Commandes du Bot", "-help : affiche les commandes du bot\n-addcitation <citation+auteur> : permet d'ajouter une citation\npour la commande +tellcitation \n-tellcitation : écris une citation au hasard parmis les citations enregistrées")
-      message.channel.sendEmbed(help_embed);
-      console.log("Help command");
+        help(message);
     }
 
     switch (args[0].toLowerCase()) {
@@ -58,24 +54,8 @@ function onLogin() {
         break;
 
       case "tellcitation":
-        citation_random();
-        console.log(randnum);
-
-        const citation = db.getOneCitationById(randnum);
-        const citationValue = citation.citation_value;
-        const contributor_citation = citation.citation_contributor;
-
-        console.log(citation);
-
-
-        var tellcitation_embed = new Discord.RichEmbed()
-          .setColor('#D9F200')
-          .setImage("https://omnilogie.fr/images/O/e239ced74cfc679e987778a89a95ebe0.jpg")
-          .addField("Citation :", `${citation}`)
-          .addField("Contributeur :", `${contributor_citation}`)
-          .setTimestamp();
-        message.channel.sendEmbed(tellcitation_embed)
-        console.log(tellcitation_embed)
+        const randnum = citation_random();
+        tell_citation(db, message, randnum);
         break;
     }
 
@@ -83,16 +63,15 @@ function onLogin() {
 }
 
 
-function citation_random(min, max) {
-  min = Math.ceil(0);
-  console.log(db.getCountOfCitations());
-  max = Math.floor(db.getCountOfCitations());
-  randnum = Math.floor(Math.random() * (max - min) + min);
+function citation_random() {
+  const min = Math.ceil(0);
+  const max = Math.floor(db.getCountOfCitations());
+
+  return Math.floor(Math.random() * (max - min) + min);
 }
 
 function tellcitation() {
-  citation_random();
-  console.log(randnum);
+  const randnum = citation_random();
 
   const citation = db.getOneCitationById(randnum);
   const citationValue = citation.citation_value;
