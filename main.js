@@ -45,14 +45,7 @@ function onLogin() {
     var args = message.content.substring(prefix.length).split(" ");
 
     if (message.content === prefix + "help") {
-        //help();
-        var help_embed = new Discord.RichEmbed()
-        .setColor('#D9F200')
-        .addField("Prefix", "c'est le signe + ")
-        .addField("Commandes du Bot", "-help : affiche les commandes du bot\n-addcitation <citation+auteur> : permet d'ajouter une citation\npour la commande +tellcitation \n-tellcitation : écris une citation au hasard parmis les citations enregistrées")
-      
-        message.channel.sendEmbed(help_embed);
-        console.log("Help command");
+        help(message);
     }
 
     switch (args[0].toLowerCase()) {
