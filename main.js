@@ -62,8 +62,8 @@ function onLogin() {
         break;
 
       case "tellcitation":
-      //tell_citation  
-      citation_random();
+        //tell_citation  
+        citation_random();
         console.log(randnum);
 
         const citation = db.getOneCitationById(randnum);
