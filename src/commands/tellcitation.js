@@ -1,4 +1,3 @@
-const main = require('main.js/src/commands/.');
 const tell_citation = (db, message) => {
     citation_random();
         console.log(randnum);
