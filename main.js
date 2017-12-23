@@ -5,6 +5,7 @@ const db = require('./src/db');
 const addcitation = require('./src/commands/addcitations');
 const help = require('./src/commands/help');
 const tell_citation = require('./src/commands/tellcitation');
+const addanniversaire = require('./src/commands/addanniversaire');
 
 var bot = new Discord.Client();
 var prefix = config.prefix;
@@ -56,6 +57,10 @@ function onLogin() {
       case "tellcitation":
         const randnum = citation_random();
         tell_citation(db, message, randnum);
+        break;
+        
+      case "addanniversaire":
+        addanniversaire();
         break;
     }
 
