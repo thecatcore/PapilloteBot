@@ -37,10 +37,18 @@ const addCitation = (citation) => {
     .write();
 };
 
+const addAnniversaire = (anniv) => {
+  const db = connect();
+
+  db.get('annivs')
+    .push(anniv)
+    .write();
+
 
 module.exports = {
   init,
   getCountOfCitations,
   getOneCitationById,
   addCitation,
+  addAnniversaire,
 };
