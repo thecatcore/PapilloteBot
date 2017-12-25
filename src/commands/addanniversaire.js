@@ -1,4 +1,4 @@
-const addanniversaire = () => {
+const addanniversaire = (db, message) => {
   const date = message.content.substr(17);
   const annivperso = message.author.toString();
 
@@ -8,7 +8,7 @@ const addanniversaire = () => {
   db.addAnniversaire({
     anniv_date: date,
     anniv_annivperso: annivperso
-});
+  });
 };
 
 module.exports = addanniversaire

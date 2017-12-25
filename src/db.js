@@ -21,7 +21,7 @@ const getCountOfCitations = () => {
 }
 
 /**
- * @param {*} id identifiant de la citation 
+ * @param {*} id identifiant de la citation
  */
 const getOneCitationById = (id) => {
   const db = connect();
@@ -43,7 +43,7 @@ const addAnniversaire = (anniv) => {
   db.get('annivs')
     .push(anniv)
     .write();
-
+};
 
 module.exports = {
   init,

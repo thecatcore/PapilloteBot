@@ -33,7 +33,7 @@ bot.on('ready', () => {
   });
   console.log("Bot Ready !");
 
-  
+
 });
 
 function onLogin() {
@@ -58,9 +58,9 @@ function onLogin() {
         const randnum = citation_random();
         tell_citation(db, message, randnum);
         break;
-        
+
       case "addanniversaire":
-        addanniversaire();
+        addanniversaire(db, message);
         break;
     }
 
@@ -90,7 +90,7 @@ function tellcitation() {
     .addField("Citation de l'heure :", `${citationValue}`)
     .addField("Contributeur :", `${contributor_citation}`)
     .setTimestamp();
-    
+
     const channel = bot.channels.get('230688990913757185');
     channel.send(tellcitation_embed)
     const channel = bot.channels.get('394176251348123650');
