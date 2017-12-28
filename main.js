@@ -46,25 +46,30 @@ function onLogin() {
     var args = message.content.substring(prefix.length).split(" ");
 
     if (message.content === prefix + "help") {
-        help(message);
+      message.delete;  
+      help(message);
     }
 
     switch (args[0].toLowerCase()) {
 
       case "addcitation":
+        message.delete;
         addcitation(db, message);
         break;
 
       case "tellcitation":
+        message.delete;
         const randnum = citation_random();
         tell_citation(db, message, randnum);
         break;
 
       case "addanniversaire":
+        message.delete;
         addanniversaire(db, message);
         break;
 
       case "annivlist":
+        message.delete;
         annivlist(db, message);
         break;
     }
