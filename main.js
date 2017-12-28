@@ -5,6 +5,8 @@ const db = require('./src/db');
 const addcitation = require('./src/commands/addcitations');
 const help = require('./src/commands/help');
 const tell_citation = require('./src/commands/tellcitation');
+const addanniversaire = require('./src/commands/addanniversaire');
+const annivlist = require('./src/commands/annivlist');
 
 var bot = new Discord.Client();
 var prefix = config.prefix;
@@ -32,7 +34,7 @@ bot.on('ready', () => {
   });
   console.log("Bot Ready !");
 
-  
+
 });
 
 function onLogin() {
@@ -56,6 +58,14 @@ function onLogin() {
       case "tellcitation":
         const randnum = citation_random();
         tell_citation(db, message, randnum);
+        break;
+
+      case "addanniversaire":
+        addanniversaire(db, message);
+        break;
+
+      case "annivlist":
+        annivlist(db, message);
         break;
     }
 
@@ -85,7 +95,7 @@ function tellcitation() {
     .addField("Citation de l'heure :", `${citationValue}`)
     .addField("Contributeur :", `${contributor_citation}`)
     .setTimestamp();
-    
+
     const channel = bot.channels.get('230688990913757185');
     channel.send(tellcitation_embed)
     const channel = bot.channels.get('394176251348123650');
