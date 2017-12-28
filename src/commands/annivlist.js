@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 
-const anniv_list = (db, message) => {
-        const anniv = db.getOneAnnivById;
+const anniv_list = (db, message, randnum) => {
+        const anniv = db.getOneAnnivById(randnum);
         console.log(anniv);
         var annivlist_embed = new Discord.RichEmbed()
           .setColor('#D9F200')
