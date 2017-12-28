@@ -93,6 +93,4 @@ function tellcitation() {
 
     const channel = bot.channels.get('230688990913757185');
     channel.send(tellcitation_embed)
-    const channel = bot.channels.get('394176251348123650');
-    channel.send(tellcitation_embed)
 }
