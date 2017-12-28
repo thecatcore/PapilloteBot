@@ -9,7 +9,7 @@ const help = require('./src/commands/help');
 const tell_citation = require('./src/commands/tellcitation');
 const addanniversaire = require('./src/commands/addanniversaire');
 const annivlist = require('./src/commands/annivlist');
-const info = require('./src/commands/info');
+//const info = require('./src/commands/info');
 
 var bot = new Discord.Client();
 var prefix = config.prefix;
@@ -100,7 +100,7 @@ function onLogin() {
         annivlist(db, message);
         break;
 
-      case "info":
+      //case "info":
         message.delete;
         info(message/*, upDays, upHours, upMins, upSecs*/);
         break;
