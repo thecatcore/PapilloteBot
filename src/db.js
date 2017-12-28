@@ -21,6 +21,14 @@ const getCountOfCitations = () => {
     .value();
 }
 
+const getCountOfAnnivdate = () => {
+  const db = connect();
+
+  return db.get('annivs')
+    .size()
+    .value();
+}
+
 /**
  * @param {*} id identifiant de la citation
  */
@@ -28,6 +36,12 @@ const getOneCitationById = (id) => {
   const db = connect();
 
   return db.get(`citations[${id}]`).value();
+}
+
+const getOneAnnivById = (id) => {
+  const db = connect();
+
+  return db.get(`anniv[${id}]`).value();
 }
 
 const addCitation = (citation) => {
@@ -52,4 +66,6 @@ module.exports = {
   getOneCitationById,
   addCitation,
   addAnniversaire,
+  getCountOfAnnivdate,
+  getOneAnnivById
 };

@@ -6,6 +6,7 @@ const addcitation = require('./src/commands/addcitations');
 const help = require('./src/commands/help');
 const tell_citation = require('./src/commands/tellcitation');
 const addanniversaire = require('./src/commands/addanniversaire');
+const annivlist = require('./src/commands/annivlist');
 
 var bot = new Discord.Client();
 var prefix = config.prefix;
@@ -61,6 +62,10 @@ function onLogin() {
 
       case "addanniversaire":
         addanniversaire(db, message);
+        break;
+
+      case "annivlist":
+        annivlist(db, message);
         break;
     }
 
