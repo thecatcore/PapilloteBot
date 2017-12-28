@@ -13,30 +13,10 @@ const info = require('./src/commands/info');
 
 var bot = new Discord.Client();
 var prefix = config.prefix;
-var upSecs = 0
+/*var upSecs = 0
 var upMins = 0
 var upHours = 0
-var upDays = 0
-
-setInterval( function(upTime) {
-  upSecs = upSecs + 1
-  if (upSecs >= 60) {
-    upSecs = 0
-    upMins = upMins + 1		
-  } 
-  if (upMins >= 60) {
-    c.setStatus(userstatus, userdisplay)
-    upMins = 0
-    upHours = upHours + 1
-  }
-  if (upHours >= 24) {
-    upHours = 0
-    upDays = upDays + 1
-    
-  }
-  
-  
-},1000);
+var upDays = 0*/
 
 db.init();
 
@@ -67,6 +47,26 @@ bot.on('ready', () => {
 function onLogin() {
   var interval = setInterval(tellcitation, 1000 * 60 * 60 * 1);
   tellcitation();
+
+    /*setInterval( function(upTime) {
+      upSecs = upSecs + 1
+      if (upSecs >= 60) {
+        upSecs = 0
+        upMins = upMins + 1		
+      } 
+      if (upMins >= 60) {
+        c.setStatus(userstatus, userdisplay)
+        upMins = 0
+        upHours = upHours + 1
+      }
+      if (upHours >= 24) {
+        upHours = 0
+        upDays = upDays + 1
+        
+      }
+      
+      
+    },1000);*/
 
   bot.on('message', message => {
     if (!message.content.startsWith(prefix)) return;
@@ -102,7 +102,7 @@ function onLogin() {
 
       case "info":
         message.delete;
-        info(message, upDays, upHours, upMins, upSecs);
+        info(message/*, upDays, upHours, upMins, upSecs*/);
         break;
     }
 
@@ -137,7 +137,7 @@ function tellcitation() {
     channel.send(tellcitation_embed)
 }
 
-function upTime() {
+//function upTime() {
   
   //channel.reply("```Uptime actuel: \n"+upDays+" Jour(s) \n"+upHours+" heure(s) \n"+upMins+" Minute(s) \n"+upSecs+" Seconde(s)```")
-}
+//}

@@ -5,7 +5,7 @@ const info = (message, upDays, upHours, upMins, upSecs) => {
         .setColor('#D9F200')
         .addField("Mon Créateur", "<@223864389256609792>")
         .addField("Prefix", "+")
-        .addField("Uptime", "```"+upDays+" Jour(s) "+upHours+" heure(s) "+upMins+" Minute(s) "+upSecs+" Seconde(s)```")
+        .addField("Uptime", "d" /*"d ``"+upDays+" Jour(s) "+upHours+" heure(s) "+upMins+" Minute(s) "+upSecs+" Seconde(s)```"*/)
       
         message.channel.send(info_embed);
         console.log("Info command");
