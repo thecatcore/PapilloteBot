@@ -47,30 +47,40 @@ function onLogin() {
     var args = message.content.substring(prefix.length).split(" ");
 
     if (message.content === prefix + "help") {
-      message.delete;  
+      message.delete()
+  .then(msg => console.log(`Deleted message from ${msg.author}`))
+  .catch(console.error);  
       help(message);
     }
 
     switch (args[0].toLowerCase()) {
 
       case "addcitation":
-        message.delete;
+      message.delete()
+      .then(msg => console.log(`Deleted message from ${msg.author}`))
+      .catch(console.error);
         addcitation(db, message);
         break;
 
       case "tellcitation":
-        message.delete;
+      message.delete()
+      .then(msg => console.log(`Deleted message from ${msg.author}`))
+      .catch(console.error);
         const randnum = citation_random();
         tell_citation(db, message, randnum);
         break;
 
       case "addanniversaire":
-        message.delete;
+      message.delete()
+      .then(msg => console.log(`Deleted message from ${msg.author}`))
+      .catch(console.error);
         addanniversaire(db, message);
         break;
 
       case "annivlist":
-        message.delete;
+      message.delete()
+      .then(msg => console.log(`Deleted message from ${msg.author}`))
+      .catch(console.error);
         annivlist(db, message);
         break;
       
