@@ -10,6 +10,7 @@ const connect = () => {
 const init = () => {
   const db = connect();
   db.defaults({ citations: [] }) .write();
+  db.defaults({ annivs: [] }) .write();
 };
 
 const getCountOfCitations = () => {

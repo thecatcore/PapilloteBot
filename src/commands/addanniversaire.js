@@ -2,8 +2,8 @@ const addanniversaire = (db, message) => {
   const date = message.content.substr(17);
   const annivperso = message.author.toString();
 
-  console.log(value);
-  message.reply("Ajout de la citation à la base de données")
+  console.log(date);
+  message.reply("Ajout de la date d'anniversaire à la base de données")
 
   db.addAnniversaire({
     anniv_date: date,
@@ -11,4 +11,4 @@ const addanniversaire = (db, message) => {
   });
 };
 
-module.exports = addanniversaire
+module.exports = addanniversaire;
