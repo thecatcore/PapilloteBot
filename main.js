@@ -83,12 +83,11 @@ function onLogin() {
       .catch(console.error);
         annivlist(db, message);
         break;
-      
-      //case "info":
-        message.delete;
-        info(message);
-        break;
-    }
+
+      case "info":
+      message.delete()
+      .then(msg => console.log(`Deleted message from ${msg.author}`))
+      .catch(console.error);
 
   });
 }
