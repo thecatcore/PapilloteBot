@@ -1,12 +1,13 @@
 const Discord = require('discord.js');
 
 const info = (message, upDays, upHours, upMins, upSecs) => {
+    //var upTime = new Discord.Client(uptime);
+    //console.log(upTime)
     var info_embed = new Discord.RichEmbed()
         .setColor('#D9F200')
         .addField("Mon Créateur", "<@223864389256609792>")
         .addField("Prefix", "+")
-        .addField("Uptime", "d")
-        // "d ``"+upDays+" Jour(s) "+upHours+" heure(s) "+upMins+" Minute(s) "+upSecs+" Seconde(s)```"
+        //.addField("Uptime", `${upTime}`)
       
         message.channel.send(info_embed);
         console.log("Info command");

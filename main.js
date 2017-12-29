@@ -1,5 +1,3 @@
-import { uptime } from 'os';
-
 const Discord = require('discord.js');
 const schedule = require('node-schedule');
 const config = require('./config.json');
@@ -9,14 +7,10 @@ const help = require('./src/commands/help');
 const tell_citation = require('./src/commands/tellcitation');
 const addanniversaire = require('./src/commands/addanniversaire');
 const annivlist = require('./src/commands/annivlist');
-//const info = require('./src/commands/info');
+const info = require('./src/commands/info');
 
 var bot = new Discord.Client();
 var prefix = config.prefix;
-/*var upSecs = 0
-var upMins = 0
-var upHours = 0
-var upDays = 0*/
 
 db.init();
 
@@ -47,26 +41,6 @@ bot.on('ready', () => {
 function onLogin() {
   var interval = setInterval(tellcitation, 1000 * 60 * 60 * 1);
   tellcitation();
-
-    /*setInterval( function(upTime) {
-      upSecs = upSecs + 1
-      if (upSecs >= 60) {
-        upSecs = 0
-        upMins = upMins + 1		
-      } 
-      if (upMins >= 60) {
-        c.setStatus(userstatus, userdisplay)
-        upMins = 0
-        upHours = upHours + 1
-      }
-      if (upHours >= 24) {
-        upHours = 0
-        upDays = upDays + 1
-        
-      }
-      
-      
-    },1000);*/
 
   bot.on('message', message => {
     if (!message.content.startsWith(prefix)) return;
@@ -100,9 +74,9 @@ function onLogin() {
         annivlist(db, message);
         break;
 
-      //case "info":
+      case "info":
         message.delete;
-        info(message/*, upDays, upHours, upMins, upSecs*/);
+        info(message);
         break;
     }
 
@@ -136,8 +110,3 @@ function tellcitation() {
     const channel = bot.channels.get('230688990913757185');
     channel.send(tellcitation_embed)
 }
-
-//function upTime() {
-  
-  //channel.reply("```Uptime actuel: \n"+upDays+" Jour(s) \n"+upHours+" heure(s) \n"+upMins+" Minute(s) \n"+upSecs+" Seconde(s)```")
-//}
