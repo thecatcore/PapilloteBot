@@ -90,7 +90,9 @@ function onLogin() {
       .catch(console.error);
 
   };
-  },
+},
+}
+  
 
 
 function citation_random() {
