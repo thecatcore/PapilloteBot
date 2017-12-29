@@ -54,28 +54,38 @@ function onLogin() {
     switch (args[0].toLowerCase()) {
 
       case "addcitation":
-        message.delete;
+      message.delete()
+      .then(msg => console.log(`Deleted message from ${msg.author}`))
+      .catch(console.error);
         addcitation(db, message);
         break;
 
       case "tellcitation":
-        message.delete;
+      message.delete()
+      .then(msg => console.log(`Deleted message from ${msg.author}`))
+      .catch(console.error);
         const randnum = citation_random();
         tell_citation(db, message, randnum);
         break;
 
       case "addanniversaire":
-        message.delete;
+      message.delete()
+      .then(msg => console.log(`Deleted message from ${msg.author}`))
+      .catch(console.error);
         addanniversaire(db, message);
         break;
 
       case "annivlist":
-        message.delete;
+      message.delete()
+      .then(msg => console.log(`Deleted message from ${msg.author}`))
+      .catch(console.error);
         annivlist(db, message);
         break;
 
       case "info":
-        message.delete;
+      message.delete()
+      .then(msg => console.log(`Deleted message from ${msg.author}`))
+      .catch(console.error);
         info(message);
         break;
     }
