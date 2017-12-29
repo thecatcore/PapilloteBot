@@ -89,8 +89,8 @@ function onLogin() {
       .then(msg => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
 
-  });
-}
+  };
+  },
 
 
 function citation_random() {
