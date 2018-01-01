@@ -8,3 +8,5 @@ config\.json
 database\.json
 
 \.DS_Store
+
+*.log

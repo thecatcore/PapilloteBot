@@ -1184,5 +1184,12 @@
       "resolved": "https://registry.npmjs.org/yallist/-/yallist-2.1.2.tgz",
       "version": "2.1.2"
     }
-  }
+  },
+  "name": "PapilloteBot",
+  "version": "1.3",
+  "description": "A discordbot",
+  "main": "main.js",
+  "repository": "https://github.com/arthurbambou/PapilloteBot",
+  "author": "Arthur Roussel <arthur.koalas@free.fr>",
+  "license": "MIT"
 }
