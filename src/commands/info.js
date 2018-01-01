@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 
-const info = (message, upDays, upHours, upMins, upSecs) => {
+const info = (message) => {
     //var upTime = new Discord.Client(uptime);
     //console.log(upTime)
     var info_embed = new Discord.RichEmbed()
