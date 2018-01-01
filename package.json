@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "bufferutil": "^3.0.2",
+    "discord.js": "^11.2.1",
+    "erlpack": "hammerandchisel/erlpack",
+    "libsodium-wrappers": "^0.5.4",
+    "lowdb": "^1.0.0",
+    "node-opus": "^0.2.6",
+    "node-schedule": "^1.2.5",
+    "opusscript": "^0.0.3",
+    "uws": "^0.14.5",
+    "weather.js": "^0.1.0"
+  }
+}
