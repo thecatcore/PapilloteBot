@@ -10,7 +10,7 @@ const annivlist = require('./src/commands/annivlist');
 const info = require('./src/commands/info');
 
 var bot = new Discord.Client();
-var prefix = +
+var prefix = "+"
 
 db.init();
 
@@ -88,8 +88,8 @@ function onLogin() {
       message.delete()
       .then(msg => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
-      info(message);
-      break;
+        info(message);
+        break;
 
     }
 
