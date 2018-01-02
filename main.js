@@ -14,7 +14,7 @@ var prefix = +
 
 db.init();
 
-bot.login(config.token)
+bot.login(config.tokentest)
 .then(() => {
   console.log('Bot logged in');
   const channel = bot.channels.get(config.channel);
