@@ -9,6 +9,7 @@
     "node-schedule": "^1.2.5",
     "opusscript": "^0.0.3",
     "uws": "^0.14.5",
-    "weather.js": "^0.1.0"
+    "weather.js": "^0.1.0",
+    "yarn": "^1.3.2"
   }
 }
