@@ -11,7 +11,7 @@ const info = require('./src/commands/info');
 const weather = require('weather-js');
 
 var bot = new Discord.Client();
-var prefix = '+'
+var prefix = "+"
 
 db.init();
 
@@ -82,15 +82,16 @@ function onLogin() {
       message.delete()
       .then(msg => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
-        annivlist(db, message);
+        //annivlist(db, message);
+        message.reply("Cette commande est en développement");
         break;
 
       case "info":
       message.delete()
       .then(msg => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
-      info(message);
-      break;
+        info(message);
+        break;
 
       case "meteo":
       weather.find({search: args.join(" "), degreeType: 'C'}, function(err, result) { // Make sure you get that args.join part, since it adds everything after weather.

@@ -1,16 +1,10 @@
 
-yarn\.lock
+*.lock
 
 node_modules/
 
 config\.json
 
-<<<<<<< HEAD
 \.DS_Store
-=======
-database\.json
-
-\.DS_Store
->>>>>>> annivlist
 
 *.log
