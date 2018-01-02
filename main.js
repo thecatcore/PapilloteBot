@@ -94,6 +94,9 @@ function onLogin() {
         break;
 
       case "meteo":
+      message.delete()
+      .then(msg => console.log(`Deleted message from ${msg.author}`))
+      .catch(console.error);
       weather.find({search: args.join(" "), degreeType: 'C'}, function(err, result) { // Make sure you get that args.join part, since it adds everything after weather.
         if (err) message.channel.send(err);
 
