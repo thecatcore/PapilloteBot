@@ -30,7 +30,7 @@ bot.login(config.token)
 bot.on('ready', () => {
   bot.user.setPresence({
     game: {
-      name: '+help Bot Test',
+      name: '+help',
       type: 0
     }
   });
