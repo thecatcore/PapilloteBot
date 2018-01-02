@@ -81,7 +81,8 @@ function onLogin() {
       message.delete()
       .then(msg => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
-        annivlist(db, message);
+        //annivlist(db, message);
+        message.reply("Cette commande est en développement");
         break;
 
       case "info":
