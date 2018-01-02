@@ -7,6 +7,7 @@ const info = (message) => {
         .setColor('#D9F200')
         .addField("Mon Créateur", "<@223864389256609792>")
         .addField("Prefix", "+")
+        .addField("Version", "1.3")
         //.addField("Uptime", `${upTime}`)
       
         message.channel.send(info_embed);
