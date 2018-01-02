@@ -27,7 +27,8 @@ bot.login(config.token)
   console.error(error);
 });
 
-bot.on('ready', () => {
+bot.on('ready', async () => {
+  
   bot.user.setPresence({
     game: {
       name: '+help',
@@ -40,6 +41,9 @@ bot.on('ready', () => {
 });
 
 function onLogin() {
+  bot.generateInvite(["ADMINISTRATOR"]).then(link => {
+    var ilink = link
+  
   var interval = setInterval(tellcitation, 1000 * 60 * 60 * 1);
   tellcitation();
 
@@ -90,7 +94,7 @@ function onLogin() {
       message.delete()
       .then(msg => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
-        info(message);
+        info(message,ilink);
         break;
 
       case "meteo":
@@ -128,7 +132,9 @@ function onLogin() {
     }
 
   });
+});
 }
+
   
 
 
