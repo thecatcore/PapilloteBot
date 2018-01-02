@@ -8,6 +8,7 @@ const tell_citation = require('./src/commands/tellcitation');
 const addanniversaire = require('./src/commands/addanniversaire');
 const annivlist = require('./src/commands/annivlist');
 const info = require('./src/commands/info');
+const weather = require('weather.js');
 
 var bot = new Discord.Client();
 var prefix = +
@@ -90,6 +91,8 @@ function onLogin() {
       .catch(console.error);
       info(message);
       break;
+
+      
 
     }
 
