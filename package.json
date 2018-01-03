@@ -3,6 +3,7 @@
     "bufferutil": "^3.0.2",
     "discord.js": "^11.2.1",
     "erlpack": "hammerandchisel/erlpack",
+    "fs": "0.0.1-security",
     "libsodium-wrappers": "^0.5.4",
     "lowdb": "^1.0.0",
     "node-opus": "^0.2.6",

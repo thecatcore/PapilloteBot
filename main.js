@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const schedule = require('node-schedule');
 const config = require('./config.json');
 const db = require('./src/db');
+const prefix = config.prefix;
 const addcitation = require('./src/commands/addcitations');
 const help = require('./src/commands/help');
 const tell_citation = require('./src/commands/tellcitation');
@@ -9,19 +10,37 @@ const addanniversaire = require('./src/commands/addanniversaire');
 const annivlist = require('./src/commands/annivlist');
 const info = require('./src/commands/info');
 const weather = require('weather-js');
+// const fs = require("fs");
+const bot = new Discord.Client();
+// bot.commands = new Discord.Collection();
 
-var bot = new Discord.Client();
-var prefix = "+"
+// fs.readdir("./src/commands", (err, files) => {
+//   if(err) console.error(err);
+
+//   let jsfiles = files.filter(f => f.split(".").pop() === "js");
+//   if(jsfiles.length <= 0) {
+//     console.log("Pas de commandes a charger");
+//     return;
+//   }
+
+//   console.log(`Nombre de commandes chargées: ${jsfiles.length} !`)
+
+//   jsfiles.forEach((f, i) => {
+//     let props = require(`./src/commands/${f}`);
+//     console.log(`${i + 1}: ${f} chargée !`);
+//     bot.commands.set(props.config.command, props);
+//   });
+// });
 
 db.init();
 
 bot.login(config.token)
-.then(() => {
+  .then(() => {
   console.log('Bot logged in');
   const channel = bot.channels.get(config.channel);
   channel.send("Je suis connecté vous pouvez désormais utiliser mes commandes :-)");
 
-  onLogin();
+ onLogin();
 })
 .catch((error) => {
   console.error(error);
@@ -36,6 +55,7 @@ bot.on('ready', async () => {
     }
   });
   console.log("Bot Ready !");
+  console.log(bot.commands)
 
 
 });
@@ -47,10 +67,9 @@ function onLogin() {
   var interval = setInterval(tellcitation, 1000 * 60 * 60 * 1);
   tellcitation();
 
-  bot.on('message', message => {
-    if (!message.content.startsWith(prefix)) return;
+  bot.on("message", async message => {
+    if(!message.content.startsWith(prefix)) return;
     var args = message.content.substring(prefix.length).split(" ");
-
     if (message.content === prefix + "help") {
       message.delete()
   .then(msg => console.log(`Deleted message from ${msg.author}`))
@@ -86,7 +105,7 @@ function onLogin() {
       message.delete()
       .then(msg => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
-        //annivlist(db, message);
+        annivlist(db, message);
         message.reply("Cette commande est en développement");
         break;
 
@@ -162,5 +181,6 @@ function tellcitation() {
     .setTimestamp();
 
     const channel = bot.channels.get('230688990913757185');
-    channel.send(tellcitation_embed)
-}
+    channel.send(tellcitation_embed);
+ } 
+
