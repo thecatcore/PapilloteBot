@@ -11,8 +11,9 @@ const annivlist = require('./src/commands/annivlist');
 const info = require('./src/commands/info');
 const weather = require('weather-js');
 const meteo = require('./src/commands/meteo')
-// const fs = require("fs");
 const bot = new Discord.Client();
+const superagent = require("superagent");
+// const fs = require("fs");
 // bot.commands = new Discord.Collection();
 
 // fs.readdir("./src/commands", (err, files) => {
@@ -122,6 +123,19 @@ function onLogin() {
       .then(msg => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
       meteo(message, args);
+      break;
+
+      case "cat":
+      message.delete()
+      .then(msg => console.log(`Deleted message from ${msg.author}`))
+      .catch(console.error);
+      const { body } = await superagent
+	   .get('http://random.cat/meow');
+	   const embed = new Discord.RichEmbed()
+	   .setColor(0x954D23)
+	   .setTitle("Meow :cat:")
+	   .setImage(body.file)
+	   message.channel.send({embed})
       break;
 
     }
