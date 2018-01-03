@@ -1,2 +1,2 @@
 cd /Users/test/Desktop/Bots\ Discord/PapilloteBot/
-node main.js
+nodemon main.js

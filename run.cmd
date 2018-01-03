@@ -1,1 +1,2 @@
-node main.js
+nodemon main.js
+pause
