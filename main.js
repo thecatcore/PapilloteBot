@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const schedule = require('node-schedule');
 const config = require('./config.json');
+const configg = require('./config.1.json')
 const db = require('./src/db');
 const prefix = config.prefix;
 const addcitation = require('./src/commands/addcitations');
@@ -13,6 +14,8 @@ const weather = require('weather-js');
 const meteo = require('./src/commands/meteo')
 const bot = new Discord.Client();
 const superagent = require("superagent");
+const uptimebase = Date();
+console.log(uptimebase);
 
 
 // const fs = require("fs");
@@ -38,7 +41,7 @@ const superagent = require("superagent");
 
 db.init();
 
-bot.login(process.env.BOT_TOKEN)
+bot.login(configg.token)
   .then(() => {
   console.log('Bot logged in');
   const channel = bot.channels.get(config.channel);
@@ -70,6 +73,8 @@ function onLogin() {
   
   var interval = setInterval(tellcitation, 1000 * 60 * 60 * 1);
   tellcitation();
+  var catinterval = setInterval(cat, 1000 * 60 * 1);
+  cat();
 
   bot.on("message", async message => {
     if(!message.content.startsWith(prefix)) return;
@@ -117,7 +122,9 @@ function onLogin() {
       message.delete()
       .then(msg => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
-        info(message,ilink);
+      const uptimeup = Date();
+      console.log(uptimeup);
+        info(message,ilink,uptimebase, uptimeup);
         break;
 
       case "meteo":
@@ -176,3 +183,14 @@ function tellcitation() {
     channel.send(tellcitation_embed);
  } 
 
+async function cat()  {
+  const { body } = await superagent
+	   .get('http://random.cat/meow');
+	   const embed = new Discord.RichEmbed()
+	   .setColor(0x954D23)
+	   .setTitle("Meow :cat:")
+	   .setImage(body.file)
+	   
+  const catchannel = bot.channels.get('398196222332108802')
+  catchannel.send({embed})
+}
