@@ -38,7 +38,7 @@ const superagent = require("superagent");
 
 db.init();
 
-bot.login(config.token)
+bot.login(process.env.BOT_TOKEN)
   .then(() => {
   console.log('Bot logged in');
   const channel = bot.channels.get(config.channel);
