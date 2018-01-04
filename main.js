@@ -38,7 +38,7 @@ const channel = bot.channels.get('230688990913757185');
 
 db.init();
 
-bot.login(config.token)
+bot.login(process.env.BOT_TOKEN)
   .then(() => {
   console.log('Bot logged in');
   const channel = bot.channels.get(config.channel);
@@ -173,6 +173,6 @@ function tellcitation(channel) {
     .setTimestamp();
 
     
-    message.channel.send(tellcitation_embed);
+    channel.send(tellcitation_embed);
  } 
 
