@@ -13,7 +13,7 @@ const weather = require('weather-js');
 const meteo = require('./src/commands/meteo')
 const bot = new Discord.Client();
 const superagent = require("superagent");
-const channel = bot.channels.get('230688990913757185');
+
 
 // const fs = require("fs");
 // bot.commands = new Discord.Collection();
@@ -69,7 +69,7 @@ function onLogin() {
     var ilink = link
   
   var interval = setInterval(tellcitation, 1000 * 60 * 60 * 1);
-  tellcitation(channel);
+  tellcitation();
 
   bot.on("message", async message => {
     if(!message.content.startsWith(prefix)) return;
@@ -156,7 +156,7 @@ function citation_random() {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
-function tellcitation(channel) {
+function tellcitation() {
   const randnum = citation_random();
 
   const citation = db.getOneCitationById(randnum);
@@ -172,7 +172,7 @@ function tellcitation(channel) {
     .addField("Contributeur :", `${contributor_citation}`)
     .setTimestamp();
 
-    
-    message.channel.send(tellcitation_embed);
+    const channel = bot.channels.get('230688990913757185');
+    channel.send(tellcitation_embed);
  } 
 
