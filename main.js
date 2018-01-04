@@ -122,9 +122,12 @@ function onLogin() {
       message.delete()
       .then(msg => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
-      const uptimeup = Date();
-      console.log(uptimeup);
-        info(message,ilink,uptimebase, uptimeup);
+        var s = (Math.round(bot.uptime / 1000) % 60)
+        var m = (Math.round(bot.uptime / (1000 * 60)) % 60)
+        var h = (Math.round(bot.uptime / (1000 * 60 * 60)))
+        m = (m < 10) ? "0" + m : m;
+        s = (s < 10) ? "0" + s : s;
+        info(message,ilink,s, m, h);
         break;
 
       case "meteo":
