@@ -45,7 +45,8 @@ bot.login(configg.token)
   .then(() => {
   console.log('Bot logged in');
   const channel = bot.channels.get(config.channel);
-  channel.send("Je suis connecté vous pouvez désormais utiliser mes commandes :-)");
+  bot.guilds.find("name", "Break Star").channels.find("name", "bot-spam").send("Je suis connecté vous pouvez désormais utiliser mes commandes :-)");
+  bot.guilds.find("name", "Villageoiscraft").channels.find("name", "bot-spam").send("Je suis connecté vous pouvez désormais utiliser mes commandes :-)");
 
  onLogin();
 })
@@ -62,7 +63,7 @@ bot.on('ready', async () => {
     }
   });
   console.log("Bot Ready !");
-  console.log(bot.commands)
+  //console.log(bot.commands)
 
 
 });
@@ -181,19 +182,16 @@ function tellcitation() {
     .addField("Citation de l'heure :", `${citationValue}`)
     .addField("Contributeur :", `${contributor_citation}`)
     .setTimestamp();
-
-    const channel = bot.channels.get('230688990913757185');
-    channel.send(tellcitation_embed);
- } 
+    bot.guilds.find("name", "Break Star").channels.find("name", "bot-spam").send(tellcitation_embed);
+    bot.guilds.find("name", "Villageoiscraft").channels.find("name", "bot-spam").send(tellcitation_embed);
+}
 
 async function cat()  {
   const { body } = await superagent
 	   .get('http://random.cat/meow');
-	   const embed = new Discord.RichEmbed()
+	   const catembed = new Discord.RichEmbed()
 	   .setColor(0x954D23)
-	   .setTitle("Meow :cat:")
-	   .setImage(body.file)
-	   
-  const catchannel = bot.channels.get('398196222332108802')
-  catchannel.send({embed})
+     .addField("Cat!!!", "Chat")
+     .setImage(body.file)
+     bot.guilds.find("name", "Villageoiscraft").channels.find("name", "cat-spam").send(catembed);
 }
