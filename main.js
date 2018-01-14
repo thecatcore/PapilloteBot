@@ -84,6 +84,16 @@ function onLogin() {
       message.delete()
   .then(msg => console.log(`Deleted message from ${msg.author}`))
   .catch(console.error);  
+      
+      const addGuild = (db, message) => {
+        const guildname = message.guild.name
+        const guildid = message.guild.id
+        const guildregion = message.guild.region
+        console.log(guildregion)
+        console.log(message.guild.roles)
+        
+      }
+      addGuild(db, message);
       help(message);
     }
 
