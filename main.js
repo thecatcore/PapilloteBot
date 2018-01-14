@@ -5,6 +5,7 @@ const configg = require('./config.1.json')
 const db = require('./src/db');
 const prefix = config.prefix;
 const addcitation = require('./src/commands/addcitations');
+const speak = require('./src/commands/speak');
 const help = require('./src/commands/help');
 const tell_citation = require('./src/commands/tellcitation');
 const addanniversaire = require('./src/commands/addanniversaire');
@@ -16,7 +17,6 @@ const bot = new Discord.Client();
 const superagent = require("superagent");
 const uptimebase = Date();
 console.log(uptimebase);
-
 
 // const fs = require("fs");
 // bot.commands = new Discord.Collection();
@@ -44,9 +44,11 @@ db.init();
 bot.login(configg.token)
   .then(() => {
   console.log('Bot logged in');
-  const channel = bot.channels.get(config.channel);
-  bot.guilds.find("name", "Break Star").channels.find("name", "bot-spam").send("Je suis connecté vous pouvez désormais utiliser mes commandes :-)");
-  bot.guilds.find("name", "Villageoiscraft").channels.find("name", "bot-spam").send("Je suis connecté vous pouvez désormais utiliser mes commandes :-)");
+
+  //Guild = bot.guilds.find("name", "Break Star");
+     //bot.channels.find("name", "bot-spam").send("Je suis connecté vous pouvez désormais utiliser mes commandes :-)");
+  //Guild = bot.guilds.find("name", "Villageoiscraft");
+     bot.channels.find("name", "bot-spam").send("Je suis connecté vous pouvez désormais utiliser mes commandes :-)");
 
  onLogin();
 })
@@ -78,12 +80,16 @@ function onLogin() {
   cat();
 
   bot.on("message", async message => {
+    if (message.author.bot) return;
+    const speaking = require('./src/commands/speak');
+      speaking(message);
     if(!message.content.startsWith(prefix)) return;
     var args = message.content.substring(prefix.length).split(" ");
     if (message.content === prefix + "help") {
       message.delete()
   .then(msg => console.log(`Deleted message from ${msg.author}`))
   .catch(console.error);  
+      
       help(message);
     }
 
@@ -182,16 +188,21 @@ function tellcitation() {
     .addField("Citation de l'heure :", `${citationValue}`)
     .addField("Contributeur :", `${contributor_citation}`)
     .setTimestamp();
-    bot.guilds.find("name", "Break Star").channels.find("name", "bot-spam").send(tellcitation_embed);
-    bot.guilds.find("name", "Villageoiscraft").channels.find("name", "bot-spam").send(tellcitation_embed);
+    //bot.guilds.find("name", "Break Star")
+       //bot.channels.find("name", "bot-spam")
+       //.send(tellcitation_embed);
+    bot.guilds.find("name", "Villageoiscraft")
+       .channels.find("name", "bot-spam")
+       .send(tellcitation_embed);
 }
 
-async function cat()  {
+async function cat() {
+  
   const { body } = await superagent
-	   .get('http://random.cat/meow');
-	   const catembed = new Discord.RichEmbed()
-	   .setColor(0x954D23)
-     .addField("Cat!!!", "Chat")
-     .setImage(body.file)
-     bot.guilds.find("name", "Villageoiscraft").channels.find("name", "cat-spam").send(catembed);
+     .get('http://random.cat/meow')
+     //.setImage();
+     console.log(body.file)
+     
+     bot.guilds.find("name", "Villageoiscraft").channels.find("name", "cat-spam").send(body.file);
+     
 }

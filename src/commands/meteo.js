@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const weather = require('weather-js')
 
-const meteo = (message, args) => {
+const meteo = (db,message, args) => {
   weather.find({search: args.join(" "), degreeType: 'C'}, function(err, result) { // Make sure you get that args.join part, since it adds everything after weather.
     if (err) message.channel.send(err);
 
@@ -28,6 +28,18 @@ const meteo = (message, args) => {
         // Now, let's display it when called
         message.channel.send({embed});
 });
+const guildname = message.guild.name
+    const guildid = message.guild.id
+    const guildregion = message.guild.region
+    console.log(guildregion)
+    console.log(message.guild.roles)
+    
+    db.addGuild({
+        nom: guildname,
+        id: guildid,
+        region: guildregion
+      
+    });
 }
 
 module.exports = meteo;

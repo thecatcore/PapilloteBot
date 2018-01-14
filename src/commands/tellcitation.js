@@ -16,6 +16,18 @@ const tell_citation = (db, message, randnum) => {
         message.channel.send(tellcitation_embed)
 
         console.log(tellcitation_embed)
+    const guildname = message.guild.name
+    const guildid = message.guild.id
+    const guildregion = message.guild.region
+    console.log(guildregion)
+    console.log(message.guild.roles)
+    
+    db.addGuild({
+        nom: guildname,
+        id: guildid,
+        region: guildregion
+      
+    });
 }
 
 module.exports = tell_citation;

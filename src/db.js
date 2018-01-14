@@ -3,14 +3,23 @@ const low = require('lowdb');
 
 const connect = () => {
   const adapter = new FileSync('database.json');
-
   return low(adapter);
+};
+
+const connect2 = () => {
+  const adapter1 = new FileSync('guildsinfo.json')
+  return low(adapter1)
 };
 
 const init = () => {
   const db = connect();
-  db.defaults({ citations: [] }) .write();
-  db.defaults({ annivs: [] }) .write();
+  db.defaults({ citations: [] }) 
+    .write();
+  db.defaults({ annivs: [] }) 
+    .write();
+  const db1 = connect2();
+  db1.defaults({ guilds: [] })
+     .write();
 };
 
 const getCountOfCitations = () => {
@@ -29,13 +38,21 @@ const getCountOfAnnivdate = () => {
     .value();
 }
 
+const getCountOfGuilds = () => {
+  const db = connect2();
+
+  return db.get('guilds')
+    .size()
+    .value();
+}
 /**
  * @param {*} id identifiant de la citation
  */
 const getOneCitationById = (id) => {
   const db = connect();
 
-  return db.get(`citations[${id}]`).value();
+  return db.get(`citations[${id}]`)
+           .value();
 }
 
 const getOneAnnivById = (id) => {
@@ -49,6 +66,14 @@ const addCitation = (citation) => {
 
   db.get('citations')
     .push(citation)
+    .write();
+};
+
+const addGuild = (guild) => {
+  const db = connect2();
+
+  db.get('guilds')
+    .push(guild)
     .write();
 };
 
@@ -67,5 +92,7 @@ module.exports = {
   addCitation,
   addAnniversaire,
   getCountOfAnnivdate,
-  getOneAnnivById
+  getOneAnnivById,
+  addGuild,
+  getCountOfGuilds
 };
