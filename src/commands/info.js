@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 
-const info = (message,ilink, h, m, s) => {
+const info = (db,message,ilink, h, m, s) => {
     //var upTime = new Discord.Client(uptime);
     
     //console.log(upTime)
@@ -16,6 +16,18 @@ const info = (message,ilink, h, m, s) => {
       
         message.channel.send(info_embed);
         console.log("Info command");
+    const guildname = message.guild.name
+    const guildid = message.guild.id
+    const guildregion = message.guild.region
+    console.log(guildregion)
+    console.log(message.guild.roles)
+    
+    db.addGuild({
+        nom: guildname,
+        id: guildid,
+        region: guildregion
+      
+    });
 }
 
 module.exports = info;
