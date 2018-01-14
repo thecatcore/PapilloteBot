@@ -45,8 +45,12 @@ bot.login(configg.token)
   .then(() => {
   console.log('Bot logged in');
   const channel = bot.channels.get(config.channel);
-  bot.guilds.find("name", "Break Star").channels.find("name", "bot-spam").send("Je suis connecté vous pouvez désormais utiliser mes commandes :-)");
-  bot.guilds.find("name", "Villageoiscraft").channels.find("name", "bot-spam").send("Je suis connecté vous pouvez désormais utiliser mes commandes :-)");
+  bot.guilds.find("name", "Break Star")
+     .channels.find("name", "bot-spam")
+     .send("Je suis connecté vous pouvez désormais utiliser mes commandes :-)");
+  bot.guilds.find("name", "Villageoiscraft")
+     .channels.find("name", "bot-spam")
+     .send("Je suis connecté vous pouvez désormais utiliser mes commandes :-)");
 
  onLogin();
 })
