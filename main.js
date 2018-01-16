@@ -87,7 +87,7 @@ function onLogin() {
   .then(msg => console.log(`Deleted message from ${msg.author}`))
   .catch(console.error);  
       
-      help(message);
+      help(message,db);
     }
 
     switch (args[0].toLowerCase()) {
