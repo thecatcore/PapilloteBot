@@ -80,8 +80,6 @@ function onLogin() {
 
   bot.on("message", async message => {
     if (message.author.bot) return;
-    const speaking = require('./src/commands/speak');
-      speaking(message);
     if(!message.content.startsWith(prefix)) return;
     var args = message.content.substring(prefix.length).split(" ");
     if (message.content === prefix + "help") {
