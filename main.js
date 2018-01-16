@@ -5,7 +5,6 @@ const configg = require('./config.1.json')
 const db = require('./src/db');
 const prefix = config.prefix;
 const addcitation = require('./src/commands/addcitations');
-const speak = require('./src/commands/speak');
 const help = require('./src/commands/help');
 const tell_citation = require('./src/commands/tellcitation');
 const addanniversaire = require('./src/commands/addanniversaire');
