@@ -80,8 +80,6 @@ function onLogin() {
 
   bot.on("message", async message => {
     if (message.author.bot) return;
-    const speaking = require('./src/commands/speak');
-      speaking(message);
     if(!message.content.startsWith(prefix)) return;
     var args = message.content.substring(prefix.length).split(" ");
     if (message.content === prefix + "help") {
@@ -89,7 +87,7 @@ function onLogin() {
   .then(msg => console.log(`Deleted message from ${msg.author}`))
   .catch(console.error);  
       
-      help(message);
+      help(db,message);
     }
 
     switch (args[0].toLowerCase()) {
@@ -133,14 +131,14 @@ function onLogin() {
         var h = (Math.round(bot.uptime / (1000 * 60 * 60)))
         m = (m < 10) ? "0" + m : m;
         s = (s < 10) ? "0" + s : s;
-        info(message,ilink,s, m, h);
+        info(db,message,ilink,s, m, h);
         break;
 
       case "meteo":
       message.delete()
       .then(msg => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
-      meteo(message, args);
+      meteo(db,message, args);
       break;
 
       case "cat":

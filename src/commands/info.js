@@ -13,7 +13,7 @@ const info = (db,message,ilink, h, m, s) => {
         .addField("Version", "1.3")
         .addField("Lien d'invitation", `${ilink}`)
         //.addField("Uptime", `${s} heures ${m} minutes ${h} secondes`)
-      
+      console.log(message)
         message.channel.send(info_embed);
         console.log("Info command");
     const guildname = message.guild.name
