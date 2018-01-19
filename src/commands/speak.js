@@ -39,13 +39,27 @@ const speak = (message) => {
         message.reply('https://www.youtube.com/watch?v=_Vg9Z0CKPvA');
     };
     if (message.content === "raconte moi une blague papillote") {
-        message.reply('Quelle est la plus intelligente la blonde la rousse ou la brune ?
-La rousse parce que c’est un dictionnaire,Un jour Dieu dit à Casto de ramer
-Et depuis castorama,Qu'est-ce qu'une manifestation d'aveugles 
-Un festival de Cannes,Quelle est la différence entre une échelle et un pistolet
-L'échelle sert à monter le pistolet sert à descendre');
+        const blagues = require('./blagues.json')
+        let blaguenum = Math.floor(Math.random() * 5);
+        console.log(blaguenum);
+        console.log(blagues);
+        if (blaguenum === 0) {
+        var blague = blagues.blagues.un;
+        } else {
+            if (blaguenum === 1) {
+                var blague = blagues.blagues.deux;
+        } else {
+            if (blaguenum === 2) {
+                var blague = blagues.blagues.trois;
+        } else {
+            if (blaguenum === 3) {
+                var blague = blagues.blagues.quatre;
+        } else {
+            if (blaguenum === 4) {
+                var blague = blagues.blagues.cinq;
+        }}}}};
+        message.reply(blague);
     };
     
     };
-}
 module.exports = speak;
