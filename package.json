@@ -10,6 +10,7 @@
     "node-schedule": "^1.2.5",
     "opusscript": "^0.0.3",
     "osuapi-js": "^0.5.1",
+    "overwatch-js": "^1.6.1",
     "snekfetch": "^3.6.1",
     "superagent": "^3.8.2",
     "uws": "^0.14.5",
