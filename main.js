@@ -15,6 +15,7 @@ const meteo = require('./src/commands/meteo')
 const bot = new Discord.Client();
 const superagent = require("superagent");
 const uptimebase = Date();
+const osu_info = require('./src/commands/osu_info');
 console.log(uptimebase);
 
 // const fs = require("fs");
@@ -154,6 +155,14 @@ function onLogin() {
 	   .setTitle("Meow :cat:")
 	   .setImage(body.file)
 	   message.channel.send({embed})
+      break;
+
+      case "osu_info":
+      message.delete()
+      .then(msg => console.log(`Deleted message from ${msg.author}`))
+      .catch(console.error);
+      console.log('tet');
+      osu_info(message);
       break;
 
     }
