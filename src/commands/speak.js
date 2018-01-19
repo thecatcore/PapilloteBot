@@ -31,5 +31,7 @@ const speak = (message) => {
 
     if (message.content === "a+") {
         message.reply('bye');
-    }
+    };
+
+}
 module.exports = speak;
