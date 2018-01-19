@@ -28,6 +28,38 @@ const speak = (message) => {
         message.reply('https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAdmAAAAJDIxOTUzMTY0LTg0NWItNGNkYy04NDE3LTcyZDU1NjFkYmZiZg.jpg');
         message.reply('http://i.neoseeker.com/n/9/spaaace.jpg');
     };
-}
 
+    if (message.content === "a+") {
+        message.reply('bye');
+    };
+    if (message.content === "chat") {
+        message.reply('https://www.youtube.com/watch?v=UTx_DF2IsFk');
+    };
+    if (message.content === "chien") {
+        message.reply('https://www.youtube.com/watch?v=_Vg9Z0CKPvA');
+    };
+    if (message.content === "raconte moi une blague papillote") {
+        const blagues = require('./blagues.json')
+        let blaguenum = Math.floor(Math.random() * 5);
+        console.log(blaguenum);
+        console.log(blagues);
+        if (blaguenum === 0) {
+        var blague = blagues.blagues.un;
+        } else {
+            if (blaguenum === 1) {
+                var blague = blagues.blagues.deux;
+        } else {
+            if (blaguenum === 2) {
+                var blague = blagues.blagues.trois;
+        } else {
+            if (blaguenum === 3) {
+                var blague = blagues.blagues.quatre;
+        } else {
+            if (blaguenum === 4) {
+                var blague = blagues.blagues.cinq;
+        }}}}};
+        message.reply(blague);
+    };
+    
+    };
 module.exports = speak;
