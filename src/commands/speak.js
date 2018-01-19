@@ -34,7 +34,9 @@ const speak = (message) => {
     };
     if (message.content === "chat") {
         message.reply('https://www.youtube.com/watch?v=UTx_DF2IsFk');
-
+    };
+    if (message.content === "chien") {
+        message.reply('https://www.youtube.com/watch?v=_Vg9Z0CKPvA');
     };
 }
 module.exports = speak;
