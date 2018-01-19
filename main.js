@@ -16,6 +16,7 @@ const bot = new Discord.Client();
 const superagent = require("superagent");
 const uptimebase = Date();
 const osu_info = require('./src/commands/osu_info');
+const ov_info = require('./src/commands/overwatch_info')
 console.log(uptimebase);
 
 // const fs = require("fs");
@@ -163,6 +164,10 @@ function onLogin() {
       .catch(console.error);
       console.log('tet');
       osu_info(message);
+      break;
+
+      case "ov_info":
+      ov_info(message);
       break;
 
     }
