@@ -28,6 +28,8 @@ const speak = (message) => {
         message.reply('https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAdmAAAAJDIxOTUzMTY0LTg0NWItNGNkYy04NDE3LTcyZDU1NjFkYmZiZg.jpg');
         message.reply('http://i.neoseeker.com/n/9/spaaace.jpg');
     };
-}
 
+    if (message.content === "a+") {
+        message.reply('bye');
+    }
 module.exports = speak;
