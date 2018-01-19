@@ -2,6 +2,9 @@ const speak = (message) => {
     if (message.content === "salut") {
         message.reply('salut');
     };
+    if (message.content === "Salut") {
+        message.reply('Salut');
+    };
     if (message.content === "test") {
         message.reply('Ceci est un test');
     };
