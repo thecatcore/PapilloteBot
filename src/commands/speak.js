@@ -32,6 +32,8 @@ const speak = (message) => {
     if (message.content === "a+") {
         message.reply('bye');
     };
-
+    if (message.content === "chat") {
+        message.reply('https://www.youtube.com/watch?v=UTx_DF2IsFk');
+    };
 }
 module.exports = speak;
