@@ -5,6 +5,7 @@ const info_player = (message) => {
     console.log(value);
     owjs.getAll('pc', 'eu', `${value}`)
     .then((data) => {
+        console.log(data);
         //console.dir(data, {depth : 2, colors : true})
         var ov_info_profile_embed = new Discord.RichEmbed()
         .setTitle('Profile')
