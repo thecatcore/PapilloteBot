@@ -40,7 +40,15 @@ const info_player = (message) => {
         message.channel.send(ov_info_comp_globalb);
 
         var ov_info_comp_globalc = new Discord.RichEmbed()
-
+        .setTitle('Globale de cette saison trois partie :')
+        .addField('Record d élimination dans une partie : ', data.competitive.global.eliminations_most_in_game)
+        .addField('Record de dégats dans une partie : ', data.competitive.global.damage_done_most_in_game)
+        .addField('Record de Healing dans une partie : ', data.competitive.global.healing_done_most_in_game)
+        .addField('Record d assistance défencive dans une partie : ', data.competitive.global.defensive_assists_most_in_game)
+        .addField('Record d assistance offensive ', data.competitive.global.offensive_assists_most_in_game)
+        .addField('Record de kills pendant un objectif dans une partie', data.competitive.global.objective_kills_most_in_game)
+        .addField('Record de kills en solo pendant une partie', data.competitive.global.solo_kills_most_in_game);
+        message.channel.send(ov_info_comp_globalc);
     })
     .catch((error) => {
         console.error(error);
