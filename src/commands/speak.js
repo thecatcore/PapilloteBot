@@ -40,7 +40,7 @@ const speak = (message) => {
     };
     if (message.content === "raconte moi une blague papillote") {
         const blagues = require('./blagues.json')
-        let blaguenum = Math.floor(Math.random() * 5);
+        let blaguenum = Math.floor(Math.random() * 4);
         console.log(blaguenum);
         console.log(blagues);
         if (blaguenum === 0) {
@@ -55,9 +55,9 @@ const speak = (message) => {
             if (blaguenum === 3) {
                 var blague = blagues.blagues.quatre;
         } else {
-            if (blaguenum === 4) {
+            /*if (blaguenum === 4) {
                 var blague = blagues.blagues.cinq;
-        }}}}};
+        }*/}}}};
         message.reply(blague);
     };
     
