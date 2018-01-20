@@ -6,13 +6,39 @@ const info_player = (message) => {
     owjs.getAll('pc', 'eu', `${value}`)
     .then((data) => {
         //console.dir(data, {depth : 2, colors : true})
-        var ov_info_embed = new Discord.RichEmbed()
-        .setTitle(data.profile.nick)
+        var ov_info_profile_embed = new Discord.RichEmbed()
+        .setTitle('Profile')
+        .addField('Pseudo : ', data.profile.nick)
         .addField('Niveau', data.profile.level)
-        .setThumbnail(data.profile.avatar)
+        .setImage(data.profile.avatar)
+        .setThumbnail(data.profile.rankPicture)
         .addField('Tier', data.profile.ranking)
-        .addField('Rank', data.profile.rank);
-        message.channel.send(ov_info_embed); 
+        .addField('Rank', data.profile.rank)
+        .addField('Lien vers le profile', data.profile.url);
+        message.channel.send(ov_info_profile_embed); 
+
+        var ov_info_comp_globala = new Discord.RichEmbed()
+        .setTitle('En compétition : Globale de cette saison première partie:')
+        .addField('Parties jouées : ', data.competitive.global.games_played)
+        .addField('Parties gagnées : ', data.competitive.global.games_won)
+        .addField('Parties perdues : ', data.competitive.global.games_lost)
+        .addField('Kills seul : ', data.competitive.global.solo_kills)
+        .addField('Kills à plusieurs : ', data.competitive.global.multikills)
+        .addField('Kills objectifs : ', data.competitive.global.objective_kills)
+        .addField('Kills environement : ', data.competitive.global.environmental_kills)
+        .addField('Eliminations : ', data.competitive.global.eliminations);
+        message.channel.send(ov_info_comp_globala);
+
+        var ov_info_comp_globalb = new Discord.RichEmbed()
+        .setTitle('Globale de cette saison deuxième partie :')
+        .addField('Nombre de morts : ', data.competitive.global.deaths)
+        .addField('Morts par l environnement', data.competitive.global.environmental_deaths)
+        .addField('Médailles : ', `total : ${data.competitive.global.medals}\nen or : ${data.competitive.global.medals_gold}\nen argent : ${data.competitive.global.medals_silver}\nen bronze : ${data.competitive.global.medals_bronze}`)
+        .addField('Dégats totaux : ', data.competitive.global.damage_done)
+        .addField('Healing total : ', data.competitive.global.healing_done)
+        .addField('Plateforme de téléportation détruite : ', data.competitive.global.teleporter_pad_destroyed);
+        message.channel.send(ov_info_comp_globalb);
+
     })
     .catch((error) => {
         console.error(error);
