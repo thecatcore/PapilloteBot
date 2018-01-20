@@ -24,7 +24,7 @@ const info_player = (message) => {
         .addField('Parties gagnées : ', data.competitive.global.games_won)
         .addField('Parties perdues : ', data.competitive.global.games_lost)
         .addField('Kills seul : ', data.competitive.global.solo_kills)
-        .addField('Kills à plusieurs : ', data.competitive.global.multikills)
+        .addField('Kills à plusieurs : ', data.competitive.global.multikill)
         .addField('Kills objectifs : ', data.competitive.global.objective_kills)
         .addField('Kills environement : ', data.competitive.global.environmental_kills)
         .addField('Eliminations : ', data.competitive.global.eliminations);
@@ -33,20 +33,22 @@ const info_player = (message) => {
         var ov_info_comp_globalb = new Discord.RichEmbed()
         .setTitle('Globale de cette saison deuxième partie :')
         .addField('Nombre de morts : ', data.competitive.global.deaths)
-        .addField('Morts par l environnement', data.competitive.global.environmental_deaths)
+        .addField('Morts par l environnement', data.competitive.global.environmental_kills)
         .addField('Médailles : ', `total : ${data.competitive.global.medals}\nen or : ${data.competitive.global.medals_gold}\nen argent : ${data.competitive.global.medals_silver}\nen bronze : ${data.competitive.global.medals_bronze}`)
-        .addField('Dégats totaux : ', data.competitive.global.damage_done)
-        .addField('Healing total : ', data.competitive.global.healing_done)
-        .addField('Plateforme de téléportation détruite : ', data.competitive.global.teleporter_pad_destroyed);
+        .addField('Dégats totaux : ', data.competitive.global.all_damage_done)
+        .addField('Dégats de la barrière : ', data.competitive.global.barrier_damage_done)
+        .addField('Tourelles détruites', data.competitive.global.turrets_destroyed)
+        .addField('Healing total : ', data.competitive.global.healing_done);
         message.channel.send(ov_info_comp_globalb);
 
         var ov_info_comp_globalc = new Discord.RichEmbed()
         .setTitle('Globale de cette saison trois partie :')
         .addField('Record d élimination dans une partie : ', data.competitive.global.eliminations_most_in_game)
-        .addField('Record de dégats dans une partie : ', data.competitive.global.damage_done_most_in_game)
+        .addField('Record de dégats dans une partie : ', data.competitive.global.all_damage_done_most_in_game)
         .addField('Record de Healing dans une partie : ', data.competitive.global.healing_done_most_in_game)
-        .addField('Record d assistance défencive dans une partie : ', data.competitive.global.defensive_assists_most_in_game)
+        .addField('Record d assistance défencive dans une partie : ', data.competitive.global.defensive_assist_most_in_game)
         .addField('Record d assistance offensive ', data.competitive.global.offensive_assists_most_in_game)
+        .addField('')
         .addField('Record de kills pendant un objectif dans une partie', data.competitive.global.objective_kills_most_in_game)
         .addField('Record de kills en solo pendant une partie', data.competitive.global.solo_kills_most_in_game);
         message.channel.send(ov_info_comp_globalc);
