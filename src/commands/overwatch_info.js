@@ -39,6 +39,8 @@ const info_player = (message) => {
         .addField('Plateforme de téléportation détruite : ', data.competitive.global.teleporter_pad_destroyed);
         message.channel.send(ov_info_comp_globalb);
 
+        var ov_info_comp_globalc = new Discord.RichEmbed()
+
     })
     .catch((error) => {
         console.error(error);
