@@ -48,14 +48,21 @@ const info_player = (message) => {
         .addField('Record de Healing dans une partie : ', data.competitive.global.healing_done_most_in_game)
         .addField('Record d assistance défencive dans une partie : ', data.competitive.global.defensive_assist_most_in_game)
         .addField('Record d assistance offensive ', data.competitive.global.offensive_assists_most_in_game)
-        .addField('')
+        .addField('Record de tourrelles détruit au cours d une partie', data.competitive.global.turrets_destroyed_most_in_game)
         .addField('Record de kills pendant un objectif dans une partie', data.competitive.global.objective_kills_most_in_game)
         .addField('Record de kills en solo pendant une partie', data.competitive.global.solo_kills_most_in_game);
         message.channel.send(ov_info_comp_globalc);
+        var achievement = data.achievements
+        message.channel.send('Succès du jour :');
+        let i;
+        for (i = 0; i < achievement.length; i++) {
+            message.channel.send(achievement[i].title);
+            message.channel.send(achievement[i].description);
+        }
     })
     .catch((error) => {
         console.error(error);
-        message.channel.send('Profile non trouvé');
+        message.channel.send('Il y a eu une erreur');
       });
       
 };
