@@ -67,6 +67,13 @@ const speak = (message) => {
     if(message.content === "je dois y aller") {
         message.reply('snif :sob:');
     };
+    if(message.content === "bonjour") {
+        message.reply('salut :smile:');
+    };
+    if(message.content === "je lag") {
+       message.reply('ha sa cest un problème :sweat:');
+       message.reply('https://www.youtube.com/watch?v=XE6YaLtctcI');
+    };
 
     };
 module.exports = speak;
