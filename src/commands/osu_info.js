@@ -10,7 +10,7 @@ const osu_info = (message) => {
             var osu_info_embed = new Discord.RichEmbed()
                 .setTitle(user.username)
                 .addField('ID', user.ID)
-                .addField('Nombre de :', `parties jouées : ${user.count.play}\nSS : ${user.count.SS}\nS : ${user.count.S}\nA : ${user.count.A}`)
+                .addField('Nombre de :', `parties jouées : ${user.count.play}\nSS : ${user.count.SS}\nS : ${user.count.S}\nA : ${user.count.A}\n300 : ${user.count[300]}\n100 : ${user.count[100]}\n50 : ${user.count[50]}`)
                 .addField('Score', `ranked : ${user.score.ranked}\ntotal : ${user.score.total}`)
                 .addField('Rank', `Par pays : ${user.pp.countryRank}\nMondialement : ${user.pp.rank}`)
                 .addField('Niveau', user.level)
