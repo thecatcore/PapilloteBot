@@ -8,6 +8,7 @@
     "lowdb": "^1.0.0",
     "node-opus": "^0.2.6",
     "node-schedule": "^1.2.5",
+    "nodemon": "^1.14.11",
     "opusscript": "^0.0.3",
     "osuapi-js": "^0.5.1",
     "overwatch-js": "^1.6.1",
