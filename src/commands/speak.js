@@ -61,8 +61,8 @@ const speak = (message) => {
     }}};
         message.reply(blague);
     };
-    if(message.content === "") {
-    message.reply('');
+    if(message.content === "\n") {
+    message.reply('\n');
     };
 
     };
