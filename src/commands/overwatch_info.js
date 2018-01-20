@@ -42,7 +42,7 @@ const info_player = (message) => {
         message.channel.send(ov_info_comp_globalb);
 
         var ov_info_comp_globalc = new Discord.RichEmbed()
-        .setTitle('Globale de cette saison trois partie :')
+        .setTitle('Globale de cette saison troisième partie :')
         .addField('Record d élimination dans une partie : ', data.competitive.global.eliminations_most_in_game)
         .addField('Record de dégats dans une partie : ', data.competitive.global.all_damage_done_most_in_game)
         .addField('Record de Healing dans une partie : ', data.competitive.global.healing_done_most_in_game)
@@ -53,7 +53,7 @@ const info_player = (message) => {
         .addField('Record de kills en solo pendant une partie', data.competitive.global.solo_kills_most_in_game);
         message.channel.send(ov_info_comp_globalc);
         var achievement = data.achievements
-        message.channel.send('Succès du jour :');
+        message.channel.send('Succès du joueur :');
         let i;
         for (i = 0; i < achievement.length; i++) {
             message.channel.send(achievement[i].title);
