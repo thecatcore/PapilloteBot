@@ -1,4 +1,6 @@
+
 const speak = (message) => {
+    const Discord = require('discord.js'); //je récupère les fonctionnalitées de discord en appelant la lib 'discord.js'
     if (message.content === "salut") {
         message.reply('salut');
     };
@@ -71,9 +73,12 @@ const speak = (message) => {
         message.reply('salut :smile:');
     };
     if(message.content === "je lag") {
-       message.reply('ha sa cest un problème :sweat:');
-       message.reply('https://www.youtube.com/watch?v=XE6YaLtctcI');
-    };
+        var jelag_embed = new Discord.RichEmbed() //je créais une variable dans laquelle je stocke le message encadré
+        .addField('ha sa cest un problème :sweat:', 'https://www.youtube.com/watch?v=XE6YaLtctcI');// j'ajoute un espace, le premier text est le titre de cet espace et le deuxième est ça description
+        message.channel.send(jelag_embed);//et là j'envoi mon message encadré sous forme de variable :-)
+        //message.reply('');
+        //message.reply();
+     };
 
     };
 module.exports = speak;
