@@ -56,13 +56,15 @@ const info_player = (message) => {
         message.channel.send('Succès du joueur :');
         let i;
         for (i = 0; i < achievement.length; i++) {
+            if (achievement[i].acquired === true) {
             message.channel.send(achievement[i].title);
             message.channel.send(achievement[i].description);
+            console.log(i);
         }
-    })
+    }})
     .catch((error) => {
         console.error(error);
-        message.channel.send('Il y a eu une erreur');
+        message.channel.send(`Il y a eu une erreur : ${error}`);
       });
       
 };
