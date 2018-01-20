@@ -61,8 +61,8 @@ const speak = (message) => {
     }}};
         message.reply(blague);
     };
-    if(message.content === "sefdr") {
-    message.reply('ezqfr');
+    if(message.content === "test") {
+    message.reply('test');
     };
 
     };
