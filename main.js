@@ -167,6 +167,9 @@ function onLogin() {
       break;
 
       case "ov_info":
+      message.delete()
+      .then(msg => console.log(`Deleted message from ${msg.author}`))
+      .catch(console.error);
       ov_info(message);
       break;
 
