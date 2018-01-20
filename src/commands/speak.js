@@ -61,8 +61,18 @@ const speak = (message) => {
     }}};
         message.reply(blague);
     };
-    if(message.content === "test") {
-    message.reply('test');
+    if(message.content === "bye") {
+    message.reply('à plus tard');
+    };
+    if(message.content === "je dois y aller") {
+        message.reply('snif :sob:');
+    };
+    if(message.content === "bonjour") {
+        message.reply('salut :smile:');
+    };
+    if(message.content === "je lag") {
+       message.reply('ha sa cest un problème :sweat:');
+       message.reply('https://www.youtube.com/watch?v=XE6YaLtctcI');
     };
 
     };
