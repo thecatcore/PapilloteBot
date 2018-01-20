@@ -1,9 +1,8 @@
 {
     "blagues":{
-        "un":"Quelle est la plus intelligente la blonde la rousse ou la brune ?",
-        "deux":"La rousse parce que c’est un dictionnaire,Un jour Dieu dit à Casto de ramer",
-        "trois":"Et depuis castorama,Qu'est-ce qu'une manifestation d'aveugles",
-        "quatre":"Un festival de Cannes,Quelle est la différence entre une échelle et un pistolet",
-        "cinq":"L'échelle sert à monter le pistolet sert à descendre"
+        "un":"Quelle est la plus intelligente la blonde la rousse ou la brune ?\n La rousse parce que c’est un dictionnaire.",
+        "deux":"Un jour Dieu dit à Casto de ramer,\n et depuis castorama",
+        "trois":"Qu'est-ce qu'une manifestation d'aveugles ?\n Un festival de Cannes",
+        "quatre":"Quelle est la différence entre une échelle et un pistolet?\nL'échelle sert à monter le pistolet sert à descendre"
     }
 }
