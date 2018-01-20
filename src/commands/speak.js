@@ -54,10 +54,11 @@ const speak = (message) => {
         } else {
             if (blaguenum === 3) {
                 var blague = blagues.blagues.quatre;
-        } else {
+        } //else {
             /*if (blaguenum === 4) {
                 var blague = blagues.blagues.cinq;
-        }*/}}}};
+        }*///}
+    }}};
         message.reply(blague);
     };
     
