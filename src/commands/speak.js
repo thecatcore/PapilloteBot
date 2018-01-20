@@ -61,6 +61,9 @@ const speak = (message) => {
     }}};
         message.reply(blague);
     };
-    
+    if(message.content === "test") {
+    message.reply('test');
+    };
+
     };
 module.exports = speak;
