@@ -64,6 +64,9 @@ const speak = (message) => {
     if(message.content === "bye") {
     message.reply('à plus tard');
     };
+    if(message.content === "je dois y aller") {
+        message.reply('snif :sob:');
+    };
 
     };
 module.exports = speak;
