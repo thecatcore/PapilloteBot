@@ -3,7 +3,7 @@ const bot = new Discord.Client();
 const help = (db, message) => {
     var help_embed = new Discord.RichEmbed()
         .setColor('#D9F200')
-        .addField("Help", "+help : affiche les commandes du bot")
+        .addField("Catégories", "+help : affiche les catégories de commandes du bot\n+recettelist : affiche la liste et le nombre de recette de cuisine du bot.")
         .addField('Citations Commands', "+addcitation citation.        auteur : permet d'ajouter une citation\npour la commande +tellcitation \n+tellcitation : écris une citation au hasard parmis les citations enregistrées")
         .addField('Anniversaire commands', "+addanniversaire : ajoute votre date d'anniversaire à une base de donnée, \n exemple: +addanniversaire 04/01.")
         .addField('Commandes utiles', "+info : donne des infos sur le bot.\n+meteo (nom d'un lieu) : vous donne les condition actuelle du lieu en question.")
