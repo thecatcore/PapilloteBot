@@ -1,11 +1,18 @@
 {
     "recette": {
         "0": {
-            "name":"gateau",
-            "ingrédients":"1 \n 1",
+            "name":"gâteau_au_chocolat",
+            "ingrédients":"100g de beurre\n100g de chocolat\n3 oeufs entiers\n100g de sucre\n60g de farine",
             "étapes": {
-                "0":"2",
-                "1":"3"
+                "0":"Faire fondre au bain marie : 100g de beurre\n                             100g de chocloat\n\nBattre longtemps : 3 oeufs entier\n                   100g de surce\n                   60g de farine",
+                "1":"Mélanger les deux appareils.",
+                "2":"Faire cuire 20 mn therm 6/7 dans un moule beurré.",
+                "3":"Bien respecter le temps de cuisson. Ne pas dépasser."
+            },
+            "options": {
+                "nappage pour gâteau": {
+                    "ingrédients":"10g de beurre\n80g de chocolat\n2 cuillerées à soupe de crème (pas au bain marie)"
+                }
             }
         },
         "1": {
