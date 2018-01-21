@@ -120,7 +120,19 @@ function onLogin() {
             ii++;
           } while (ii < recettes.recette[i].étapes.length);
           message.channel.send(recette_embed);
-          
+          if (recettes.recette[i].options) {
+          var recette_embede = new Discord.RichEmbed()
+            .setTitle('Options facultatives de cette recette');
+            let iii = 0;
+            do {
+              //console.log(ii);
+              recette_embede
+              .addField(`Option ${iii + 1}, Nom`, recettes.recette[i].options[iii].name)
+              .addField(`Information de cette option`, recettes.recette[i].options[iii].ingrédients);
+              
+              iii++;
+            } while (iii < recettes.recette[i].options.length);
+            message.channel.send(recette_embede);}
         }
         i++;
         console.log(i);
