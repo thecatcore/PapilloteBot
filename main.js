@@ -218,6 +218,18 @@ function onLogin() {
       ov_info(message);
       break;
 
+      case "recettelist":
+      message.delete()
+      .then(msg => console.log(`Deleted message from ${msg.author}`))
+      .catch(console.error);
+      message.channel.send(`Recettes chargées : ${recettes.recette.length + 1}`);
+      message.channel.send('La liste :');
+      var aa;
+      for (aa = 0; aa < recettes.recette.length + 1; aa++) {
+        message.channel.send(`${prefix}${recettes.recette[aa].name}`);
+      }
+      break;
+
     }
 
   })
