@@ -1,6 +1,6 @@
 {
     "recette": {
-        "length": 1,
+        "length": 2,
         "0": {
             "name":"gâteau au chocolat",
             "ingrédients":"100g de beurre\n100g de chocolat\n3 oeufs entiers\n100g de sucre\n60g de farine",
@@ -20,12 +20,34 @@
             }
         },
         "1": {
-            "name":"château",
-            "ingrédients":"2\n2",
+            "name":"sauce vinaigrette",
+            "ingrédients":"1 cuilleréé de vinaigre\n3 cuillerées d'huile\nfines herbes hachées\nsel et poivre",
             "étapes": {
                 "length":2,
-                "0":"4",
-                "1":"5"
+                "0":"Faire fondre le sel dans le vinaigre",
+                "1":"Tout mélanger"
+            },
+            "options":{
+                "length":0,
+                "0":{
+                    "name":"Variante agréable pour poulet ou poisson",
+                    "ingrédients":"Remplacer les 3 cuillerées d'huile par 2 cuillerées de concentré de tomates délayé dans la cuillerée de vinaigre"
+                }
+            }
+        },
+        "2": {
+            "name":"boeuf bourguignon",
+            "ingrédients":"700g de boeuf\n100g de lard salé\n50g de beurre\n60g d'oignons\n100g de champignons\n30g de farine\n3dl de vin rouge\n3dl de bouillon\nbouquet garni",
+            "étapes":{
+                "length": 8,
+                "0":"Couper le boeuf en morceaux",
+                "1":"Tailler le lard en dés",
+                "2":"Faire fondre le beurre, y faire revenir les oignons et les lardons",
+                "3":"Les retirer et faire dorer la viande dans la même graisse",
+                "4":"Saupoudrer avec la farine, laisser roussir et mouiller avec le bouillon chaud",
+                "5":"Ajouter les lardons, les oignons, le vin rouge, sel, poivre, bouquet garni",
+                "6":"Cuire doucement 2h30",
+                "7":"30 minutes avant de servir, mettre les champignons épluchés, lavés et coupés en petits morceaux"
             }
         }
     }
