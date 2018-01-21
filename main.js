@@ -16,8 +16,10 @@ const bot = new Discord.Client();
 const superagent = require("superagent");
 const uptimebase = Date();
 const osu_info = require('./src/commands/osu_info');
-const ov_info = require('./src/commands/overwatch_info')
+const ov_info = require('./src/commands/overwatch_info');
+const recettes = require('./recettes.json');
 console.log(uptimebase);
+console.log(recettes.recette);
 
 // const fs = require("fs");
 // bot.commands = new Discord.Collection();
@@ -81,6 +83,7 @@ function onLogin() {
   cat();
 
   bot.on("message", async message => {
+    
     if (message.author.bot) return;
     const speaking = require('./src/commands/speak');
       speaking(message);
@@ -93,6 +96,36 @@ function onLogin() {
       
       help(db,message);
     }
+    var i = 0;
+    console.log(recettes.recette);
+    console.log(i);
+    do {
+      
+    console.log(i);
+    console.log(recettes.recette[i].name)
+      if (message.content === prefix + recettes.recette[i].name) {
+        
+        message.delete()
+        .then(msg => console.log(`Deleted message from ${msg.author}`))
+        .catch(console.error);
+        var recette_embed = new Discord.RichEmbed()
+          .setTitle(recettes.recette[i].name)
+          .addField('Ingrédients', recettes.recette[i].ingrédients);
+          let ii = 0;
+          do {
+            //console.log(ii);
+            recette_embed
+            .addField(`Etape ${ii + 1}`, recettes.recette[i].étapes[ii]);
+            
+            ii++;
+          } while (ii < recettes.recette[i].étapes.length);
+          message.channel.send(recette_embed);
+          
+        }
+        i++;
+        console.log(i);
+        } while (i < recettes.recette.length + 1);
+    
 
     switch (args[0].toLowerCase()) {
 
@@ -175,9 +208,10 @@ function onLogin() {
 
     }
 
-  });
-});
+  })
+})
 }
+
 
   
 
