@@ -2,6 +2,7 @@
   "dependencies": {
     "bufferutil": "^3.0.2",
     "discord.js": "^11.2.1",
+    "discord.js-commando": "github:discordjs/Commando#11.2",
     "erlpack": "hammerandchisel/erlpack",
     "fs": "0.0.1-security",
     "libsodium-wrappers": "^0.5.4",
@@ -13,6 +14,7 @@
     "osuapi-js": "^0.5.1",
     "overwatch-js": "^1.6.1",
     "snekfetch": "^3.6.1",
+    "sqlite": "^2.9.1",
     "superagent": "^3.8.2",
     "uws": "^0.14.5",
     "weather-js": "^2.0.0",
