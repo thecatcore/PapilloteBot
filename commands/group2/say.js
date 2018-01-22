@@ -4,6 +4,7 @@ module.exports = class SayCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'say',
+            aliases: ['repeat', 'echo', 'parrot'],
             group: 'group2',
             memberName: 'say',
             description: 'Le bot revoie le message écris après la commande',
