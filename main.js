@@ -4,7 +4,8 @@ const config = require('./config.json');
 const configg = require('./config.1.json')
 const sqlite = require('sqlite');
 
-const client = new CommandoClient({
+
+const client = new Commando.Client({
   commandPrefix: config.prefix,
   owner: [config.owner1, config.owner2],
   disableEveryone: false
@@ -13,7 +14,7 @@ const client = new CommandoClient({
 client.registry
     .registerDefaultTypes()
     .registerGroups([
-        ['group1', 'Help command group'],
+        ['group1', 'Citations commands'],
         ['group2', 'Say commands']
     ])
     .registerDefaultGroups()
