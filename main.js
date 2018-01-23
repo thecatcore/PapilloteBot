@@ -1,7 +1,8 @@
-const { CommandoClient } = require('discord.js-commando');
+const Commando = require('discord.js-commando');
 const path = require('path');
 const config = require('./config.json');
 const configg = require('./config.1.json')
+const sqlite = require('sqlite');
 
 const client = new CommandoClient({
   commandPrefix: config.prefix,
@@ -27,6 +28,10 @@ client.on('ready', () => {
 });
 
 client.login(configg.token);
+
+client.setProvider(
+  sqlite.open(path.join(__dirname, 'settings.sqlite3')).then(db => new Commando.SQLiteProvider(db))
+).catch(console.error);
 
 // const Discord = require('discord.js');
 // const schedule = require('node-schedule');
