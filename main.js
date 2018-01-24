@@ -32,7 +32,7 @@ client.on('ready', () => {
 client.login(configg.token);
 
 client.setProvider(
-  sqlite.open(path.join(__dirname, 'settings.sqlite3')).then(db => new Commando.SQLiteProvider(db))
+  sqlite.open(path.join(__dirname, '.db.sqlite3')).then(db => new Commando.SQLiteProvider(db))
 ).catch(console.error);
 
 // const Discord = require('discord.js');
