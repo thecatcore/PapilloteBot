@@ -41,12 +41,8 @@ module.exports = class AddCitationCommand extends Command {
             database: "papillotebot"
         });
         connection.connect();
-        var i = 0
-        for (;i<Math.random() * 100;) {
-            i++;
-        }
+       // connection.query('CREATE TABLE IF NOT EXISTS citations(citationid INT NOT NULL AUTO_INCREMENT , citationdesc TEXT NOT NULL,citationauteur TEXT NOT NULL,citationadd TEXT NOT NULL)');
         var info = {
-            "idcitations": i,
             "citationdesc": citation,
             "citationauteur": auteur,
             "citationadd": donneur
