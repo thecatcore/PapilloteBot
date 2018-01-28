@@ -58,7 +58,6 @@ const infoPlayer = (message) => {
             if (achievement[i].acquired === true) {
             message.channel.send(achievement[i].title);
             message.channel.send(achievement[i].description);
-            console.log(i);
         }
     }})
     .catch((error) => {
