@@ -1,9 +1,9 @@
-const { Command } = require('discord.js-commando');
+const { Command } = require("discord.js-commando");
 
 module.exports = class DmCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'dm',
+            name: "dm",
             group: 'group2',
             memberName: 'dm',
             description: 'Envoyer un message à la personne mentionnée.',
@@ -16,7 +16,7 @@ module.exports = class DmCommand extends Command {
                 },
                 {
                     key: 'content',
-                    prompt: 'Quel est le message ?',
+                    prompt: "Quel est le message ?",
                     type: 'string'
                 }
             ]

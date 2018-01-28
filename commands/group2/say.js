@@ -12,7 +12,7 @@ module.exports = class SayCommand extends Command {
             args: [
                 {
                     key: 'text',
-                    prompt: 'Qu\'es-ce que vous voulez faire dire au bot ?',
+                    prompt: "Qu'es-ce que vous voulez faire dire au bot ?",
                     type: 'string'
                 }
             ]

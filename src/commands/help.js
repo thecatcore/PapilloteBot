@@ -13,11 +13,11 @@ const help = (db, message) => {
    
    
     console.log("Help command");
-    const guildname = message.guild.name
-    const guildid = message.guild.id
-    const guildregion = message.guild.region
-    console.log(guildregion)
-    console.log(message.guild.roles)
+    const guildname = message.guild.name;
+    const guildid = message.guild.id;
+    const guildregion = message.guild.region;
+    console.log(guildregion);
+    console.log(message.guild.roles);
     
     db.addGuild({
         nom: guildname,
