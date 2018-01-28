@@ -24,15 +24,14 @@ console.log(recettes.recette);
 async function cat() {
   
   const { body } = await superagent
-     .get('http://random.cat/meow')
+     .get("http://random.cat/meow");
      //.setImage();
-     console.log(body.file)
      
      bot.guilds.find("name", "Villageoiscraft").channels.find("name", "cat-spam").send(body.file);
      
 }
 
-function citation_random() {
+function citationRandom() {
   const min = Math.ceil(0);
   const max = Math.floor(db.getCountOfCitations());
 
@@ -40,7 +39,7 @@ function citation_random() {
 }
 
 function tellcitation() {
-  const randnum = citation_random();
+  const randnum = citationRandom();
 
   const citation = db.getOneCitationById(randnum);
   const citationValue = citation.citation_value;
