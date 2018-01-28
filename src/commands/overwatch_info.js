@@ -17,19 +17,19 @@ const infoPlayer = (message) => {
         .addField("Lien vers le profile", data.profile.url);
         message.channel.send(ov_info_profile_embed); 
 
-        var ov_info_comp_globala = new Discord.RichEmbed()
-        .setTitle('En compétition : Globale de cette saison première partie:')
-        .addField('Parties jouées : ', data.competitive.global.games_played)
+        var ovInfoCompGlobala = new Discord.RichEmbed()
+        .setTitle("En compétition : Globale de cette saison première partie:")
+        .addField("Parties jouées : ", data.competitive.global.games_played)
         .addField('Parties gagnées : ', data.competitive.global.games_won)
         .addField('Parties perdues : ', data.competitive.global.games_lost)
         .addField('Kills seul : ', data.competitive.global.solo_kills)
-        .addField('Kills à plusieurs : ', data.competitive.global.multikill)
-        .addField('Kills objectifs : ', data.competitive.global.objective_kills)
-        .addField('Kills environement : ', data.competitive.global.environmental_kills)
+        .addField("Kills à plusieurs : ", data.competitive.global.multikill)
+        .addField("Kills objectifs : ", data.competitive.global.objective_kills)
+        .addField("Kills environement : ", data.competitive.global.environmental_kills)
         .addField('Eliminations : ', data.competitive.global.eliminations);
-        message.channel.send(ov_info_comp_globala);
+        message.channel.send(ovInfoCompGlobala);
 
-        var ov_info_comp_globalb = new Discord.RichEmbed()
+        var ovInfoCompGlobalb = new Discord.RichEmbed()
         .setTitle('Globale de cette saison deuxième partie :')
         .addField('Nombre de morts : ', data.competitive.global.deaths)
         .addField('Morts par l environnement', data.competitive.global.environmental_kills)
@@ -38,7 +38,7 @@ const infoPlayer = (message) => {
         .addField('Dégats de la barrière : ', data.competitive.global.barrier_damage_done)
         .addField('Tourelles détruites', data.competitive.global.turrets_destroyed)
         .addField('Healing total : ', data.competitive.global.healing_done);
-        message.channel.send(ov_info_comp_globalb);
+        message.channel.send(ovInfoCompGlobalb);
 
         var ov_info_comp_globalc = new Discord.RichEmbed()
         .setTitle('Globale de cette saison troisième partie :')
