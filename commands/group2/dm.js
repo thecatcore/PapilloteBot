@@ -16,7 +16,7 @@ module.exports = class DmCommand extends Command {
                 },
                 {
                     key: 'content',
-                    prompt: 'Quel est le message ?',
+                    prompt: "Quel est le message ?",
                     type: 'string'
                 }
             ]
