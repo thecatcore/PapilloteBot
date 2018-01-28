@@ -80,7 +80,7 @@ const addGuild = (guild) => {
 const addAnniversaire = (anniv) => {
   const db = connect();
 
-  db.get('annivs')
+  db.get("annivs")
     .push(anniv)
     .write();
 };
