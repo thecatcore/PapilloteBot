@@ -8,3 +8,4 @@ node_modules/
 *.log
 
 config\.1\.json
+/.project
