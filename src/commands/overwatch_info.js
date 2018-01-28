@@ -40,19 +40,19 @@ const infoPlayer = (message) => {
         .addField("Healing total : ", data.competitive.global.healing_done);
         message.channel.send(ovInfoCompGlobalb);
 
-        var ov_info_comp_globalc = new Discord.RichEmbed()
+        var ovInfoCompGlobalc = new Discord.RichEmbed()
         .setTitle('Globale de cette saison troisième partie :')
         .addField('Record d élimination dans une partie : ', data.competitive.global.eliminations_most_in_game)
-        .addField('Record de dégats dans une partie : ', data.competitive.global.all_damage_done_most_in_game)
-        .addField('Record de Healing dans une partie : ', data.competitive.global.healing_done_most_in_game)
-        .addField('Record d assistance défencive dans une partie : ', data.competitive.global.defensive_assist_most_in_game)
-        .addField('Record d assistance offensive ', data.competitive.global.offensive_assists_most_in_game)
-        .addField('Record de tourrelles détruit au cours d une partie', data.competitive.global.turrets_destroyed_most_in_game)
-        .addField('Record de kills pendant un objectif dans une partie', data.competitive.global.objective_kills_most_in_game)
-        .addField('Record de kills en solo pendant une partie', data.competitive.global.solo_kills_most_in_game);
-        message.channel.send(ov_info_comp_globalc);
-        var achievement = data.achievements
-        message.channel.send('Succès du joueur :');
+        .addField("Record de dégats dans une partie : ", data.competitive.global.all_damage_done_most_in_game)
+        .addField("Record de Healing dans une partie : ", data.competitive.global.healing_done_most_in_game)
+        .addField("Record d assistance défencive dans une partie : ", data.competitive.global.defensive_assist_most_in_game)
+        .addField("Record d assistance offensive ", data.competitive.global.offensive_assists_most_in_game)
+        .addField("Record de tourrelles détruit au cours d une partie", data.competitive.global.turrets_destroyed_most_in_game)
+        .addField("Record de kills pendant un objectif dans une partie", data.competitive.global.objective_kills_most_in_game)
+        .addField("Record de kills en solo pendant une partie", data.competitive.global.solo_kills_most_in_game);
+        message.channel.send(ovInfoCompGlobalc);
+        var achievement = data.achievements;
+        message.channel.send("Succès du joueur :");
         let i;
         for (i = 0; i < achievement.length; i++) {
             if (achievement[i].acquired === true) {
