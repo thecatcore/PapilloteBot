@@ -60,7 +60,7 @@ const speak = (message) => {
             /*if (blaguenum === 4) {
                 var blague = blagues.blagues.cinq;
         }*///}
-    }}};
+    }}}
         message.reply(blague);
     };
     if(message.content === "bye") {
