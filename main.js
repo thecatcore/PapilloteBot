@@ -21,57 +21,46 @@ const recettes = require('./recettes.json');
 console.log(uptimebase);
 console.log(recettes.recette);
 
-// const fs = require("fs");
-// bot.commands = new Discord.Collection();
-
-// fs.readdir("./src/commands", (err, files) => {
-//   if(err) console.error(err);
-
-//   let jsfiles = files.filter(f => f.split(".").pop() === "js");
-//   if(jsfiles.length <= 0) {
-//     console.log("Pas de commandes a charger");
-//     return;
-//   }
-
-//   console.log(`Nombre de commandes chargées: ${jsfiles.length} !`)
-
-//   jsfiles.forEach((f, i) => {
-//     let props = require(`./src/commands/${f}`);
-//     console.log(`${i + 1}: ${f} chargée !`);
-//     bot.commands.set(props.config.command, props);
-//   });
-// });
-
-db.init();
-
-bot.login(configg.token)
-  .then(() => {
-  console.log('Bot logged in');
-
-  //Guild = bot.guilds.find("name", "Break Star");
-     //bot.channels.find("name", "bot-spam").send("Je suis connecté vous pouvez désormais utiliser mes commandes :-)");
-  //Guild = bot.guilds.find("name", "Villageoiscraft");
-     bot.channels.find("name", "bot-spam").send("Je suis connecté vous pouvez désormais utiliser mes commandes :-)");
-
- onLogin();
-})
-.catch((error) => {
-  console.error(error);
-});
-
-bot.on('ready', async () => {
+async function cat() {
   
-  bot.user.setPresence({
-    game: {
-      name: '+help',
-      type: 0
-    }
-  });
-  console.log("Bot Ready !");
-  //console.log(bot.commands)
+  const { body } = await superagent
+     .get('http://random.cat/meow')
+     //.setImage();
+     console.log(body.file)
+     
+     bot.guilds.find("name", "Villageoiscraft").channels.find("name", "cat-spam").send(body.file);
+     
+}
 
+function citation_random() {
+  const min = Math.ceil(0);
+  const max = Math.floor(db.getCountOfCitations());
 
-});
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+function tellcitation() {
+  const randnum = citation_random();
+
+  const citation = db.getOneCitationById(randnum);
+  const citationValue = citation.citation_value;
+  const contributor_citation = citation.citation_contributor;
+
+  console.log(citation);
+
+  const tellcitation_embed = new Discord.RichEmbed()
+    .setColor('#D9F200')
+    .setImage("https://omnilogie.fr/images/O/e239ced74cfc679e987778a89a95ebe0.jpg")
+    .addField("Citation de l'heure :", `${citationValue}`)
+    .addField("Contributeur :", `${contributor_citation}`)
+    .setTimestamp();
+    //bot.guilds.find("name", "Break Star")
+       //bot.channels.find("name", "bot-spam")
+       //.send(tellcitation_embed);
+    bot.guilds.find("name", "Villageoiscraft")
+       .channels.find("name", "bot-spam")
+       .send(tellcitation_embed);
+}
 
 function onLogin() {
   bot.generateInvite(["ADMINISTRATOR"]).then(link => {
@@ -236,47 +225,54 @@ function onLogin() {
 })
 }
 
+// const fs = require("fs");
+// bot.commands = new Discord.Collection();
 
+// fs.readdir("./src/commands", (err, files) => {
+//   if(err) console.error(err);
+
+//   let jsfiles = files.filter(f => f.split(".").pop() === "js");
+//   if(jsfiles.length <= 0) {
+//     console.log("Pas de commandes a charger");
+//     return;
+//   }
+
+//   console.log(`Nombre de commandes chargées: ${jsfiles.length} !`)
+
+//   jsfiles.forEach((f, i) => {
+//     let props = require(`./src/commands/${f}`);
+//     console.log(`${i + 1}: ${f} chargée !`);
+//     bot.commands.set(props.config.command, props);
+//   });
+// });
+
+db.init();
+
+bot.login(configg.token)
+  .then(() => {
+  console.log('Bot logged in');
+
+  //Guild = bot.guilds.find("name", "Break Star");
+     //bot.channels.find("name", "bot-spam").send("Je suis connecté vous pouvez désormais utiliser mes commandes :-)");
+  //Guild = bot.guilds.find("name", "Villageoiscraft");
+     bot.channels.find("name", "bot-spam").send("Je suis connecté vous pouvez désormais utiliser mes commandes :-)");
+
+ onLogin();
+})
+.catch((error) => {
+  console.error(error);
+});
+
+bot.on('ready', async () => {
   
+  bot.user.setPresence({
+    game: {
+      name: '+help',
+      type: 0
+    }
+  });
+  console.log("Bot Ready !");
+  //console.log(bot.commands)
 
 
-function citation_random() {
-  const min = Math.ceil(0);
-  const max = Math.floor(db.getCountOfCitations());
-
-  return Math.floor(Math.random() * (max - min) + min);
-}
-
-function tellcitation() {
-  const randnum = citation_random();
-
-  const citation = db.getOneCitationById(randnum);
-  const citationValue = citation.citation_value;
-  const contributor_citation = citation.citation_contributor;
-
-  console.log(citation);
-
-  const tellcitation_embed = new Discord.RichEmbed()
-    .setColor('#D9F200')
-    .setImage("https://omnilogie.fr/images/O/e239ced74cfc679e987778a89a95ebe0.jpg")
-    .addField("Citation de l'heure :", `${citationValue}`)
-    .addField("Contributeur :", `${contributor_citation}`)
-    .setTimestamp();
-    //bot.guilds.find("name", "Break Star")
-       //bot.channels.find("name", "bot-spam")
-       //.send(tellcitation_embed);
-    bot.guilds.find("name", "Villageoiscraft")
-       .channels.find("name", "bot-spam")
-       .send(tellcitation_embed);
-}
-
-async function cat() {
-  
-  const { body } = await superagent
-     .get('http://random.cat/meow')
-     //.setImage();
-     console.log(body.file)
-     
-     bot.guilds.find("name", "Villageoiscraft").channels.find("name", "cat-spam").send(body.file);
-     
-}
+});
