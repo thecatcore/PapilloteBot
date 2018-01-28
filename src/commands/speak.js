@@ -1,9 +1,11 @@
 
 const speak = (message) => {
     const Discord = require('discord.js'); //je récupère les fonctionnalitées de discord en appelant la lib 'discord.js'
+    var blague;
+    const blagues = require('./blagues.json')
     if (message.content === "salut") {
         message.reply('salut');
-    };
+    }
     if (message.content === "Salut") {
         message.reply('Salut');
     };
@@ -41,26 +43,23 @@ const speak = (message) => {
         message.reply('https://www.youtube.com/watch?v=_Vg9Z0CKPvA');
     };
     if (message.content === "raconte moi une blague papillote") {
-        const blagues = require('./blagues.json')
         let blaguenum = Math.floor(Math.random() * 4);
-        console.log(blaguenum);
-        console.log(blagues);
         if (blaguenum === 0) {
-        var blague = blagues.blagues.un;
+        blague = blagues.blagues.un;
         } else {
             if (blaguenum === 1) {
-                var blague = blagues.blagues.deux;
+                blague = blagues.blagues.deux;
         } else {
             if (blaguenum === 2) {
-                var blague = blagues.blagues.trois;
+                blague = blagues.blagues.trois;
         } else {
             if (blaguenum === 3) {
-                var blague = blagues.blagues.quatre;
+                blague = blagues.blagues.quatre;
         } //else {
             /*if (blaguenum === 4) {
                 var blague = blagues.blagues.cinq;
         }*///}
-    }}};
+    }}}
         message.reply(blague);
     };
     if(message.content === "bye") {
