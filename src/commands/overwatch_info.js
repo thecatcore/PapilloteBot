@@ -1,21 +1,20 @@
-const info_player = (message) => {
-    var owjs = require('overwatch-js');
+const infoPlayer = (message) => {
+    var owjs = require("overwatch-js");
     var Discord = require('discord.js');
     const value = message.content.substr(9);
     console.log(value);
-    owjs.getAll('pc', 'eu', `${value}`)
+    owjs.getAll("pc", "eu", `${value}`)
     .then((data) => {
-        console.log(data);
         //console.dir(data, {depth : 2, colors : true})
         var ov_info_profile_embed = new Discord.RichEmbed()
         .setTitle('Profile')
         .addField('Pseudo : ', data.profile.nick)
-        .addField('Niveau', data.profile.level)
+        .addField("Niveau", data.profile.level)
         .setImage(data.profile.avatar)
         .setThumbnail(data.profile.rankPicture)
-        .addField('Tier', data.profile.ranking)
-        .addField('Rank', data.profile.rank)
-        .addField('Lien vers le profile', data.profile.url);
+        .addField("Tier", data.profile.ranking)
+        .addField("Rank", data.profile.rank)
+        .addField("Lien vers le profile", data.profile.url);
         message.channel.send(ov_info_profile_embed); 
 
         var ov_info_comp_globala = new Discord.RichEmbed()
@@ -69,4 +68,4 @@ const info_player = (message) => {
       
 };
 
-module.exports = info_player;
+module.exports = infoPlayer;
