@@ -89,13 +89,13 @@ function onLogin() {
     console.log(i);
     do {
       
-    Console.log(i);
+    console.log(i);
     console.log(recettes.recette[i].name);
       if (message.content === prefix + recettes.recette[i].name) {
         
         message.delete()
         .then(msg => console.log(`Deleted message from ${msg.author}`))
-        .catch(Console.error);
+        .catch(console.error);
         var recetteEmbed = new Discord.RichEmbed()
           .setTitle(recettes.recette[i].name)
           .addField("Ingrédients", recettes.recette[i].ingrédients);
@@ -132,7 +132,7 @@ function onLogin() {
       case "addcitation":
       message.delete()
       .then(msg => console.log(`Deleted message from ${msg.author}`))
-      .catch(console.error(error));
+      .catch(Console.error);
         addcitation(db, message);
         break;
 
