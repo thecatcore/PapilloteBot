@@ -1,23 +1,23 @@
-const Discord = require('discord.js');
-const schedule = require('node-schedule');
-const config = require('./config.json');
-const configg = require('./config.1.json')
-const db = require('./src/db');
+const Discord = require("discord.js");
+const schedule = require("node-schedule");
+const config = require("./config.json");
+const configg = require("./config.1.json")
+const db = require("./src/db");
 const prefix = config.prefix;
-const addcitation = require('./src/commands/addcitations');
-const help = require('./src/commands/help');
-const tell_citation = require('./src/commands/tellcitation');
-const addanniversaire = require('./src/commands/addanniversaire');
-const annivlist = require('./src/commands/annivlist');
-const info = require('./src/commands/info');
-const weather = require('weather-js');
-const meteo = require('./src/commands/meteo')
+const addcitation = require("./src/commands/addcitations");
+const help = require("./src/commands/help");
+const tell_citation = require("./src/commands/tellcitation");
+const addanniversaire = require("./src/commands/addanniversaire");
+const annivlist = require("./src/commands/annivlist");
+const info = require("./src/commands/info");
+const weather = require("weather-js");
+const meteo = require("./src/commands/meteo")
 const bot = new Discord.Client();
 const superagent = require("superagent");
 const uptimebase = Date();
-const osu_info = require('./src/commands/osu_info');
-const ov_info = require('./src/commands/overwatch_info');
-const recettes = require('./recettes.json');
+const osu_info = require("./src/commands/osu_info");
+const ov_info = require("./src/commands/overwatch_info");
+const recettes = require("./recettes.json");
 console.log(uptimebase);
 console.log(recettes.recette);
 
