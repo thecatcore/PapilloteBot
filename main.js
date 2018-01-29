@@ -11,7 +11,7 @@ const addanniversaire = require("./src/commands/addanniversaire");
 const annivlist = require("./src/commands/annivlist");
 const info = require("./src/commands/info");
 const weather = require("weather-js");
-const meteo = require("./src/commands/meteo")
+const meteo = require("./src/commands/meteo");
 const bot = new Discord.Client();
 const superagent = require("superagent");
 const uptimebase = Date();
@@ -59,7 +59,7 @@ function tellcitation() {
 
 function onLogin() {
   bot.generateInvite(["ADMINISTRATOR"]).then(link => {
-    var ilink = link
+    var ilink = link;
   
   var interval = setInterval(tellcitation, 1000 * 60 * 60 * 1);
   tellcitation();
@@ -79,18 +79,18 @@ function onLogin() {
     var args = message.content.substring(prefix.length).split(" ");
     if (message.content === prefix + "help") {
       message.delete()
-  .then(msg => console.log(`Deleted message from ${msg.author}`))
-  .catch(Console.error);  
+  .then(msg => Console.log(`Deleted message from ${msg.author}`))
+  .catch(console.error);  
       
       help(db,message);
     }
     var i = 0;
-    Console.log(recettes.recette);
-    Console.log(i);
+    console.log(recettes.recette);
+    console.log(i);
     do {
       
     Console.log(i);
-    Console.log(recettes.recette[i].name)
+    console.log(recettes.recette[i].name);
       if (message.content === prefix + recettes.recette[i].name) {
         
         message.delete()
@@ -132,7 +132,7 @@ function onLogin() {
       case "addcitation":
       message.delete()
       .then(msg => console.log(`Deleted message from ${msg.author}`))
-      .catch(console.error);
+      .catch(console.error(error));
         addcitation(db, message);
         break;
 
@@ -163,9 +163,9 @@ function onLogin() {
       message.delete()
       .then(msg => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
-        var s = (Math.round(bot.uptime / 1000) % 60)
-        var m = (Math.round(bot.uptime / (1000 * 60)) % 60)
-        var h = (Math.round(bot.uptime / (1000 * 60 * 60)))
+        var s = (Math.round(bot.uptime / 1000) % 60);
+        var m = (Math.round(bot.uptime / (1000 * 60)) % 60);
+        var h = (Math.round(bot.uptime / (1000 * 60 * 60)));
         m = (m < 10) ? "0" + m : m;
         s = (s < 10) ? "0" + s : s;
         info(db,message,ilink,s, m, h);
@@ -182,12 +182,8 @@ function onLogin() {
       message.delete()
       .then(msg => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
-      const { body } = await superagent
-	   .get('http://random.cat/meow');
-	   const embed = new Discord.RichEmbed()
-	   .setColor(0x954D23)
-	   .setTitle("Meow :cat:")
-	   .setImage(body.file)
+      const { body } = await superagent.get('http://random.cat/meow');
+	   const embed = new Discord.RichEmbed().setColor(0x954D23).setTitle("Meow :cat:").setImage(body.file)
 	   message.channel.send({embed})
       break;
 
@@ -195,7 +191,7 @@ function onLogin() {
       message.delete()
       .then(msg => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
-      console.log('tet');
+      Console.log('tet');
       osuInfo(message);
       break;
 
@@ -220,8 +216,8 @@ function onLogin() {
 
     }
 
-  })
-})
+  });
+});
 }
 
 // const fs = require("fs");
@@ -249,7 +245,7 @@ db.init();
 
 bot.login(configg.token)
   .then(() => {
-  console.log("Bot logged in");
+  Console.log("Bot logged in");
 
   //Guild = bot.guilds.find("name", "Break Star");
      //bot.channels.find("name", "bot-spam").send("Je suis connecté vous pouvez désormais utiliser mes commandes :-)");
