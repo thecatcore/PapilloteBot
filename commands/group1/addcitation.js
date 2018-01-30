@@ -33,5 +33,4 @@ module.exports = class AddCitationCommand extends Command {
     }
 
     async run(msg, { citation, donneur, auteur }) {
-        
-};
+    }}
