@@ -58,7 +58,7 @@ function tellcitation() {
 }
 
 function onLogin() {
-  bot.generateInvite(["ADMINISTRATOR"]).then(link => {
+  bot.generateInvite(["ADMINISTRATOR"]).then((link) => {
     var ilink = link;
   
   var interval = setInterval(tellcitation, 1000 * 60 * 60 * 1);
