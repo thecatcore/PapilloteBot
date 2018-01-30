@@ -16,7 +16,6 @@
     "osuapi-js": "^0.5.1",
     "overwatch-js": "^1.6.1",
     "snekfetch": "^3.6.3",
-    "sqlite": "^2.9.1",
     "superagent": "^3.8.2",
     "swig": "^1.4.2",
     "uglify-js": "^3.3.9",
