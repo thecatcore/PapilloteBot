@@ -123,7 +123,7 @@ function onLogin() {
             message.channel.send(recetteEmbede);}
         }
         i++;
-        Console.log(i);
+        console.log(i);
         } while (i < recettes.recette.length + 1);
     
 
@@ -132,7 +132,7 @@ function onLogin() {
       case "addcitation":
       message.delete()
       .then(msg => console.log(`Deleted message from ${msg.author}`))
-      .catch(Console.error);
+      .catch(console.error);
         addcitation(db, message);
         break;
 
@@ -182,16 +182,16 @@ function onLogin() {
       message.delete()
       .then(msg => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
-      const { body } = await superagent.get('http://random.cat/meow');
-	   const embed = new Discord.RichEmbed().setColor(0x954D23).setTitle("Meow :cat:").setImage(body.file)
-	   message.channel.send({embed})
+      const { body } = await superagent.get("http://random.cat/meow");
+	   const embed = new Discord.RichEmbed().setColor(0x954D23).setTitle("Meow :cat:").setImage(body.file);
+	   message.channel.send({embed});
       break;
 
       case "osu_info":
       message.delete()
       .then(msg => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
-      Console.log('tet');
+      console.log("tet");
       osuInfo(message);
       break;
 
@@ -255,7 +255,7 @@ bot.login(configg.token)
  onLogin();
 })
 .catch((error) => {
-  Console.error(error);
+  console.log(error);
 });
 
 bot.on("ready", async () => {
