@@ -13,14 +13,14 @@ const tell_citation = (db, message, randnum) => {
           .addField("Contributeur :", `${citation.citation_contributor}`)
           .setTimestamp();
           
-        message.channel.send(tellcitation_embed)
+        message.channel.send(tellcitation_embed);
 
-        console.log(tellcitation_embed)
-    const guildname = message.guild.name
-    const guildid = message.guild.id
-    const guildregion = message.guild.region
-    console.log(guildregion)
-    console.log(message.guild.roles)
+        console.log(tellcitation_embed);
+    const guildname = message.guild.name;
+    const guildid = message.guild.id;
+    const guildregion = message.guild.region;
+    console.log(guildregion);
+    console.log(message.guild.roles);
     
     db.addGuild({
         nom: guildname,
