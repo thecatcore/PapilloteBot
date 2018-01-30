@@ -1,8 +1,7 @@
 {
   "dependencies": {
     "bufferutil": "^3.0.2",
-    "discord.js": "^11.2.1",
-    "erlpack": "hammerandchisel/erlpack",
+    "discord.js": "^11.3.0",
     "fs": "0.0.1-security",
     "libsodium-wrappers": "^0.5.4",
     "lowdb": "^1.0.0",
@@ -12,7 +11,7 @@
     "opusscript": "^0.0.3",
     "osuapi-js": "^0.5.1",
     "overwatch-js": "^1.6.1",
-    "snekfetch": "^3.6.1",
+    "snekfetch": "^3.6.3",
     "superagent": "^3.8.2",
     "uws": "^0.14.5",
     "weather-js": "^2.0.0",
