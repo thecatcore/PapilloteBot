@@ -79,7 +79,7 @@ function onLogin() {
     var args = message.content.substring(prefix.length).split(" ");
     if (message.content === prefix + "help") {
       message.delete()
-  .then(msg => Console.log(`Deleted message from ${msg.author}`))
+  .then((msg) => console.log(`Deleted message from ${msg.author}`))
   .catch(console.error);  
       
       help(db,message);
@@ -207,7 +207,7 @@ function onLogin() {
       .then(msg => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
       message.channel.send(`Recettes chargées : ${recettes.recette.length + 1}`);
-      message.channel.send('La liste :');
+      message.channel.send("La liste :");
       var aa;
       for (aa = 0; aa < recettes.recette.length + 1; aa++) {
         message.channel.send(`${prefix}${recettes.recette[aa].name}`);
@@ -245,7 +245,7 @@ db.init();
 
 bot.login(configg.token)
   .then(() => {
-  Console.log("Bot logged in");
+  console.log("Bot logged in");
 
   //Guild = bot.guilds.find("name", "Break Star");
      //bot.channels.find("name", "bot-spam").send("Je suis connecté vous pouvez désormais utiliser mes commandes :-)");
