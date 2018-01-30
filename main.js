@@ -1,25 +1,23 @@
-const Discord = require('discord.js');
-const schedule = require('node-schedule');
-const config = require('./config.json');
-const configg = require('./config.1.json')
-const db = require('./src/db');
+const Discord = require("discord.js");
+const schedule = require("node-schedule");
+const config = require("./config.json");
+const configg = require("./config.1.json");
+const db = require("./src/db");
 const prefix = config.prefix;
-const addcitation = require('./src/commands/addcitations');
-const help = require('./src/commands/help');
-const tell_citation = require('./src/commands/tellcitation');
-const addanniversaire = require('./src/commands/addanniversaire');
-const annivlist = require('./src/commands/annivlist');
-const info = require('./src/commands/info');
-const weather = require('weather-js');
-const meteo = require('./src/commands/meteo')
+const addcitation = require("./src/commands/addcitations");
+const help = require("./src/commands/help");
+const tellCitation = require("./src/commands/tellcitation");
+const addanniversaire = require("./src/commands/addanniversaire");
+const annivlist = require("./src/commands/annivlist");
+const info = require("./src/commands/info");
+const weather = require("weather-js");
+const meteo = require("./src/commands/meteo");
 const bot = new Discord.Client();
 const superagent = require("superagent");
 const uptimebase = Date();
-const osu_info = require('./src/commands/osu_info');
-const ov_info = require('./src/commands/overwatch_info');
-const recettes = require('./recettes.json');
-console.log(uptimebase);
-console.log(recettes.recette);
+const osuInfo = require("./src/commands/osu_info");
+const ovInfo = require("./src/commands/overwatch_info");
+const recettes = require("./recettes.json");
 
 async function cat() {
   
@@ -43,27 +41,25 @@ function tellcitation() {
 
   const citation = db.getOneCitationById(randnum);
   const citationValue = citation.citation_value;
-  const contributor_citation = citation.citation_contributor;
+  const contributorCitation = citation.citation_contributor;
 
-  console.log(citation);
-
-  const tellcitation_embed = new Discord.RichEmbed()
-    .setColor('#D9F200')
+  const tellcitationEmbed = new Discord.RichEmbed()
+    .setColor("#D9F200")
     .setImage("https://omnilogie.fr/images/O/e239ced74cfc679e987778a89a95ebe0.jpg")
     .addField("Citation de l'heure :", `${citationValue}`)
-    .addField("Contributeur :", `${contributor_citation}`)
+    .addField("Contributeur :", `${contributorCitation}`)
     .setTimestamp();
     //bot.guilds.find("name", "Break Star")
        //bot.channels.find("name", "bot-spam")
        //.send(tellcitation_embed);
     bot.guilds.find("name", "Villageoiscraft")
        .channels.find("name", "bot-spam")
-       .send(tellcitation_embed);
+       .send(tellcitationEmbed);
 }
 
 function onLogin() {
   bot.generateInvite(["ADMINISTRATOR"]).then(link => {
-    var ilink = link
+    var ilink = link;
   
   var interval = setInterval(tellcitation, 1000 * 60 * 60 * 1);
   tellcitation();
@@ -72,14 +68,18 @@ function onLogin() {
 
   bot.on("message", async message => {
     
-    if (message.author.bot) return;
-    const speaking = require('./src/commands/speak');
+    if (message.author.bot) {
+      return;
+    }
+    const speaking = require("./src/commands/speak");
       speaking(message);
-    if(!message.content.startsWith(prefix)) return;
+    if(!message.content.startsWith(prefix)) {
+      return;
+    }
     var args = message.content.substring(prefix.length).split(" ");
     if (message.content === prefix + "help") {
       message.delete()
-  .then(msg => console.log(`Deleted message from ${msg.author}`))
+  .then((msg) => console.log(`Deleted message from ${msg.author}`))
   .catch(console.error);  
       
       help(db,message);
@@ -90,37 +90,37 @@ function onLogin() {
     do {
       
     console.log(i);
-    console.log(recettes.recette[i].name)
+    console.log(recettes.recette[i].name);
       if (message.content === prefix + recettes.recette[i].name) {
         
         message.delete()
         .then(msg => console.log(`Deleted message from ${msg.author}`))
         .catch(console.error);
-        var recette_embed = new Discord.RichEmbed()
+        var recetteEmbed = new Discord.RichEmbed()
           .setTitle(recettes.recette[i].name)
-          .addField('Ingrédients', recettes.recette[i].ingrédients);
+          .addField("Ingrédients", recettes.recette[i].ingrédients);
           let ii = 0;
           do {
             //console.log(ii);
-            recette_embed
+            recetteEmbed
             .addField(`Etape ${ii + 1}`, recettes.recette[i].étapes[ii]);
             
             ii++;
           } while (ii < recettes.recette[i].étapes.length);
-          message.channel.send(recette_embed);
+          message.channel.send(recetteEmbed);
           if (recettes.recette[i].options) {
-          var recette_embede = new Discord.RichEmbed()
-            .setTitle('Options facultatives de cette recette');
+          var recetteEmbede = new Discord.RichEmbed()
+            .setTitle("Options facultatives de cette recette");
             let iii = 0;
             do {
               //console.log(ii);
-              recette_embede
+              recetteEmbede
               .addField(`Option ${iii + 1}, Nom`, recettes.recette[i].options[iii].name)
-              .addField(`Information de cette option`, recettes.recette[i].options[iii].ingrédients);
+              .addField("Information de cette option", recettes.recette[i].options[iii].ingrédients);
               
               iii++;
             } while (iii < recettes.recette[i].options.length);
-            message.channel.send(recette_embede);}
+            message.channel.send(recetteEmbede);}
         }
         i++;
         console.log(i);
@@ -140,8 +140,8 @@ function onLogin() {
       message.delete()
       .then(msg => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
-        const randnum = citation_random();
-        tell_citation(db, message, randnum);
+        const randnum = citationRandom();
+        tellCitation(db, message, randnum);
         break;
 
       case "addanniversaire":
@@ -163,9 +163,9 @@ function onLogin() {
       message.delete()
       .then(msg => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
-        var s = (Math.round(bot.uptime / 1000) % 60)
-        var m = (Math.round(bot.uptime / (1000 * 60)) % 60)
-        var h = (Math.round(bot.uptime / (1000 * 60 * 60)))
+        var s = (Math.round(bot.uptime / 1000) % 60);
+        var m = (Math.round(bot.uptime / (1000 * 60)) % 60);
+        var h = (Math.round(bot.uptime / (1000 * 60 * 60)));
         m = (m < 10) ? "0" + m : m;
         s = (s < 10) ? "0" + s : s;
         info(db,message,ilink,s, m, h);
@@ -182,28 +182,24 @@ function onLogin() {
       message.delete()
       .then(msg => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
-      const { body } = await superagent
-	   .get('http://random.cat/meow');
-	   const embed = new Discord.RichEmbed()
-	   .setColor(0x954D23)
-	   .setTitle("Meow :cat:")
-	   .setImage(body.file)
-	   message.channel.send({embed})
+      const { body } = await superagent.get("http://random.cat/meow");
+	   const embed = new Discord.RichEmbed().setColor(0x954D23).setTitle("Meow :cat:").setImage(body.file);
+	   message.channel.send({embed});
       break;
 
       case "osu_info":
       message.delete()
       .then(msg => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
-      console.log('tet');
-      osu_info(message);
+      console.log("tet");
+      osuInfo(message);
       break;
 
       case "ov_info":
       message.delete()
       .then(msg => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
-      ov_info(message);
+      ovInfo(message);
       break;
 
       case "recettelist":
@@ -211,7 +207,7 @@ function onLogin() {
       .then(msg => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
       message.channel.send(`Recettes chargées : ${recettes.recette.length + 1}`);
-      message.channel.send('La liste :');
+      message.channel.send("La liste :");
       var aa;
       for (aa = 0; aa < recettes.recette.length + 1; aa++) {
         message.channel.send(`${prefix}${recettes.recette[aa].name}`);
@@ -220,8 +216,8 @@ function onLogin() {
 
     }
 
-  })
-})
+  });
+});
 }
 
 // const fs = require("fs");
@@ -249,7 +245,7 @@ db.init();
 
 bot.login(configg.token)
   .then(() => {
-  console.log('Bot logged in');
+  console.log("Bot logged in");
 
   //Guild = bot.guilds.find("name", "Break Star");
      //bot.channels.find("name", "bot-spam").send("Je suis connecté vous pouvez désormais utiliser mes commandes :-)");
@@ -259,14 +255,14 @@ bot.login(configg.token)
  onLogin();
 })
 .catch((error) => {
-  console.error(error);
+  console.log(error);
 });
 
-bot.on('ready', async () => {
+bot.on("ready", async () => {
   
   bot.user.setPresence({
     game: {
-      name: '+help',
+      name: "+help",
       type: 0
     }
   });
