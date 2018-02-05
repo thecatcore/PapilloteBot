@@ -1,6 +1,6 @@
 const infoPlayer = (message) => {
     var owjs = require("overwatch-js");
-    var Discord = require('discord.js');
+    var Discord = require("discord.js");
     const value = message.content.substr(9);
     console.log(value);
     owjs.getAll("pc", "eu", `${value}`)
