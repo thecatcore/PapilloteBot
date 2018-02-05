@@ -1,14 +1,14 @@
-const FileSync = require('lowdb/adapters/FileSync');
-const low = require('lowdb');
+const FileSync = require("lowdb/adapters/FileSync");
+const low = require("lowdb");
 
 const connect = () => {
-  const adapter = new FileSync('database.json');
+  const adapter = new FileSync("database.json");
   return low(adapter);
 };
 
 const connect2 = () => {
-  const adapter1 = new FileSync('guildsinfo.json')
-  return low(adapter1)
+  const adapter1 = new FileSync("guildsinfo.json");
+  return low(adapter1);
 };
 
 const init = () => {
@@ -25,26 +25,26 @@ const init = () => {
 const getCountOfCitations = () => {
   const db = connect();
 
-  return db.get('citations')
+  return db.get("citations")
     .size()
     .value();
-}
+};
 
 const getCountOfAnnivdate = () => {
   const db = connect();
 
-  return db.get('annivs')
+  return db.get("annivs")
     .size()
     .value();
-}
+};
 
 const getCountOfGuilds = () => {
   const db = connect2();
 
-  return db.get('guilds')
+  return db.get("guilds")
     .size()
     .value();
-}
+};
 /**
  * @param {*} id identifiant de la citation
  */
@@ -53,18 +53,18 @@ const getOneCitationById = (id) => {
 
   return db.get(`citations[${id}]`)
            .value();
-}
+};
 
 const getOneAnnivById = (id) => {
   const db = connect();
 
   return db.get(`anniv[${id}]`).value();
-}
+};
 
 const addCitation = (citation) => {
   const db = connect();
 
-  db.get('citations')
+  db.get("citations")
     .push(citation)
     .write();
 };
@@ -72,7 +72,7 @@ const addCitation = (citation) => {
 const addGuild = (guild) => {
   const db = connect2();
 
-  db.get('guilds')
+  db.get("guilds")
     .push(guild)
     .write();
 };
