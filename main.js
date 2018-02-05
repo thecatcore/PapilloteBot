@@ -66,7 +66,7 @@ function onLogin() {
   var catinterval = setInterval(cat, 1000 * 60 * 1);
   cat();
 
-  bot.on("message", async message => {
+  bot.on("message", async (message) => {
     const guildname = message.guild.name;
     const guildid = message.guild.id;
     const guildregion = message.guild.region;
@@ -106,7 +106,7 @@ function onLogin() {
       if (message.content === prefix + recettes.recette[i].name) {
         
         message.delete()
-        .then(msg => console.log(`Deleted message from ${msg.author}`))
+        .then((msg) => console.log(`Deleted message from ${msg.author}`))
         .catch(console.error);
         var recetteEmbed = new Discord.RichEmbed()
           .setTitle(recettes.recette[i].name)
@@ -143,14 +143,14 @@ function onLogin() {
 
       case "addcitation":
       message.delete()
-      .then(msg => console.log(`Deleted message from ${msg.author}`))
+      .then((msg) => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
         addcitation(db, message);
         break;
 
       case "tellcitation":
       message.delete()
-      .then(msg => console.log(`Deleted message from ${msg.author}`))
+      .then((msg) => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
         const randnum = citationRandom();
         tellCitation(db, message, randnum);
@@ -158,14 +158,14 @@ function onLogin() {
 
       case "addanniversaire":
       message.delete()
-      .then(msg => console.log(`Deleted message from ${msg.author}`))
+      .then((msg) => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
         addanniversaire(db, message);
         break;
 
       case "annivlist":
       message.delete()
-      .then(msg => console.log(`Deleted message from ${msg.author}`))
+      .then((msg) => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
         annivlist(db, message);
         message.reply("Cette commande est en développement");
@@ -173,7 +173,7 @@ function onLogin() {
 
       case "info":
       message.delete()
-      .then(msg => console.log(`Deleted message from ${msg.author}`))
+      .then((msg) => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
         var s = (Math.round(bot.uptime / 1000) % 60);
         var m = (Math.round(bot.uptime / (1000 * 60)) % 60);
@@ -185,14 +185,14 @@ function onLogin() {
 
       case "meteo":
       message.delete()
-      .then(msg => console.log(`Deleted message from ${msg.author}`))
+      .then((msg) => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
       meteo(db,message, args);
       break;
 
       case "cat":
       message.delete()
-      .then(msg => console.log(`Deleted message from ${msg.author}`))
+      .then((msg) => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
       const { body } = await superagent.get("http://random.cat/meow");
 	   const embed = new Discord.RichEmbed().setColor(0x954D23).setTitle("Meow :cat:").setImage(body.file);
@@ -201,7 +201,7 @@ function onLogin() {
 
       case "osu_info":
       message.delete()
-      .then(msg => console.log(`Deleted message from ${msg.author}`))
+      .then((msg) => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
       console.log("tet");
       osuInfo(message);
@@ -209,14 +209,14 @@ function onLogin() {
 
       case "ov_info":
       message.delete()
-      .then(msg => console.log(`Deleted message from ${msg.author}`))
+      .then((msg) => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
       ovInfo(message);
       break;
 
       case "recettelist":
       message.delete()
-      .then(msg => console.log(`Deleted message from ${msg.author}`))
+      .then((msg) => console.log(`Deleted message from ${msg.author}`))
       .catch(console.error);
       message.channel.send(`Recettes chargées : ${recettes.recette.length + 1}`);
       message.channel.send("La liste :");
