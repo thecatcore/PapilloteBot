@@ -3,7 +3,7 @@ const addanniversaire = (db, message) => {
   const annivperso = message.author.toString();
 
   console.log(date);
-  message.reply("Ajout de la date d'anniversaire à la base de données")
+  message.reply("Ajout de la date d'anniversaire à la base de données");
 
   db.addAnniversaire({
     anniv_date: date,
