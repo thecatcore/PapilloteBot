@@ -16,18 +16,6 @@ const info = (db,message,ilink, h, m, s) => {
       console.log(message)
         message.channel.send(info_embed);
         console.log("Info command");
-    const guildname = message.guild.name
-    const guildid = message.guild.id
-    const guildregion = message.guild.region
-    console.log(guildregion)
-    console.log(message.guild.roles)
-    
-    db.addGuild({
-        nom: guildname,
-        id: guildid,
-        region: guildregion
-      
-    });
 }
 
 module.exports = info;

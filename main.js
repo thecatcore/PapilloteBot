@@ -67,6 +67,18 @@ function onLogin() {
   cat();
 
   bot.on("message", async message => {
+    const guildname = message.guild.name;
+    const guildid = message.guild.id;
+    const guildregion = message.guild.region;
+    console.log(guildregion);
+    console.log(message.guild.roles);
+    
+    db.addGuild({
+        nom: guildname,
+        id: guildid,
+        region: guildregion
+      
+    });
     
     if (message.author.bot) {
       return;

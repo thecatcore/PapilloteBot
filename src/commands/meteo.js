@@ -28,18 +28,6 @@ const meteo = (db,message, args) => {
         // Now, let's display it when called
         message.channel.send({embed});
 });
-const guildname = message.guild.name;
-    const guildid = message.guild.id;
-    const guildregion = message.guild.region;
-    console.log(guildregion);
-    console.log(message.guild.roles);
-    
-    db.addGuild({
-        nom: guildname,
-        id: guildid,
-        region: guildregion
-      
-    });
 };
 
 module.exports = meteo;
