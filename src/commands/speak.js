@@ -2,13 +2,13 @@
 const speak = (message) => {
     const Discord = require("discord.js"); //je récupère les fonctionnalitées de discord en appelant la lib 'discord.js'
     var blague;
-    const blagues = require("./blagues.json")
+    const blagues = require("./blagues.json");
     if (message.content === "salut") {
         message.reply("salut");
     }
     if (message.content === "Salut") {
         message.reply("Salut");
-    };
+    }
     if (message.content === "test") {
         message.reply("Ceci est un test");
     };
