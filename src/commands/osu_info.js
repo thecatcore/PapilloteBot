@@ -1,11 +1,11 @@
-const osu_info = (message) => {
-    const OsuAPI = require('osuapi-js');
-    const api = new OsuAPI('9b54c70425b4b05767544c845260efe216dd84eb', { beatmaps: { fetchCreatorInfo: false } });
-    const Discord = require('discord.js');
+const osuInfo = (message) => {
+    const OsuAPI = require("osuapi-js");
+    const api = new OsuAPI("9b54c70425b4b05767544c845260efe216dd84eb", { beatmaps: { fetchCreatorInfo: false } });
+    const Discord = require("discord.js");
     const value = message.content.substr(10);   
     console.log(value); 
     api.getUser(value)
-        .then(user => {
+        .then((user) => {
             console.log(user);
             var osuInfoEmbed = new Discord.RichEmbed()
                 .setTitle(user.username)
@@ -22,6 +22,6 @@ const osu_info = (message) => {
         .catch((error) => {
             console.error(error);
           });
-}
+};
 
-module.exports = osu_info;
+module.exports = osuInfo;
