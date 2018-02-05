@@ -7,7 +7,7 @@ const addcitation = (db, message) => {
   db.addCitation({
     citation_value: value,
     citation_contributor: contributor
-  })
+  });
 };
 
 module.exports = addcitation;
