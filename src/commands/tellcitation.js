@@ -14,8 +14,6 @@ const tellCitation = (db, message, randnum) => {
           .setTimestamp();
           
         message.channel.send(tellcitationEmbed);
-
-        console.log(tellcitation_embed);
 };
 
 module.exports = tellCitation;
