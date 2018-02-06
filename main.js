@@ -2,8 +2,9 @@
 const Commando = require('discord.js-commando');
 const path = require('path');
 const config = require('./config.json');
-const configg = require('./config.1.json')
-//const sqlite = require('sqlite');
+const configg = require('./config.1.json');
+const db = require("./db");
+
 
 
 const client = new Commando.Client({
@@ -30,6 +31,8 @@ client.on('ready', () => {
       client.user.setPresence(`${config.prefix}help`);
 });
 
+db.init();
+
 client.login(configg.token);
 
 //client.setProvider(
@@ -40,7 +43,6 @@ client.login(configg.token);
 // const schedule = require("node-schedule");
 // const config = require("./config.json");
 // const configg = require("./config.1.json");
-// const db = require("./src/db");
 // const prefix = config.prefix;
 // const addcitation = require("./src/commands/addcitations");
 // const help = require("./src/commands/help");
@@ -291,8 +293,6 @@ client.login(configg.token);
 // //     bot.commands.set(props.config.command, props);
 // //   });
 // // });
-
-// db.init();
 
 // bot.login(configg.token)
 //   .then(() => {
