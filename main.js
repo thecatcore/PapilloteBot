@@ -3,7 +3,7 @@ const Commando = require('discord.js-commando');
 const path = require('path');
 const config = require('./config.json');
 const configg = require('./config.1.json');
-const db = require("./db");
+const db = require("./db.js");
 
 
 

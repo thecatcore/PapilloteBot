@@ -1,6 +1,10 @@
 const Commando = require('discord.js-commando');
 const path = require('path');
 const { Command } = require('discord.js-commando');
+const low = require("lowdb");
+const FileSync = require('lowdb/adapters/FileSync')
+const adapter = new FileSync('citations.json')
+const db = low(adapter)
 
 
 
@@ -33,4 +37,13 @@ module.exports = class AddCitationCommand extends Command {
     }
 
     async run(msg, { citation, donneur, auteur }) {
+        msg.channel.send(`Ajout de la citation:\n${citation}\nde ${auteur} ajoutée par ${donneur} à la base de données.`);
+        db.defaults({ citations: [] })
+          .write()
+        db.get('citations')
+          .push({citations: `${citation}`,
+            contributeur: `${donneur}`,
+            auteurs: `${auteur}`
+          })
+          .write();
     }}
