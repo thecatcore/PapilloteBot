@@ -83,7 +83,7 @@
 //     if (message.author.bot) {
 //       return;
 //     }
-//     const speaking = require("./src/commands/speak");
+//     const speaking = require("./speak");
 //       speaking(message);
 //     if(!message.content.startsWith(prefix)) {
 //       return;
