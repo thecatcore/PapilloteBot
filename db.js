@@ -43,14 +43,6 @@ const getCountOfGuilds = () => {
     .size()
     .value();
 };
-/**
- * @param {*} id identifiant de la citation
- */
-const getOneCitationById = (id) => {
-  const db = connect();
-
-  return 
-};
 
 const getOneAnnivById = (id) => {
   const db = connect();

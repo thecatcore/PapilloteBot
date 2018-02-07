@@ -1,10 +1,10 @@
-const Commando = require('discord.js-commando');
-const path = require('path');
-const { Command } = require('discord.js-commando');
+const Commando = require("discord.js-commando");
+const path = require("path");
+const { Command } = require("discord.js-commando");
 const low = require("lowdb");
-const FileSync = require('lowdb/adapters/FileSync')
-const adapter = new FileSync('citations.json')
-const db = low(adapter)
+const FileSync = require("lowdb/adapters/FileSync");
+const adapter = new FileSync("citations.json");
+const db = low(adapter);
 const { RichEmbed } = require("discord.js");
 
 
@@ -12,11 +12,11 @@ const { RichEmbed } = require("discord.js");
 module.exports = class TellCitationCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'tellcitation',
-            group: 'group1',
-            memberName: 'tellcitation',
-            description: '',
-            examples: [''],
+            name: "tellcitation",
+            group: "group1",
+            memberName: "tellcitation",
+            description: "",
+            examples: [""],
         });    
     }
 
@@ -37,6 +37,6 @@ module.exports = class TellCitationCommand extends Command {
         const embed = new RichEmbed()
 	   .setColor(0x954D23)
 	   .setTitle("Citation :")
-	   .setDescription(`${citiation}\nde ${aut}, ajoutée par ${cont} à la base de donnée.`)
+	   .setDescription(`${citiation}\nde ${aut}, ajoutée par ${cont} à la base de donnée.`);
         msg.embed(embed);
     }}
