@@ -23,11 +23,6 @@ module.exports = class AddCitationCommand extends Command {
                     type: 'string'
                 },
                 {
-                    key: "donneur",
-                    prompt: "qui a ajouté cette citation ?",
-                    type: 'user'
-                },
-                {
                     key: "auteur",
                     prompt: "Qui est a l'origine de la citation ?",
                     type: 'string'
@@ -36,13 +31,13 @@ module.exports = class AddCitationCommand extends Command {
         });    
     }
 
-    async run(msg, { citation, donneur, auteur }) {
-        msg.channel.send(`Ajout de la citation:\n${citation}\nde ${auteur} ajoutée par ${donneur} à la base de données.`);
+    async run(msg, { citation, auteur }) {
+        msg.channel.send(`Ajout de la citation:\n${citation}\nde ${auteur} ajoutée par ${msg.author} à la base de données.`);
         db.defaults({ citations: [] })
           .write()
         db.get('citations')
           .push({citations: `${citation}`,
-            contributeur: `${donneur}`,
+            contributeur: `${msg.author}`,
             auteurs: `${auteur}`
           })
           .write();

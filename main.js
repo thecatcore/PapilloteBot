@@ -1,9 +1,7 @@
-
 const Commando = require('discord.js-commando');
 const path = require('path');
 const config = require('./config.json');
 const configg = require('./config.1.json');
-const db = require("./db.js");
 
 
 
@@ -30,8 +28,6 @@ client.on('ready', () => {
       console.log('Logged in!');
       client.user.setPresence(`${config.prefix}help`);
 });
-
-db.init();
 
 client.login(configg.token);
 
