@@ -39,4 +39,4 @@ module.exports = class TellCitationCommand extends Command {
 	   .setTitle("Citation :")
 	   .setDescription(`${citiation}\nde ${aut}, ajoutée par ${cont} à la base de donnée.`);
         msg.embed(embed);
-    }}
+    }};

@@ -22,12 +22,6 @@ const init = () => {
      .write();
 };
 
-const getCountOfCitations = () => {
-  const db = connect();
-
-  return 
-};
-
 const getCountOfAnnivdate = () => {
   const db = connect();
 
@@ -76,9 +70,6 @@ const addAnniversaire = (anniv) => {
 
 module.exports = {
   init,
-  getCountOfCitations,
-  getOneCitationById,
-  addCitation,
   addAnniversaire,
   getCountOfAnnivdate,
   getOneAnnivById,
