@@ -15,7 +15,7 @@ module.exports = class AddCitationCommand extends Command {
             group: 'group1',
             memberName: 'addcitation',
             description: 'Le bot ajoute votre citation à la base de donnée',
-            examples: ['addcitation'],
+            examples: ['https://cdn.discordapp.com/attachments/230688990913757185/410816105230106634/zzzz2.png'],
             args: [
                 {
                     key: 'citation',
