@@ -41,4 +41,4 @@ module.exports = class AddCitationCommand extends Command {
             auteurs: `${auteur}`
           })
           .write();
-    }}
+    }};
