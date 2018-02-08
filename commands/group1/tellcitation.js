@@ -35,7 +35,8 @@ module.exports = class TellCitationCommand extends Command {
           var aut = db.get(`citations[${id}].auteurs`)
           .value();
         const embed = new RichEmbed()
-	   .setColor(0x954D23)
+	   .setColor("#D9F200")
+	   .setImage("https://omnilogie.fr/images/O/e239ced74cfc679e987778a89a95ebe0.jpg")
 	   .setTitle("Citation :")
 	   .setDescription(`${citiation}\nde ${aut}, ajoutée par ${cont} à la base de donnée.`);
         msg.embed(embed);
