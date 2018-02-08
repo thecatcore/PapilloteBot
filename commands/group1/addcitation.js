@@ -34,7 +34,7 @@ module.exports = class AddCitationCommand extends Command {
     async run(msg, { citation, auteur }) {
         msg.channel.send(`Ajout de la citation:\n${citation}\nde ${auteur} ajoutée par ${msg.author} à la base de données.`);
         db.defaults({ citations: [] })
-          .write()
+          .write();
         db.get("citations")
           .push({citations: `${citation}`,
             contributeur: `${msg.author}`,
