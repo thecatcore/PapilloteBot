@@ -1,7 +1,7 @@
-const Commando = require('discord.js-commando');
-const path = require('path');
-const config = require('./config.json');
-const configg = require('./config.1.json');
+const Commando = require("discord.js-commando");
+const path = require("path");
+const config = require("./config.json");
+const configg = require("./config.1.json");
 
 
 
@@ -14,18 +14,18 @@ const client = new Commando.Client({
 client.registry
     .registerDefaultTypes()
     .registerGroups([
-        ['group1', 'Citations Commands'],
-        ['group2', 'Say Commands'],
-        ['group3', 'Images Commands']
+        ["group1", "Citations Commands"],
+        ["group2", "Say Commands"],
+        ["group3", "Images Commands"]
     ])
     .registerDefaultGroups()
     .registerDefaultCommands({
       help: true
     })
-    .registerCommandsIn(path.join(__dirname, 'commands'));
+    .registerCommandsIn(path.join(__dirname, "commands"));
 
-client.on('ready', () => {
-      console.log('Logged in!');
+client.on("ready", () => {
+      console.log("Logged in!");
       client.user.setPresence(`${config.prefix}help`);
 });
 
