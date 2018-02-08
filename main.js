@@ -26,7 +26,12 @@ client.registry
 
 client.on("ready", () => {
       console.log("Logged in!");
-      client.user.setPresence(`${config.prefix}help`);
+      client.user.setPresence({
+       game: {
+       name: `${config.prefix}help`,
+       type: 0
+   }
+  });
 });
 
 client.login(configg.token);
@@ -307,12 +312,7 @@ client.login(configg.token);
 
 // bot.on("ready", async () => {
   
-//   bot.user.setPresence({
-//     game: {
-//       name: "+help",
-//       type: 0
-//     }
-//   });
+//   
 //   console.log("Bot Ready !");
 //   //console.log(bot.commands)
 
