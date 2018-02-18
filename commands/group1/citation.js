@@ -25,12 +25,12 @@ module.exports = class AddCitationCommand extends Command {
                 },
                 {
                     key: "citation",
-                    prompt: "quelle est ta citation",
+                    prompt: "quelle est ta citation ?(cet argument n'est obligatoire que si vous avez mis la sous-commande << tell >>)",
                     type: "string"
                 },
                 {
                     key: "auteur",
-                    prompt: "Qui est a l'origine de la citation ?",
+                    prompt: "Qui est a l'origine de la citation ?(cet argument n'est obligatoire que si vous avez mis la sous-commande << tell >>)",
                     type: "string"
                 }
             ]
