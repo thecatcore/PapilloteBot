@@ -39,7 +39,7 @@ module.exports = class AddCitationCommand extends Command {
 
     async run(msg, { subcommand, citation, auteur }) {
         if (subcommand === "add") {
-        msg.channel.send(`Ajout de la citation:\n${citation}\nde ${auteur} ajoutée par ${msg.author} à la base de données.`);
+        msg.channel.send(`Ajout de la citation:\n${citation}\nde ${auteur} par ${msg.author} à la base de données.`);
         db.defaults({ citations: [] })
           .write();
         db.get("citations")
@@ -69,6 +69,7 @@ module.exports = class AddCitationCommand extends Command {
 	   .setTitle("Citation :")
 	   .setDescription(`${citiation}\nde ${aut}, ajoutée par ${cont} à la base de donnée.`);
         msg.embed(embed);
-            }
+            } else {
+		    msg.send(`La sous-commande ${subcommand} n'existe pas veuillez en donner une valide.)
         }
     }};
