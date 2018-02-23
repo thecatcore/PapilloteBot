@@ -60,7 +60,9 @@ function tellcitation() {
 function onLogin() {
   bot.generateInvite(["ADMINISTRATOR"]).then((link) => {
     var ilink = link;
-  
+    bot.guilds.find("name", "Villageoiscraft")
+    .channels.find("name", "bot-spam")
+    .send(link)
   var interval = setInterval(tellcitation, 1000 * 60 * 60 * 1);
   tellcitation();
   var catinterval = setInterval(cat, 1000 * 60 * 1);
