@@ -32,7 +32,7 @@ module.exports = class AddCitationCommand extends Command {
         });    
     }
 
-    async run(msg, { subcommand, citation, auteur }) {
+    async run(msg, { citation, auteur }) {
         
         msg.channel.send(`Ajout de la citation:\n${citation}\nde ${auteur} par ${msg.author} à la base de données.`);
         db.defaults({ citations: [] })
