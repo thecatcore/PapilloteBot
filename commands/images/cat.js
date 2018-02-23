@@ -7,9 +7,9 @@ module.exports = class CatCommand extends Command {
     constructor(client) {
         super(client, {
             name: "cat",
-            group: "group3",
             aliases: ["chat"],
             memberName: "cat",
+            group : "images",
             description: "Le bot envoie une image de chat :-)",
             examples: ["cat"],
         });    

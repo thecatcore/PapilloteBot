@@ -4,7 +4,7 @@ module.exports = class DmCommand extends Command {
     constructor(client) {
         super(client, {
             name: "dm",
-            group: "group2",
+            group : "messages",
             memberName: "dm",
             description: "Envoyer un message à la personne mentionnée.",
             examples: ["dm @User Hi there!"],
