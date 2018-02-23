@@ -14,9 +14,10 @@ const client = new Commando.Client({
 client.registry
     .registerDefaultTypes()
     .registerGroups([
-        ["group1", "Citations Commands"],
-        ["group2", "Say Commands"],
-        ["group3", "Images Commands"]
+        ["citations", "Citations Commands"],
+        ["messages", "Say Commands"],
+        ["images", "Images Commands"],
+        ["help", "help commande"]
     ])
     .registerDefaultGroups()
     .registerDefaultCommands({
