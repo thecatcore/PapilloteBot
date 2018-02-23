@@ -70,6 +70,6 @@ module.exports = class AddCitationCommand extends Command {
 	   .setDescription(`${citiation}\nde ${aut}, ajoutée par ${cont} à la base de donnée.`);
         msg.embed(embed);
             } else {
-		    msg.send(`La sous-commande ${subcommand} n'existe pas veuillez en donner une valide.)
+		    msg.send(`La sous-commande ${subcommand} n'existe pas veuillez en donner une valide.`)
         }
-    }};
+    }}}
