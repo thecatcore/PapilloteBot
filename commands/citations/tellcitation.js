@@ -13,7 +13,7 @@ module.exports = class TellCitationCommand extends Command {
     constructor(client) {
         super(client, {
             name: "tellcitation",
-            group: "group1",
+            group : "citations",
             memberName: "tellcitation",
             description: "",
             examples: [""],

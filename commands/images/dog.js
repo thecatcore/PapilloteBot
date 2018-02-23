@@ -7,9 +7,9 @@ module.exports = class DogCommand extends Command {
     constructor(client) {
         super(client, {
             name: "dog",
-            group: "group3",
             aliases: ["chien"],
             memberName: "dog",
+            group : "images",
             description: "Le bot envoie une image de chien :-)",
             examples: ["dog"],
         });    

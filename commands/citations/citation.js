@@ -13,7 +13,7 @@ module.exports = class AddCitationCommand extends Command {
     constructor(client) {
         super(client, {
             name: "citation",
-            group: "group1",
+            group : "citations",
             memberName: "citation",
             description: "",
             examples: [""],
