@@ -20,7 +20,7 @@ client.registry
     ])
     .registerDefaultGroups()
     .registerDefaultCommands({
-      help: true
+      help: false
     })
     .registerCommandsIn(path.join(__dirname, "commands"));
 
