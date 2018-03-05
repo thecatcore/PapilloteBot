@@ -13,6 +13,6 @@ module.exports = class UptimeCommand extends Command {
     }
 
     run(msg) {
-        console.log("Uptime Command")
+        console.log("Uptime Command");
     }
 };
