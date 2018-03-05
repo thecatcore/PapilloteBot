@@ -7,7 +7,7 @@ import asyncio
 import json
 
 with open("configg.json", "r") as tokenfile:
-token = json.load(tokenfile)
+    token = json.load(tokenfile)
 client = discord.Client()
 ownerid1 = "223864389256609792"
 ownerid2 = "267011733871263745"
