@@ -1,7 +1,7 @@
 const Commando = require("discord.js-commando");
 const path = require("path");
 const config = require("./config.json");
-const configg = require("./config.1.json");
+//const configg = require("./config.1.json");
 const uptime = "start.py";
 const PythonShell = require("python-shell");
 var pyshell = new PythonShell(uptime);
@@ -40,7 +40,7 @@ client.on("ready", () => {
   });
 });
 
-client.login(configg.token);
+client.login(process.env.BOT_TOKEN);
 
 //client.setProvider(
   //sqlite.open(path.join(__dirname, '.db.sqlite3')).then(db => new Commando.SQLiteProvider(db))

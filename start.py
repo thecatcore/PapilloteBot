@@ -2,8 +2,8 @@ import discord
 import asyncio
 import json
 
-with open("config.1.json", "r") as tokenfile:
-    token = json.load(tokenfile)
+# with open("config.1.json", "r") as tokenfile:
+#     token = json.load(tokenfile)
 client = discord.Client()
 ownerid1 = "223864389256609792"
 ownerid2 = "267011733871263745"
@@ -62,5 +62,5 @@ async def papillote_uptime():
                 heures += 1
 
 client.loop.create_task(papillote_uptime())
-
-client.run("{0}".format(token["token"]))
+client.run(process.env.BOT_TOKEN)
+# client.run("{0}".format(token["token"]))
