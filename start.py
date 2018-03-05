@@ -49,7 +49,7 @@ async def papillote_uptime():
                     json.dump(time, fp)
                 if minutes == 60:
                     minutes = 0
-                    hour += 1
+                    heures += 1
                     time['heures'] = heures
                     time['minutes'] = minutes
                     with open("uptime.json", "w") as fp:
