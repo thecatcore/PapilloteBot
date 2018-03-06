@@ -18,9 +18,9 @@ module.exports = class UptimeCommand extends Command {
         console.log("Uptime Command");
         var uptime = new RichEmbed()
             .setTitle("Uptime")
-            .addField("Secondes", uptime.seconde)
-            .addField("Minutes", uptime.minute)
-            .addField("Heures", uptime.heure);
+            .addField("Secondes", uptime.uptime.seconde)
+            .addField("Minutes", uptime.uptime.minute)
+            .addField("Heures", uptime.uptime.heure);
         return msg.embed(uptime);
     }
 };
