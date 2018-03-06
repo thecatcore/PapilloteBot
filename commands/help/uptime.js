@@ -1,4 +1,6 @@
 const { Command } = require("discord.js-commando");
+var uptime = require("uptime.json")
+const { RichEmbed } = require("discord.js");
 
 module.exports = class UptimeCommand extends Command {
     constructor(client) {
@@ -13,8 +15,12 @@ module.exports = class UptimeCommand extends Command {
     }
 
     run(msg) {
-        var uptime = process.uptime()
         console.log("Uptime Command");
-        return msg.say(uptime)
+        var uptime = new RichEmbed()
+            .setTitle("Uptime")
+            .addField("Secondes", uptime.seconde)
+            .addField("Minutes", uptime.minute)
+            .addField("Heures", uptime.heure);
+        return msg.embed(uptime);
     }
 };
