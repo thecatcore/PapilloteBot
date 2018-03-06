@@ -2,6 +2,20 @@ const Commando = require("discord.js-commando");
 const path = require("path");
 const config = require("./config.json");
 //const configg = require("./config.1.json");
+var secondes = 0;
+var minutes = 0;
+var heures = 0;
+
+const low = require("lowdb");
+  const FileSync = require("lowdb/adapters/FileSync");
+  const adapter = new FileSync("commands/help/uptime.json");
+  const db = low(adapter);
+  db.get("uptime")
+        .push({seconde: "0",
+        minute: "0",
+        heure: "0"
+        })
+        .write();
 
 const client = new Commando.Client({
   commandPrefix: config.prefix,
@@ -29,11 +43,41 @@ client.on("ready", () => {
        game: {
        name: `${config.prefix}help`,
        type: 0
+      
    }
   });
+      var uptimeinterval = setInterval(uptime, 1000 * 1);
+      uptime()
 });
 
 client.login(process.env.BOT_TOKEN);
+
+function uptime() {
+  db.defaults({ uptime: {} }).write()
+  secondes =+ 1
+  db.get("uptime")
+          .push({seconde: `${secondes}`
+          })
+          .write();
+  if (secondes == 60) {
+    secondes = 0
+    minutes =+ 1
+    db.get("uptime")
+          .push({seconde: "0",
+          minute: `${minutes}`
+          })
+          .write();
+  }
+  if (minutes == 60) {
+    minutes = 0
+    heures =+ 1
+    db.get("uptime")
+          .push({minutes: "0",
+          heure: `${heures}`
+          })
+          .write();
+  }
+}
 
 //client.setProvider(
   //sqlite.open(path.join(__dirname, '.db.sqlite3')).then(db => new Commando.SQLiteProvider(db))
