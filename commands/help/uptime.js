@@ -14,6 +14,6 @@ module.exports = class UptimeCommand extends Command {
 
     run(msg) {
         console.log("Uptime Command");
-        return msg.send(uptime)
+        return msg.say(uptime)
     }
 };
