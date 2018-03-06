@@ -2,13 +2,6 @@ const Commando = require("discord.js-commando");
 const path = require("path");
 const config = require("./config.json");
 //const configg = require("./config.1.json");
-const uptime = "start.py";
-//const PythonShell = require("python-shell");
-//var pyshell = new PythonShell(uptime);
-
-//pyshell.on("message", function (message) {
-//  console.log(message);
-//});
 
 const client = new Commando.Client({
   commandPrefix: config.prefix,
