@@ -1,5 +1,5 @@
 const { Command } = require("discord.js-commando");
-var uptime = require("uptime.json")
+var uptime = require("./uptime.json")
 const { RichEmbed } = require("discord.js");
 
 module.exports = class UptimeCommand extends Command {
