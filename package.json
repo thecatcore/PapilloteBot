@@ -31,7 +31,7 @@
     "inherits": "2.0.3",
     "is-nan": "1.2.1",
     "is-promise": "2.1.0",
-    "isarray": "1.0.0",
+    "isarray": "2.0.4",
     "lodash": "4.17.5",
     "long": "3.2.0",
     "long-timeout": "0.1.1",
