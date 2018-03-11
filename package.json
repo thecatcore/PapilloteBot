@@ -33,7 +33,7 @@
     "is-promise": "2.1.0",
     "isarray": "1.0.0",
     "lodash": "4.17.5",
-    "long": "3.2.0",
+    "long": "4.0.0",
     "long-timeout": "0.1.1",
     "lowdb": "1.0.0",
     "methods": "1.1.2",
