@@ -37,7 +37,7 @@
     "long-timeout": "0.1.1",
     "lowdb": "1.0.0",
     "methods": "1.1.2",
-    "mime": "1.6.0",
+    "mime": "2.2.0",
     "mime-db": "1.33.0",
     "mime-types": "2.1.18",
     "moment": "2.20.1",
