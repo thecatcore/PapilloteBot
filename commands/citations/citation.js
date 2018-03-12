@@ -16,7 +16,7 @@ module.exports = class CitationCommand extends Command {
     run(msg) {
         var embed = new RichEmbed()
             .setTitle("Liste des commandes citations")
-            .setDescription("+citation add\n+citation tell");
+            .setDescription("+citation_add\n+citation_tell");
         msg.embed(embed);
     }
 };
