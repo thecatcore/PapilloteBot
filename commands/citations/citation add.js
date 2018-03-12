@@ -12,9 +12,9 @@ const { RichEmbed } = require("discord.js");
 module.exports = class AddCitationCommand extends Command {
     constructor(client) {
         super(client, {
-            name: "citation add",
+            name: "citation_add",
             group : "citations",
-            memberName: "citation add",
+            memberName: "citation_add",
             description: "",
             examples: [""],
             args: [
