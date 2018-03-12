@@ -5,17 +5,11 @@ const config = require("./config.json");
 var secondes = 0;
 var minutes = 0;
 var heures = 0;
+var fs = require("fs");
+fs.writeFileSync('commands/help/seconde.json', secondes)
+fs.writeFileSync('commands/help/minute.json', minutes)
+fs.writeFileSync('commands/help/heure.json', heures)
 
-const low = require("lowdb");
-  const FileSync = require("lowdb/adapters/FileSync");
-  const adapter = new FileSync("commands/help/uptime.json");
-  const db = low(adapter);
-  db.get("uptime")
-        .push({seconde: "0",
-        minute: "0",
-        heure: "0"
-        })
-        .write();
 
 const client = new Commando.Client({
   commandPrefix: config.prefix,
@@ -53,29 +47,26 @@ client.on("ready", () => {
 client.login(process.env.BOT_TOKEN);
 
 function uptime() {
-  db.defaults({ uptime: {} }).write()
-  secondes =+ 1
-  db.get("uptime")
-          .push({seconde: `${secondes}`
-          })
-          .write();
+  console.log("space")
+  
+  secondes++;
+  console.log(secondes)
+  fs.writeFileSync('commands/help/seconde.json', secondes)
+  
   if (secondes == 60) {
     secondes = 0
-    minutes =+ 1
-    db.get("uptime")
-          .push({seconde: "0",
-          minute: `${minutes}`
-          })
-          .write();
+    minutes++;
+    console.log(minutes);
+    fs.writeFileSync('commands/help/seconde.json', secondes)
+    fs.writeFileSync('commands/help/minute.json', minutes)
+    
   }
   if (minutes == 60) {
     minutes = 0
-    heures =+ 1
-    db.get("uptime")
-          .push({minutes: "0",
-          heure: `${heures}`
-          })
-          .write();
+    heures++;
+    fs.writeFileSync('commands/help/minute.json', minutes)
+    fs.writeFileSync('commands/help/heure.json', heures)
+    
   }
 }
 

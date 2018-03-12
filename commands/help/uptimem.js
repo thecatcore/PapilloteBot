@@ -1,6 +1,6 @@
 const { Command } = require("discord.js-commando");
-var uptime = require("./uptime.json")
 const { RichEmbed } = require("discord.js");
+var fs = require('fs');
 
 module.exports = class UptimeCommand extends Command {
     constructor(client) {
@@ -16,11 +16,17 @@ module.exports = class UptimeCommand extends Command {
 
     run(msg) {
         console.log("Uptime Command");
+        var secondess = fs.readFileSync('commands/help/seconde.json');
+        var secondes = JSON.parse(secondess);
+        var minutess = fs.readFileSync('commands/help/minute.json');
+        var minutes = JSON.parse(minutess);
+        var heuress = fs.readFileSync('commands/help/heure.json');
+        var heures = JSON.parse(heuress);
         var uptime = new RichEmbed()
             .setTitle("Uptime")
-            .addField("Secondes", uptime.uptime.seconde)
-            .addField("Minutes", uptime.uptime.minute)
-            .addField("Heures", uptime.uptime.heure);
+            .addField("Secondes", secondes)
+            .addField("Minutes", minutes)
+            .addField("Heures", heures);
         return msg.embed(uptime);
     }
 };
