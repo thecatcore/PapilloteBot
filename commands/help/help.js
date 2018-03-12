@@ -16,7 +16,7 @@ module.exports = class HelpCommand extends Command {
     run(msg) {
         var embed = new RichEmbed()
             .setTitle("Liste des catégories")
-            .setDescription("+citation\n+image\n+message");
+            .setDescription("+citation\n+say\n+cat\n+dog\n+uptime");
         msg.embed(embed);
     }
 };
