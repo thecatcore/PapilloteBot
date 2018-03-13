@@ -42,9 +42,11 @@ module.exports = class AddCitationCommand extends Command {
     async run(msg, { citation, auteur }) {
         
         msg.channel.send(`Ajout de la citation:\n${citation}\nde ${auteur} par ${msg.author} à la base de données.`);
+        var cont = new String(msg.author)
         var data = {
             citation: citation,
-            auteur: auteur
+            auteur: auteur,
+            contributeur: cont.toString()
         }
         ref.push(data);
     }};

@@ -37,16 +37,18 @@ module.exports = class TellCitationCommand extends Command {
             console.log(keys)
             var length = keys.length
             var idd = Math.floor(Math.random() * length);
-            var id = idd - 1
-            var k = keys[0]
+            var id = idd
+            console.log(id);
+            var k = keys[id]
             console.log(citations[k]);
             var citiation = citations[k].citation;
             var aut = citations[k].auteur;
+            var cont = citations[k].contributeur;
             const embed = new RichEmbed()
 	        .setColor("#D9F200")
 	        .setImage("https://omnilogie.fr/images/O/e239ced74cfc679e987778a89a95ebe0.jpg")
 	        .setTitle("Citation :")
-	        .setDescription(`${citiation}\nde ${aut}, ajoutée par WIP à la base de donnée.`);
+	        .setDescription(`${citiation}\nde ${aut}, ajoutée par ${cont} à la base de donnée.`);
             msg.embed(embed);
 	    }
 	    function errData(err) {
