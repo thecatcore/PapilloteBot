@@ -1,11 +1,18 @@
 const Commando = require("discord.js-commando");
 const path = require("path");
 const { Command } = require("discord.js-commando");
-const low = require("lowdb");
-const FileSync = require("lowdb/adapters/FileSync");
-const adapter = new FileSync("citations.json");
-const db = low(adapter);
-const { RichEmbed } = require("discord.js");
+const firebase = require("firebase");
+var config = {
+    apiKey: "AIzaSyBS7yIZr45Y1yrWBalCpO3Y2bkS5OYJQQY",
+    authDomain: "papillotebot.firebaseapp.com",
+    databaseURL: "https://papillotebot.firebaseio.com",
+    projectId: "papillotebot",
+    storageBucket: "",
+    messagingSenderId: "68194330678"
+  };
+  firebase.initializeApp(config);
+var database = firebase.database();
+var ref = database.ref("citations");
 
 
 
@@ -35,12 +42,10 @@ module.exports = class AddCitationCommand extends Command {
     async run(msg, { citation, auteur }) {
         
         msg.channel.send(`Ajout de la citation:\n${citation}\nde ${auteur} par ${msg.author} à la base de données.`);
-        db.defaults({ citations: [] })
-          .write();
-        db.get("citations")
-          .push({citations: `${citation}`,
-            contributeur: `${msg.author}`,
-            auteurs: `${auteur}`
-          })
-          .write();
+        var data = {
+            citation: citation,
+            auteur: auteur,
+            contributeur: msg.author
+        }
+        ref.push(data);
     }};
