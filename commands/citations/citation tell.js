@@ -1,10 +1,18 @@
 const Commando = require("discord.js-commando");
 const path = require("path");
 const { Command } = require("discord.js-commando");
-const low = require("lowdb");
-const FileSync = require("lowdb/adapters/FileSync");
-const adapter = new FileSync("citations.json");
-const db = low(adapter);
+const firebase = require("firebase");
+var config = {
+    apiKey: "AIzaSyBS7yIZr45Y1yrWBalCpO3Y2bkS5OYJQQY",
+    authDomain: "papillotebot.firebaseapp.com",
+    databaseURL: "https://papillotebot.firebaseio.com",
+    projectId: "papillotebot",
+    storageBucket: "",
+    messagingSenderId: "68194330678"
+  };
+  firebase.initializeApp(config);
+var database = firebase.database();
+var ref = database.ref("citations");
 const { RichEmbed } = require("discord.js");
 
 
@@ -21,23 +29,19 @@ module.exports = class TellCitationCommand extends Command {
     }
 
     async run(msg) {
-        var length = db.get("citations")
-                       .size()
-                       .value();
-        console.log(length);
-        var id = Math.floor(Math.random() * length);
-        console.log(id);
+        ref.on('value', gotData, errData);
+	function gotData(data) {
+		msg.say(data.val());
+	}
+	function errData(err) {
+		console.log("Erreur !");
+		console.log(err);
+	}
         
-        var citiation = db.get(`citations[${id}].citations`)
-          .value();
-          var cont = db.get(`citations[${id}].contributeur`)
-          .value();
-          var aut = db.get(`citations[${id}].auteurs`)
-          .value();
-        const embed = new RichEmbed()
-	   .setColor("#D9F200")
-	   .setImage("https://omnilogie.fr/images/O/e239ced74cfc679e987778a89a95ebe0.jpg")
-	   .setTitle("Citation :")
-	   .setDescription(`${citiation}\nde ${aut}, ajoutée par ${cont} à la base de donnée.`);
-        msg.embed(embed);
+        //const embed = new RichEmbed()
+	   //.setColor("#D9F200")
+	   //.setImage("https://omnilogie.fr/images/O/e239ced74cfc679e987778a89a95ebe0.jpg")
+	   //.setTitle("Citation :")
+	  // .setDescription(`${citiation}\nde ${aut}, ajoutée par WIP à la base de donnée.`);
+        //msg.embed(embed);
     }};
