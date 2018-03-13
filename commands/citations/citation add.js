@@ -44,8 +44,7 @@ module.exports = class AddCitationCommand extends Command {
         msg.channel.send(`Ajout de la citation:\n${citation}\nde ${auteur} par ${msg.author} à la base de données.`);
         var data = {
             citation: citation,
-            auteur: auteur,
-            contributeur: msg.author
+            auteur: auteur
         }
         ref.push(data);
     }};
