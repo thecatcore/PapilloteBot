@@ -31,7 +31,7 @@ module.exports = class TellCitationCommand extends Command {
     async run(msg) {
         ref.on('value', gotData, errData);
 	function gotData(data) {
-		msg.say(data.val());
+		msg.channel.send(data.val());
 	}
 	function errData(err) {
 		console.log("Erreur !");
