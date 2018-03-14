@@ -17,11 +17,12 @@ module.exports = class CatCommand extends Command {
 
     async run(msg) {
         const { body } = await superagent
-	   .get("http://random.cat/meow");
+	   .get("http://aws.random.cat/meow");
 	   const embed = new RichEmbed()
 	   .setColor(0x954D23)
 	   .setTitle("Meow :cat:")
-	   .setImage(body.file);
+       .setImage(body.file);
+       //.setImage("https://random.cat/index.php")
         return msg.embed(embed);
     }
 };
