@@ -26,13 +26,6 @@ module.exports = class TellCitationCommand extends Command {
             memberName: "citation tell",
             description: "",
             examples: [""],
-            args: [
-                {
-                    key: "qgdbhqsf",
-                    prompt: "mettez 1",
-                    type: "string"
-                }
-            ]
         });    
     }
 
