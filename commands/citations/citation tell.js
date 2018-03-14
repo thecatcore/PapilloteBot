@@ -25,10 +25,17 @@ module.exports = class TellCitationCommand extends Command {
             memberName: "citation tell",
             description: "",
             examples: [""],
+            args: [
+                {
+                    key: "qgdbhqsf",
+                    prompt: "mettez 1",
+                    type: "string"
+                }
+            ]
         });    
     }
 
-    async run(msg) {
+    async run(msg, qgdbhqsf) {
         ref.on('value', gotData, errData);
 	    function gotData(data) {
             console.log(data.val());
@@ -41,20 +48,18 @@ module.exports = class TellCitationCommand extends Command {
             console.log(id);
             var k = keys[id]
             console.log(citations[k]);
-            citiation = citations[k].citation;
-            aut = citations[k].auteur;
-            cont = citations[k].contributeur;
-            
-	    }
-	    function errData(err) {
-		    console.log("Erreur !");
-		    console.log(err);
-	    }
-        
-        const embed = new RichEmbed()
+            var citiation = citations[k].citation;
+            var aut = citations[k].auteur;
+            var cont = citations[k].contributeur;
+            const embed = new RichEmbed()
 	        .setColor("#D9F200")
 	        .setImage("https://omnilogie.fr/images/O/e239ced74cfc679e987778a89a95ebe0.jpg")
 	        .setTitle("Citation :")
 	        .setDescription(`${citiation}\nde ${aut}, ajoutée par ${cont} à la base de donnée.`);
             msg.embed(embed);
+	    }
+	    function errData(err) {
+		    console.log("Erreur !");
+		    console.log(err);
+	    }
     }};
