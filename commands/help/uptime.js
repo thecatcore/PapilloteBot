@@ -8,7 +8,7 @@ module.exports = class UptimeCommand extends Command {
             name: "uptime",
             aliases: ["time"],
             memberName: "uptime",
-            group : "help",
+            group : "info",
             description: "z",
             examples: ["z"]
         });    

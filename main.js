@@ -23,11 +23,11 @@ client.registry
         ["citations", "Citations Commands"],
         ["messages", "Say Commands"],
         ["images", "Images Commands"],
-        ["help", "help commande"]
+        ["info", "info commandes"]
     ])
     .registerDefaultGroups()
     .registerDefaultCommands({
-      help: false
+      help: true
     })
     .registerCommandsIn(path.join(__dirname, "commands"));
 

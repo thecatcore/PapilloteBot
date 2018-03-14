@@ -20,6 +20,7 @@ module.exports = class AddCitationCommand extends Command {
     constructor(client) {
         super(client, {
             name: "citation_add",
+            aliases: [ "addcitation", "citationadd" ],
             group : "citations",
             memberName: "citation_add",
             description: "",
