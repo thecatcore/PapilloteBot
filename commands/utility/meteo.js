@@ -54,7 +54,7 @@ module.exports = class WeatherCommand extends Command {
                 .addField("Vent", current.winddisplay);
             msg.embed(currentembed);
             var i;
-            for (i = 0; i < forecast.length; i++) {
+            for (i = 2; i < forecast.length; i++) {
                 var embed = new RichEmbed()
                     .setTitle(`${forecast[i].day} ${forecast[i].date}`)
                     .setDescription(`**${forecast[i].skytextday}**`)
