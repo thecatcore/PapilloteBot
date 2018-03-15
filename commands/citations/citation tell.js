@@ -30,17 +30,16 @@ module.exports = class TellCitationCommand extends Command {
     }
 
     async run(msg, qgdbhqsf) {
-        ref.on('value', gotData, errData);
-	    function gotData(data) {
+        function gotData(data) {
             console.log(data.val());
             var citations = data.val();
-            var keys = Object.keys(citations)
-            console.log(keys)
-            var length = keys.length
+            var keys = Object.keys(citations);
+            console.log(keys);
+            var length = keys.length;
             var idd = Math.floor(Math.random() * length);
-            var id = idd
+            var id = idd;
             console.log(id);
-            var k = keys[id]
+            var k = keys[id];
             console.log(citations[k]);
             var citiation = citations[k].citation;
             var aut = citations[k].auteur;
@@ -55,5 +54,7 @@ module.exports = class TellCitationCommand extends Command {
 	    function errData(err) {
 		    console.log("Erreur !");
 		    console.log(err);
-	    }
+        }
+        
+        ref.on("value", gotData, errData);
     }};

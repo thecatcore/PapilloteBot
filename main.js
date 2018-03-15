@@ -6,9 +6,9 @@ var secondes = 0;
 var minutes = 0;
 var heures = 0;
 var fs = require("fs");
-fs.writeFileSync('commands/help/seconde.json', secondes)
-fs.writeFileSync('commands/help/minute.json', minutes)
-fs.writeFileSync('commands/help/heure.json', heures)
+fs.writeFileSync('commands/help/seconde.json', secondes);
+fs.writeFileSync('commands/help/minute.json', minutes);
+fs.writeFileSync('commands/help/heure.json', heures);
 
 
 const client = new Commando.Client({
@@ -31,6 +31,30 @@ client.registry
     })
     .registerCommandsIn(path.join(__dirname, "commands"));
 
+function uptime() {
+  console.log("space");
+  
+  secondes++;
+  console.log(secondes);
+  fs.writeFileSync("commands/help/seconde.json", secondes);
+  
+  if (secondes === 60) {
+    secondes = 0;
+    minutes++;
+    console.log(minutes);
+    fs.writeFileSync("commands/help/seconde.json", secondes);
+    fs.writeFileSync("commands/help/minute.json", minutes);
+    
+  };
+  if (minutes === 60) {
+    minutes = 0;
+    heures++;
+    fs.writeFileSync("commands/help/minute.json", minutes);
+    fs.writeFileSync("commands/help/heure.json", heures);
+    
+  };
+}
+
 client.on("ready", () => {
       console.log("Logged in!");
       client.user.setPresence({
@@ -41,40 +65,18 @@ client.on("ready", () => {
    }
   });
       var uptimeinterval = setInterval(uptime, 1000 * 1);
-      uptime()
+      uptime();
 });
 
 client.login(process.env.BOT_TOKEN);
 
-const sqlite = require('sqlite');
+const sqlite = require("sqlite");
 
 client.setProvider(
-    sqlite.open(path.join(__dirname, 'settings.sqlite3')).then(db => new Commando.SQLiteProvider(db))
+    sqlite.open(path.join(__dirname, "settings.sqlite3")).then(db => new Commando.SQLiteProvider(db))
 ).catch(console.error);
 
-function uptime() {
-  console.log("space")
-  
-  secondes++;
-  console.log(secondes)
-  fs.writeFileSync('commands/help/seconde.json', secondes)
-  
-  if (secondes == 60) {
-    secondes = 0
-    minutes++;
-    console.log(minutes);
-    fs.writeFileSync('commands/help/seconde.json', secondes)
-    fs.writeFileSync('commands/help/minute.json', minutes)
-    
-  }
-  if (minutes == 60) {
-    minutes = 0
-    heures++;
-    fs.writeFileSync('commands/help/minute.json', minutes)
-    fs.writeFileSync('commands/help/heure.json', heures)
-    
-  }
-}
+
 
 //client.setProvider(
   //sqlite.open(path.join(__dirname, '.db.sqlite3')).then(db => new Commando.SQLiteProvider(db))
