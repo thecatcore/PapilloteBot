@@ -46,6 +46,12 @@ client.on("ready", () => {
 
 client.login(process.env.BOT_TOKEN);
 
+const sqlite = require('sqlite');
+
+client.setProvider(
+    sqlite.open(path.join(__dirname, 'settings.sqlite3')).then(db => new Commando.SQLiteProvider(db))
+).catch(console.error);
+
 function uptime() {
   console.log("space")
   
