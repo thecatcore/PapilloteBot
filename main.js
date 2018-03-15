@@ -6,9 +6,9 @@ var secondes = 0;
 var minutes = 0;
 var heures = 0;
 var fs = require("fs");
-fs.writeFileSync('commands/help/seconde.json', secondes);
-fs.writeFileSync('commands/help/minute.json', minutes);
-fs.writeFileSync('commands/help/heure.json', heures);
+fs.writeFileSync("commands/help/seconde.json", secondes);
+fs.writeFileSync("commands/help/minute.json", minutes);
+fs.writeFileSync("commands/help/heure.json", heures);
 
 
 const client = new Commando.Client({
@@ -45,14 +45,14 @@ function uptime() {
     fs.writeFileSync("commands/help/seconde.json", secondes);
     fs.writeFileSync("commands/help/minute.json", minutes);
     
-  };
+  }
   if (minutes === 60) {
     minutes = 0;
     heures++;
     fs.writeFileSync("commands/help/minute.json", minutes);
     fs.writeFileSync("commands/help/heure.json", heures);
     
-  };
+  }
 }
 
 client.on("ready", () => {
@@ -73,7 +73,7 @@ client.login(process.env.BOT_TOKEN);
 const sqlite = require("sqlite");
 
 client.setProvider(
-    sqlite.open(path.join(__dirname, "settings.sqlite3")).then(db => new Commando.SQLiteProvider(db))
+    sqlite.open(path.join(__dirname, "settings.sqlite3")).then((db) => new Commando.SQLiteProvider(db))
 ).catch(console.error);
 
 
