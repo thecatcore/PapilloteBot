@@ -9,3 +9,5 @@ node_modules/
 
 config\.1\.json
 /.project
+
+settings\.sqlite3
