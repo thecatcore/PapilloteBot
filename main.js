@@ -23,7 +23,8 @@ client.registry
         ["citations", "Citations Commands"],
         ["messages", "Say Commands"],
         ["images", "Images Commands"],
-        ["info", "info commandes"]
+        ["info", "info commandes"],
+        ["utile", "commandes utiles"]
     ])
     .registerDefaultGroups()
     .registerDefaultCommands({
