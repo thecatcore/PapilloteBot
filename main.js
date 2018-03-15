@@ -1,7 +1,7 @@
 const Commando = require("discord.js-commando");
 const path = require("path");
 const config = require("./config.json");
-//const configg = require("./config.1.json");
+const configg = require("./config.1.json");
 var secondes = 0;
 var minutes = 0;
 var heures = 0;
@@ -44,7 +44,7 @@ client.on("ready", () => {
       uptime()
 });
 
-client.login(process.env.BOT_TOKEN);
+client.login(configg.token);
 
 function uptime() {
   console.log("space")
