@@ -33,16 +33,12 @@ client.registry
     .registerCommandsIn(path.join(__dirname, "commands"));
 
 function uptime() {
-  console.log("space");
-  
   secondes++;
-  console.log(secondes);
   fs.writeFileSync("commands/help/seconde.json", secondes);
   
   if (secondes === 60) {
     secondes = 0;
     minutes++;
-    console.log(minutes);
     fs.writeFileSync("commands/help/seconde.json", secondes);
     fs.writeFileSync("commands/help/minute.json", minutes);
     
