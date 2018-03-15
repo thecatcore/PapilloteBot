@@ -23,22 +23,25 @@ module.exports = class WeatherCommand extends Command {
                 },
                 {
                     key: "degree",
-                    prompt: "C pour Celsius et F pour Farenheit",
+                    prompt: "C pour Celsuis et F pour Farenheit",
                     type: "string"
                 }
             ]
         });    
     }
 
-    async run(msg, lieu, degree) {
-        weather.fin({search: lieu, degreeType: degree}, function(err, result) {
-            if (err) console.log(err)
-            msg.say(err)
-
+    async run(msg, {lieu, degree}) {
+        weather.find({search: lieu, degreeType: degree}, function(err, result) {
+            if (err) {
+                msg.channel.send(err)
+            }
+            if (result.length === 0) {
+                return msg.say("Veuillez indiquer une localisation valide !")
+            }
             var current = result[0].current;
             var location = result[0].location;
             var forecast = result[0].forecast;
-
+            console.log(current)
             var currentembed = new RichEmbed()
                 .setDescription(`**${current.skytext}**`)
                 .setAuthor(`La météo pour ${current.observationpoint}`)
@@ -50,6 +53,7 @@ module.exports = class WeatherCommand extends Command {
                 .addField("Humiditée", `${current.humidity}%`)
                 .addField("Vent", current.winddisplay);
             msg.embed(currentembed);
+            var i;
             for (i = 0; i < forecast.length; i++) {
                 var embed = new RichEmbed()
                     .setTitle(`${forecast[i].day} ${forecast[i].date}`)
