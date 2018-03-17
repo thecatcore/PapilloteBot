@@ -21,10 +21,10 @@ client.registry
     .registerDefaultTypes()
     .registerGroups([
         ["citations", "Citations Commands"],
-        ["messages", "Say Commands"],
         ["images", "Images Commands"],
         ["info", "info commandes"],
-        ["utile", "commandes utiles"]
+        ["utile", "commandes utiles"],
+        ["games", "commandes jeux"]
     ])
     .registerDefaultGroups()
     .registerDefaultCommands({
@@ -33,16 +33,12 @@ client.registry
     .registerCommandsIn(path.join(__dirname, "commands"));
 
 function uptime() {
-  console.log("space");
-  
   secondes++;
-  console.log(secondes);
   fs.writeFileSync("commands/help/seconde.json", secondes);
   
   if (secondes === 60) {
     secondes = 0;
     minutes++;
-    console.log(minutes);
     fs.writeFileSync("commands/help/seconde.json", secondes);
     fs.writeFileSync("commands/help/minute.json", minutes);
     
