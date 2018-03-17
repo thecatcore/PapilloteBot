@@ -1,7 +1,7 @@
 const Commando = require("discord.js-commando");
 const path = require("path");
 const config = require("./config.json");
-const configg = require("./config.1.json");
+//const configg = require("./config.1.json");
 var secondes = 0;
 var minutes = 0;
 var heures = 0;
@@ -21,11 +21,10 @@ client.registry
     .registerDefaultTypes()
     .registerGroups([
         ["citations", "Citations Commands"],
-        ["messages", "Say Commands"],
         ["images", "Images Commands"],
         ["info", "info commandes"],
         ["utile", "commandes utiles"],
-        ["games", "commandes en rapport avec des jeux"]
+        ["games", "commandes jeux"]
     ])
     .registerDefaultGroups()
     .registerDefaultCommands({
@@ -66,7 +65,7 @@ client.on("ready", () => {
       uptime();
 });
 
-client.login(configg.token);
+client.login(process.env.BOT_TOKEN);
 
 const sqlite = require("sqlite");
 
