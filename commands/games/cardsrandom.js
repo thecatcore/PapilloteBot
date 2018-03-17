@@ -15,13 +15,13 @@ module.exports = class hscardsrandCommand extends Command {
     }
 
     run(msg) {
-        var random = Math.floor(Math.random() * cards.length)
-        var card = cards[random]
+        var random = Math.floor(Math.random() * cards.length);
+        var card = cards[random];
         var packet;
         if (card.collectible === true) {
-            packet = "oui"
+            packet = "oui";
         } else {
-            packet = "non"
+            packet = "non";
         }
         console.log("hearthstone cards random Command");
         var embed = new RichEmbed()
@@ -36,7 +36,7 @@ module.exports = class hscardsrandCommand extends Command {
             .addField("Type", card.type)
             .addField("ID texte", card.id)
             .addField("ID nombre", card.dbfId)
-            .addField("Trouvable dans un packet de carte", packet)
+            .addField("Trouvable dans un packet de carte", packet);
         return msg.embed(embed);
     }
 };
