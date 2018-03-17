@@ -1,6 +1,6 @@
 const { Command } = require("discord.js-commando");
 const { RichEmbed } = require("discord.js");
-const cards = require("./cards.json");
+const cards = require("./hearthstone/cards.json");
 
 module.exports = class hscardsrandCommand extends Command {
     constructor(client) {

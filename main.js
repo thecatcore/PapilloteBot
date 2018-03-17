@@ -21,11 +21,10 @@ client.registry
     .registerDefaultTypes()
     .registerGroups([
         ["citations", "Citations Commands"],
-        ["messages", "Say Commands"],
         ["images", "Images Commands"],
         ["info", "info commandes"],
         ["utile", "commandes utiles"],
-        ["games", "commandes en rapport avec des jeux"]
+        ["games", "commandes jeux"]
     ])
     .registerDefaultGroups()
     .registerDefaultCommands({
