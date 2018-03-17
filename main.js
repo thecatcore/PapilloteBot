@@ -24,7 +24,8 @@ client.registry
         ["messages", "Say Commands"],
         ["images", "Images Commands"],
         ["info", "info commandes"],
-        ["utile", "commandes utiles"]
+        ["utile", "commandes utiles"],
+        ["games", "commandes en rapport avec des jeux"]
     ])
     .registerDefaultGroups()
     .registerDefaultCommands({
