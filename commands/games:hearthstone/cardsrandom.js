@@ -36,7 +36,7 @@ module.exports = class hscardsrandCommand extends Command {
             .addField("Type", card.type)
             .addField("ID texte", card.id)
             .addField("ID nombre", card.dbfId)
-            .addField("Trouvable dans un packet de carte", packet);
+            .addField("Collectionable", packet);
         return msg.embed(embed);
     }
 };
