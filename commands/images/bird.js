@@ -16,12 +16,10 @@ module.exports = class BirdCommand extends Command {
     }
 
     async run(msg) {
-        const { body } = await superagent
-	   .get("https://loremflickr.com/320/240/bird");
 	   const embed = new RichEmbed()
 	   .setColor(0x954D23)
 	   .setTitle("Piou :bird:")
-       .setImage(body.file);
+       	   .setImage("https://loremflickr.com/320/240/bird");
         return msg.embed(embed);
     }
 };
