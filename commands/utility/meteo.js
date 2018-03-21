@@ -33,15 +33,15 @@ module.exports = class WeatherCommand extends Command {
     async run(msg, {lieu, degree}) {
         weather.find({search: lieu, degreeType: degree}, function(err, result) {
             if (err) {
-                msg.channel.send(err)
+                return msg.channel.send(err);
             }
             if (result.length === 0) {
-                return msg.say("Veuillez indiquer une localisation valide !")
+                return msg.say("Veuillez indiquer une localisation valide !");
             }
             var current = result[0].current;
             var location = result[0].location;
             var forecast = result[0].forecast;
-            console.log(current)
+            console.log(current);
             var currentembed = new RichEmbed()
                 .setDescription(`**${current.skytext}**`)
                 .setAuthor(`La météo pour ${current.observationpoint}`)
@@ -63,7 +63,7 @@ module.exports = class WeatherCommand extends Command {
                     .addField("Température minimum", `${forecast[i].low}${location.degreetype}`)
                     .addField("Température maximum", `${forecast[i].high}${location.degreetype}`)
                     .addField("Précipitation", `${forecast[i].precip}%`);
-                msg.embed(embed)
+                msg.embed(embed);
             }
                 
             
