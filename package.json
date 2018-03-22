@@ -1,6 +1,5 @@
 {
   "name": "papillotebot",
-  "version": "4.2",
   "dependencies": {
     "@firebase/app-types": "0.1.2",
     "discord.js": "^11.3.2",
