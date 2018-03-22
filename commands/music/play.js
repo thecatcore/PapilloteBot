@@ -42,6 +42,8 @@ module.exports = class PlayCommand extends Command {
         };
         var server = servers[msg.guild.id]
 
+        server.queue.push(args[1]);
+
         if (!msg.guild.voiceConnection) msg.member.voiceChannel.join().then(function(connection) {
             play(connection, msg)
         });
