@@ -1,2 +1,1 @@
-worker: npm install
-worrker: node main.js
+worker: node main.js
