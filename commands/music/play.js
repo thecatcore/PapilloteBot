@@ -1,16 +1,8 @@
 const { Command } = require("discord.js-commando");
 const { RichEmbed } = require("discord.js");
 
-var servers = {}
-
-function play(connection, msg) {
-    var server = servers[msg.guild.id];
-    server.dispatcher = connection.playArbitraryInput(server.queue[0]);
-    server.queue.shift();
-    server.dispatcher.on("end", function() {
-        if (server.queue[0]) play(connection, msg);
-        else connection.disconnect();
-    })
+function play(connection, linkname) {
+    connection.playArbitraryInput(linkname);
 }
 
 module.exports = class PlayCommand extends Command {
@@ -36,16 +28,10 @@ module.exports = class PlayCommand extends Command {
         if (!msg.member.voiceChannel) {
             return msg.say("Tu dois être dans un channel vocal !")
         };
-        if (!servers[msg.guild.id]) servers[msg.guild.id] = {
-            queue: []
-        };
-        var server = servers[msg.guild.id]
-
-        server.queue.push(linkname);
-        console.log(server);
 
         if (!msg.guild.voiceConnection) msg.member.voiceChannel.join().then(function(connection) {
-            play(connection, msg)
+            play(connection, linkname)
+            return msg.say("Vous écoutez ce lien : " + linkname)
         });
     }
 };
