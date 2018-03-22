@@ -16,6 +16,6 @@
     "test": "snyk test"
   },
   "devDependencies": {
-    "snyk": "1.70.2"
+    "snyk": "1.70.3"
   }
 }
