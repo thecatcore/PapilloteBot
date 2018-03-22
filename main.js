@@ -24,7 +24,8 @@ client.registry
         ["images", "Images Commands"],
         ["info", "info commandes"],
         ["utile", "commandes utiles"],
-        ["games", "commandes jeux"]
+        ["games", "commandes jeux"],
+        ["music", "commandes pour écouter de la musique"]
     ])
     .registerDefaultGroups()
     .registerDefaultCommands({
