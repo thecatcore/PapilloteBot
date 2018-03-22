@@ -17,5 +17,8 @@
   },
   "devDependencies": {
     "snyk": "1.70.3"
+  },
+  "engines": {
+    "npm": "5.7.x"
   }
 }
