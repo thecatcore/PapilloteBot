@@ -84,8 +84,6 @@ node_modules/escape-string-regexp/
 
 node_modules/extend/
 
-node_modules/firebase/
-
 node_modules/extsprintf/
 
 node_modules/fast-deep-equal/
@@ -275,3 +273,5 @@ node_modules/xmlhttprequest/
 node_modules/y18n/
 
 node_modules/yargs/
+
+node_modules/discord\.js/typings/
