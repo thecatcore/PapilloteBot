@@ -5,3 +5,4 @@
 
 config\.1\.json
 /.project
+node_modules/
