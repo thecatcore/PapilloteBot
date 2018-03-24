@@ -167,9 +167,8 @@ function skip_song(message) {
 }
 
 function playMusic(id, message) {
-    voiceChannel = message.member.voiceChannel;
-
-    voiceChannel.join().then(function (connection) {
+    guilds[message.guild.id].voiceChannel = message.member.voiceChannel;
+    guilds[message.guild.id].voiceChannel.join().then(function (connection) {
         stream = ytdl("https://www.youtube.com/watch?v=" + id, {
             filter: "audioonly"
         });
