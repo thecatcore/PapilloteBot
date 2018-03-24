@@ -167,7 +167,7 @@ function skip_song(message) {
 }
 
 function playMusic(id, message) {
-    guilds[message.guild.id].voiceChannel = message.member.GuildMember.user.voiceChannelID;
+    guilds[message.guild.id].voiceChannel = message.member.voiceChannel;
     console.log(message.member)
     console.log(message.member.GuildMember)
     console.log(guilds[message.guild.id].voiceChannel)
