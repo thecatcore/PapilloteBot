@@ -192,7 +192,7 @@ function playMusic(id, message) {
                 }, 500)
             }
         })
-    })
+    }).catch(console.error);
 }
 
 function getID(str, cb) {
