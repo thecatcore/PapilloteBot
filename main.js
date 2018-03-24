@@ -78,7 +78,6 @@ const Discord = require("discord.js");
 const clientt = new Discord.Client();
 const ytdl = require("ytdl-core");
 const request = require("request");
-const fs = require("fs");
 const getYouTubeID = require("get-youtube-id");
 const fetchVideoInfo = require("youtube-info");
 
