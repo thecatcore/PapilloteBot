@@ -21,13 +21,13 @@ module.exports = class PlayCommand extends Command {
     }
 
     run(msg, { linkname }) {
-        if (!msg.member.voiceChannel) {
-            return msg.say("Tu dois être dans un channel vocal !")
-        };
-        var link = new String(linkname)
-        if (!msg.guild.voiceConnection) msg.member.voiceChannel.join().then(function(connection) {
-            connection.playArbitraryInput(link.toString());
-            return msg.say("Vous écoutez ce lien : " + linkname);
-        });
+        //if (!msg.member.voiceChannel) {
+          //  return msg.say("Tu dois être dans un channel vocal !")
+        //};
+        //var link = new String(linkname)
+        //if (!msg.guild.voiceConnection) msg.member.voiceChannel.join().then(function(connection) {
+          //  connection.playArbitraryInput(link.toString());
+           // return msg.say("Vous écoutez ce lien : " + linkname);
+        //});
     }
 };
