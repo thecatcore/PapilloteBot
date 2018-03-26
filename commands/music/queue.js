@@ -4,7 +4,7 @@ const ytdl = require("ytdl-core");
 const request = require("request");
 const getYouTubeID = require("get-youtube-id");
 const fetchVideoInfo = require("youtube-info");
-import guilds from "./play"
+const { guilds } = require("./play")
 
 module.exports = class QueueCommand extends Command {
     constructor(client) {
