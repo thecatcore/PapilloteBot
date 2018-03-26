@@ -10,6 +10,17 @@ fs.writeFileSync("commands/help/seconde.json", secondes);
 fs.writeFileSync("commands/help/minute.json", minutes);
 fs.writeFileSync("commands/help/heure.json", heures);
 
+const firebase = require("firebase");
+var config = {
+    apiKey: "AIzaSyBS7yIZr45Y1yrWBalCpO3Y2bkS5OYJQQY",
+    authDomain: "papillotebot.firebaseapp.com",
+    databaseURL: "https://papillotebot.firebaseio.com",
+    projectId: "papillotebot",
+    storageBucket: "",
+    messagingSenderId: "68194330678"
+};
+firebase.initializeApp(config);
+
 
 const client = new Commando.Client({
   commandPrefix: config.prefix,
@@ -127,14 +138,12 @@ clientt.on("message", function (message) {
         //     })
         // }
     } else if (mess.startsWith(prefix + "skip")) {
-        if (guilds[message.guild.id].skippers.indexOf(message.author.id) === -1) {
-            guilds[message.guild.id].skippers.push(message.author.id);
-            guilds[message.guild.id].skipReq++;
-            skip_song(message);
-            message.reply("Skip en cours !")
-        } else {
-            message.reply("Vous avez déjà voté pour un skip !")
-        }
+        // if (guilds[message.guild.id].skippers.indexOf(message.author.id) === -1) {
+        //     guilds[message.guild.id].skippers.push(message.author.id);
+        //     guilds[message.guild.id].skipReq++;
+        //     skip_song(message);
+        //     message.reply("Skip en cours !")
+        // }
     } else if (mess.startsWith(prefix + "queue")) {
         // var message2 = "```";
         // for (var i = 0; i < guilds[message.guild.id].queueNames.length; i++) {
@@ -156,15 +165,15 @@ clientt.on("ready", function () {
     console.log("Je suis prêt !")
 })
 
-function skip_song(message) {
-    guilds[message.guild.id].dispatcher.end();
-    if (guilds[message.guild.id].queue.length > 1) {
-        playMusic(guilds[message.guild.id].queue[0].message);
-    } else {
-        guilds[message.guild.id].skipReq = 0;
-        guilds[message.guild.id].skippers = [];
-    }
-}
+// function skip_song(message) {
+//     guilds[message.guild.id].dispatcher.end();
+//     if (guilds[message.guild.id].queue.length > 1) {
+//         playMusic(guilds[message.guild.id].queue[0].message);
+//     } else {
+//         guilds[message.guild.id].skipReq = 0;
+//         guilds[message.guild.id].skippers = [];
+//     }
+// }
 
 // function playMusic(id, message) {
 //     guilds[message.guild.id].voiceChannel = message.member.voiceChannel;
