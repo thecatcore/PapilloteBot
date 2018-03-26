@@ -11,7 +11,7 @@ fs.writeFileSync("commands/help/minute.json", minutes);
 fs.writeFileSync("commands/help/heure.json", heures);
 
 const firebase = require("firebase");
-var config = {
+var configgg = {
     apiKey: "AIzaSyBS7yIZr45Y1yrWBalCpO3Y2bkS5OYJQQY",
     authDomain: "papillotebot.firebaseapp.com",
     databaseURL: "https://papillotebot.firebaseio.com",
@@ -19,7 +19,7 @@ var config = {
     storageBucket: "",
     messagingSenderId: "68194330678"
 };
-firebase.initializeApp(config);
+firebase.initializeApp(configgg);
 
 
 const client = new Commando.Client({
