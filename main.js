@@ -84,7 +84,7 @@ const fetchVideoInfo = require("youtube-info");
 var prefix = config.prefix
 var guilds = {};
 
-clientt.login(process.env.BOT_TOKEN);
+clientt.login(configg.token);
 
 clientt.on("message", function (message) {
     const member = message.member;
