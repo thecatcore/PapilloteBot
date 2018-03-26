@@ -2,15 +2,6 @@ const Commando = require("discord.js-commando");
 const path = require("path");
 const { Command } = require("discord.js-commando");
 const firebase = require("firebase");
-var config = {
-    apiKey: "AIzaSyBS7yIZr45Y1yrWBalCpO3Y2bkS5OYJQQY",
-    authDomain: "papillotebot.firebaseapp.com",
-    databaseURL: "https://papillotebot.firebaseio.com",
-    projectId: "papillotebot",
-    storageBucket: "",
-    messagingSenderId: "68194330678"
-  };
-  firebase.initializeApp(config);
 var database = firebase.database();
 var ref = database.ref("citations");
 
