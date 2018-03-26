@@ -18,22 +18,23 @@ module.exports = class SkipCommand extends Command {
     }
 
     run(msg) {
+        console.log(guilds)
         msg.say(guilds)
-        if (guilds[message.guild.id].skippers.indexOf(message.author.id) === -1) {
-            guilds[message.guild.id].skippers.push(message.author.id);
-            guilds[message.guild.id].skipReq++;
-            skip_song(message);
-            message.reply("Skip en cours !")
+        if (guilds[msg.guild.id].skippers.indexOf(msg.author.id) === -1) {
+            guilds[msg.guild.id].skippers.push(msg.author.id);
+            guilds[msg.guild.id].skipReq++;
+            skip_song(msg);
+            msg.reply("Skip en cours !")
         }
     }
 };
 
-function skip_song(message) {
-    guilds[message.guild.id].dispatcher.end();
-    if (guilds[message.guild.id].queue.length > 1) {
-        playMusic(guilds[message.guild.id].queue[0].message);
+function skip_song(msg) {
+    guilds[msg.guild.id].dispatcher.end();
+    if (guilds[msg.guild.id].queue.length > 1) {
+        playMusic(guilds[msg.guild.id].queue[0].msg);
     } else {
-        guilds[message.guild.id].skipReq = 0;
-        guilds[message.guild.id].skippers = [];
+        guilds[msg.guild.id].skipReq = 0;
+        guilds[msg.guild.id].skippers = [];
     }
 }

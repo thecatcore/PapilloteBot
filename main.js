@@ -5,10 +5,12 @@ const config = require("./config.json");
 var secondes = 0;
 var minutes = 0;
 var heures = 0;
+var guilds = {};
 var fs = require("fs");
 fs.writeFileSync("commands/help/seconde.json", secondes);
 fs.writeFileSync("commands/help/minute.json", minutes);
 fs.writeFileSync("commands/help/heure.json", heures);
+fs.writeFileSync("commands/music/song.json", guilds);
 
 const firebase = require("firebase");
 var configgg = {

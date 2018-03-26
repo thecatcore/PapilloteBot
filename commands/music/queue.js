@@ -19,6 +19,7 @@ module.exports = class QueueCommand extends Command {
     }
 
     run(msg) {
+        console.log(guilds)
         msg.say(guilds)
         var msg2 = "```";
         for (var i = 0; i < guilds[msg.guild.id].queueNames.length; i++) {
