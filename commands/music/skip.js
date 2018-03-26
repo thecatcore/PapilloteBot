@@ -5,12 +5,12 @@ const request = require("request");
 const getYouTubeID = require("get-youtube-id");
 const fetchVideoInfo = require("youtube-info");
 const guilds = require("./song.json")
-module.exports = class QueueCommand extends Command {
+module.exports = class SkipCommand extends Command {
     constructor(client) {
         super(client, {
-            name: "queue",
-            aliases: ["q"],
-            memberName: "queue",
+            name: "skip",
+            aliases: ["sk"],
+            memberName: "skip",
             group : "music",
             description: "",
             examples: [""]
