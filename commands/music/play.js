@@ -3,17 +3,7 @@ const { RichEmbed } = require("discord.js");
 
 var guilds = {};
 
-if (!guilds[msg.guild.id]) {
-    guilds[msg.guild.id] = {
-        queue: [],
-        queueNames: [],
-        isPlaying: false,
-        dispatcher: null,
-        voiceChannel: null,
-        skipReq: 0,
-        skippers: []
-    }
-}
+
 
 module.exports = class PlayCommand extends Command {
     constructor(client) {
@@ -35,6 +25,18 @@ module.exports = class PlayCommand extends Command {
     }
 
     run(msg, { linkname }) {
+        if (!guilds[msg.guild.id]) {
+            guilds[msg.guild.id] = {
+                queue: [],
+                queueNames: [],
+                isPlaying: false,
+                dispatcher: null,
+                voiceChannel: null,
+                skipReq: 0,
+                skippers: []
+            }
+        }
+
         if (guilds[msg.guild.id].queue.length > 0 || guilds[msg.guild.id].isPlaying) {
             getID(linkname, function (id) {
                 add_to_queue(id, msg);
