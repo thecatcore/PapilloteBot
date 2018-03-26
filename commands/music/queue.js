@@ -4,7 +4,7 @@ const ytdl = require("ytdl-core");
 const request = require("request");
 const getYouTubeID = require("get-youtube-id");
 const fetchVideoInfo = require("youtube-info");
-const { guilds } = require("./play")
+const guilds = require("./song.json")
 
 module.exports = class QueueCommand extends Command {
     constructor(client) {
@@ -19,6 +19,7 @@ module.exports = class QueueCommand extends Command {
     }
 
     run(msg) {
+        msg.say(guilds)
         var msg2 = "```";
         for (var i = 0; i < guilds[msg.guild.id].queueNames.length; i++) {
             var temp = (i + 1) + ": " + guilds[msg.guild.id].queueNames[i] + (i === 0 ? "**(Musique actuelle)**" : "") + "\n";

@@ -4,8 +4,7 @@ const ytdl = require("ytdl-core");
 const request = require("request");
 const getYouTubeID = require("get-youtube-id");
 const fetchVideoInfo = require("youtube-info");
-import guilds from "./play"
-
+const guilds = require("./song.json")
 module.exports = class QueueCommand extends Command {
     constructor(client) {
         super(client, {
@@ -19,6 +18,7 @@ module.exports = class QueueCommand extends Command {
     }
 
     run(msg) {
+        msg.say(guilds)
         if (guilds[message.guild.id].skippers.indexOf(message.author.id) === -1) {
             guilds[message.guild.id].skippers.push(message.author.id);
             guilds[message.guild.id].skipReq++;

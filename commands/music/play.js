@@ -4,6 +4,7 @@ const ytdl = require("ytdl-core");
 const request = require("request");
 const getYouTubeID = require("get-youtube-id");
 const fetchVideoInfo = require("youtube-info");
+var fs = require("fs");
 
 var guilds = {};
 
@@ -48,6 +49,7 @@ module.exports = class PlayCommand extends Command {
                     if (err) throw new Error(err);
                     msg.say(" Ajoutée à la queue : " + videoInfo.title);
                     guilds[msg.guild.id].queueNames.push(videoInfo.title)
+                    fs.writeFileSync("./song.json", guilds);
                 })
             });
         } else {
@@ -60,6 +62,7 @@ module.exports = class PlayCommand extends Command {
                     console.log(videoInfo)
                     msg.say(" Joue maintenant : " + videoInfo.title);
                     guilds[msg.guild.id].queueNames.push(videoInfo.title)
+                    fs.writeFileSync("./song.json", guilds);
                 })
             })
         }
