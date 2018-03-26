@@ -136,19 +136,19 @@ clientt.on("message", function (message) {
             message.reply("Vous avez déjà voté pour un skip !")
         }
     } else if (mess.startsWith(prefix + "queue")) {
-        var message2 = "```";
-        for (var i = 0; i < guilds[message.guild.id].queueNames.length; i++) {
-            var temp = (i + 1) + ": " + guilds[message.guild.id].queueNames[i] + (i === 0 ? "**(Musique actuelle)**" : "") + "\n";
-            if ((message2 + temp).length <= 2000 - 3) {
-                message2 += temp;
-            } else {
-                message2 += "```";
-                message.channel.send(message2)
-                message2 = "```";
-            }
-        }
-        message2 += "```";
-        message.channel.send(message2)
+        // var message2 = "```";
+        // for (var i = 0; i < guilds[message.guild.id].queueNames.length; i++) {
+        //     var temp = (i + 1) + ": " + guilds[message.guild.id].queueNames[i] + (i === 0 ? "**(Musique actuelle)**" : "") + "\n";
+        //     if ((message2 + temp).length <= 2000 - 3) {
+        //         message2 += temp;
+        //     } else {
+        //         message2 += "```";
+        //         message.channel.send(message2)
+        //         message2 = "```";
+        //     }
+        // }
+        // message2 += "```";
+        // message.channel.send(message2)
     }
 });
 
