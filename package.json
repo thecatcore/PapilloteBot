@@ -1,14 +1,19 @@
 {
   "name": "papillotebot",
   "dependencies": {
-    "discord.js": "^11.3.2",
-    "discord.js-commando": "^0.9.0",
-    "ffmpeg-binaries": "^3.2.2-3",
-    "firebase": "^4.12.0",
-    "node-opus": "^0.2.7",
-    "sqlite": "^2.9.1",
-    "superagent": "^3.8.2",
-    "weather-js": "^2.0.0"
+    "discord.js": "11.3.2",
+    "discord.js-commando": "0.9.0",
+    "ffmpeg-binaries": "3.2.2",
+    "firebase": "4.12.0",
+    "fs": "0.0.1-security",
+    "get-youtube-id": "1.0.0",
+    "opusscript": "0.0.6",
+    "request": "2.85.0",
+    "sqlite": "2.9.1",
+    "superagent": "3.8.2",
+    "weather-js": "2.0.0",
+    "youtube-info": "1.2.0",
+    "ytdl-core": "0.20.2"
   },
   "scripts": {
     "test": "snyk test"
