@@ -1,7 +1,7 @@
 const Commando = require("discord.js-commando");
 const path = require("path");
 const config = require("./config.json");
-//const configg = require("./config.1.json");
+const configg = require("./config.1.json");
 var secondes = 0;
 var minutes = 0;
 var heures = 0;
@@ -77,7 +77,7 @@ client.on("ready", () => {
       uptime();
 });
 
-client.login(process.env.BOT_TOKEN);
+client.login(configg.token);
 
 const sqlite = require("sqlite");
 
@@ -95,7 +95,7 @@ const fetchVideoInfo = require("youtube-info");
 var prefix = config.prefix
 // var guilds = {};
 
-clientt.login(process.env.BOT_TOKEN);
+clientt.login(configg.token);
 
 clientt.on("message", function (message) {
     const member = message.member;
