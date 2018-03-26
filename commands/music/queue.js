@@ -19,19 +19,19 @@ module.exports = class QueueCommand extends Command {
     }
 
     run(msg) {
-        var message2 = "```";
-        for (var i = 0; i < guilds[message.guild.id].queueNames.length; i++) {
-            var temp = (i + 1) + ": " + guilds[message.guild.id].queueNames[i] + (i === 0 ? "**(Musique actuelle)**" : "") + "\n";
-            if ((message2 + temp).length <= 2000 - 3) {
-                message2 += temp;
+        var msg2 = "```";
+        for (var i = 0; i < guilds[msg.guild.id].queueNames.length; i++) {
+            var temp = (i + 1) + ": " + guilds[msg.guild.id].queueNames[i] + (i === 0 ? "**(Musique actuelle)**" : "") + "\n";
+            if ((msg2 + temp).length <= 2000 - 3) {
+                msg2 += temp;
             } else {
-                message2 += "```";
-                msg.say(message2)
-                message2 = "```";
+                msg2 += "```";
+                msg.say(msg2)
+                msg2 = "```";
             }
         }
-        message2 += "```";
-        msg.say(message2)
+        msg2 += "```";
+        msg.say(msg2)
     }
 };
 
