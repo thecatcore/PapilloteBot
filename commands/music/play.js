@@ -83,7 +83,8 @@ module.exports = class PlayCommand extends Command {
         }
     };
 
-function playMusic(id, msg, ref) {
+function playMusic(id, msg) {
+    var ref = database.ref(`music/${msg.guild.id}`)
     voiceChannel = msg.member.voiceChannel;
     ref.update({
         voiceChannel: voiceChannel,
@@ -144,6 +145,7 @@ function getID(str, cb) {
 }
 
 function add_to_queue(strID, msg) {
+    var ref = database.ref(`music/${msg.guild.id}`)
     if (isYoutube(strID)) {
         queue.push(getYouTubeID(strID));
         ref.update({
