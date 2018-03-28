@@ -36,18 +36,18 @@ module.exports = class PlayCommand extends Command {
         var queue = []
         var queueNames = []
         var isPlaying = false
-        var dispatcher = "space"
-        var voiceChannel = 111
+        var dispatcher = null
+        var voiceChannel = null
         var skipReq = 0
         var skippers = []
         ref.set({
-            queue: queue,
-            queueNames: queueNames,
+            queue: "queue",
+            queueNames: "queueNames",
             isPlaying: isPlaying,
-            dispatcher: dispatcher,
-            voiceChannel: voiceChannel,
+            dispatcher: "dispatcher",
+            voiceChannel: "Channel",
             skipReq: skipReq,
-            skippers: skippers
+            skippers: "skippers"
         })
         ref.once("value", function (snap) {
         if (snap.val().isPlaying) {
