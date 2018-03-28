@@ -85,12 +85,12 @@ module.exports = class PlayCommand extends Command {
 
 function playMusic(id, msg) {
     var ref = database.ref(`music/${msg.guild.id}`)
-    voiceChannel =  new String(msg.member.voiceChannel)
+    voiceChannel =  msg.member.voiceChannel.id
     ref.update({
         voiceChannel: voiceChannel,
     })
     ref.once("value", function (snap) {
-        var voiceChannel = new Number(snap.val().voiceChannel)
+        var voiceChannel = snap.val().voiceChannel
         voiceChannel.join().then(function (connection) {
         stream = ytdl("https://www.youtube.com/watch?v=" + id, {
             filter: "audioonly"
