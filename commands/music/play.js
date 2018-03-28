@@ -50,41 +50,21 @@ module.exports = class PlayCommand extends Command {
             skippers: skippers
         })
         ref.once("value", function (snap) {
-            console.log(snap.val().isPlaying)
-        })
-        //console.log("length" + ref.queue.length)
-        var music = ref.child(`music/${msg.guild.id}/isPlaying`).key
-        console.log(music)
-        if (ref.isPlaying) {
+        if (snap.val().queue.length || snap.val().isPlaying) {
             getID(linkname, function (id) {
-                add_to_queue(id, msg, ref);
+                add_to_queue(ref, id, msg, ref);
                 fetchVideoInfo(id, function(err, videoInfo) {
                     if (err) throw new Error(err);
                     msg.say(" Ajoutée à la queue : " + videoInfo.title);
                     var videoname = videoInfo.title
                     queueNames.push(videoname)
-                    ref.set({
-                        queue: queue,
-                        queueNames: queueNames,
-                        isPlaying: isPlaying,
-                        dispatcher: dispatcher,
-                        voiceChannel: voiceChannel,
-                        skipReq: skipReq,
-                        skippers: skippers
+                    ref.update({
+                        queueNames: queueNames
                     })
                     })
             });
         } else {
             isPlaying = true
-            ref.set({
-                queue: queue,
-                queueNames: queueNames,
-                isPlaying: isPlaying,
-                dispatcher: dispatcher,
-                voiceChannel: voiceChannel,
-                skipReq: skipReq,
-                skippers: skippers
-            })
             getID(linkname, function(id) {
                 playMusic(id, msg, ref);
                 fetchVideoInfo(id, function(err, videoInfo) {
@@ -92,47 +72,65 @@ module.exports = class PlayCommand extends Command {
                     msg.say(" Joue maintenant : " + videoInfo.title);
                     var videoname = videoInfo.title
                     queueNames.push(videoname)
-                    ref.set({
-                        queue: queue,
+                    ref.update({
                         queueNames: queueNames,
-                        isPlaying: isPlaying,
-                        dispatcher: dispatcher,
-                        voiceChannel: voiceChannel,
-                        skipReq: skipReq,
-                        skippers: skippers
+                        isPlaying: isPlaying
                     })
                     })
                 })
             }
+        })
         }
     };
 
 function playMusic(id, msg, ref) {
-    ref.voiceChannel = msg.member.voiceChannel;
-    ref.voiceChannel.join().then(function (connection) {
+    voiceChannel = msg.member.voiceChannel;
+    ref.update({
+        voiceChannel: voiceChannel,
+    })
+    ref.once("value", function (snap) {
+    snap.val().voiceChannel.join().then(function (connection) {
         stream = ytdl("https://www.youtube.com/watch?v=" + id, {
             filter: "audioonly"
         });
-        ref.skipReq = 0;
-        ref.skippers = [];
-
-        ref.dispatcher = connection.playStream(stream);
-        ref.dispatcher.on("end", function () {
-            ref.skipReq = 0;
-            ref.skippers = [];
-            ref.queue.shift();
-            ref.queueNames.shift()
-            if (ref.queue.length === 0) {
-                ref.queue = [];
-                ref.queueNames = [];
-                ref.isPlaying = false;
+        skipReq = 0;
+        skippers = [];
+        ref.update({
+            skipReq: skipReq,
+            skippers: skippers
+        })
+        dispatcher = connection.playStream(stream);
+        ref.update({
+            dispatcher: dispatcher,
+        })
+        snap.val().dispatcher.on("end", function () {
+            skipReq = 0;
+            skippers = [];
+            queue.shift();
+            queueNames.shift()
+            ref.update({
+                queue: queue,
+                queueNames: queueNames,
+                skipReq: skipReq,
+                skippers: skippers
+            })
+            if (snap.val().queue.length === 0) {
+                queue = [];
+                queueNames = [];
+                isPlaying = false;
+                ref.update({
+                    queue: queue,
+                    queueNames: queueNames,
+                    isPlaying: isPlaying
+                })
             } else {
                 setTimeout(function () {
-                    playMusic(ref.queue[0], msg)
+                    playMusic(snap.val().queue[0], msg)
                 }, 500)
             }
         })
     }).catch(console.error);
+})
 }
 
 function getID(str, cb) {
@@ -147,9 +145,15 @@ function getID(str, cb) {
 
 function add_to_queue(strID, msg) {
     if (isYoutube(strID)) {
-        ref.queue.push(getYouTubeID(strID));
+        queue.push(getYouTubeID(strID));
+        ref.update({
+            queue: queue
+        })
     } else {
-        ref.queue.push(strID);
+        queue.push(strID);
+        ref.update({
+            queue: queue
+        })
     }
 }
 
