@@ -36,8 +36,8 @@ module.exports = class PlayCommand extends Command {
         var queue = []
         var queueNames = []
         var isPlaying = false
-        var dispatcher = null
-        var voiceChannel = null
+        var dispatcher = "space"
+        var voiceChannel = 111
         var skipReq = 0
         var skippers = []
         ref.set({
