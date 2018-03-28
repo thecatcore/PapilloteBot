@@ -52,7 +52,7 @@ module.exports = class PlayCommand extends Command {
             skipReq: skipReq,
             skippers: skippers
         })
-        console.log("length" + ref.queue.length)
+        //console.log("length" + ref.queue.length)
         console.log("isPlaying" + ref.isPlaying)
         if (ref.isPlaying) {
             getID(linkname, function (id) {
