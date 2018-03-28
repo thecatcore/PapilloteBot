@@ -52,7 +52,7 @@ module.exports = class PlayCommand extends Command {
         console.log(ref)
         if (ref.isPlaying) {
             getID(linkname, function (id) {
-                add_to_queue(id, msg);
+                add_to_queue(id, msg, ref);
                 fetchVideoInfo(id, function(err, videoInfo) {
                     if (err) throw new Error(err);
                     msg.say(" Ajoutée à la queue : " + videoInfo.title);
@@ -81,7 +81,7 @@ module.exports = class PlayCommand extends Command {
                 skippers: skippers
             })
             getID(linkname, function(id) {
-                playMusic(id, msg);
+                playMusic(id, msg, ref);
                 fetchVideoInfo(id, function(err, videoInfo) {
                     if (err) throw new Error(err);
                     console.log(videoInfo)
@@ -103,7 +103,7 @@ module.exports = class PlayCommand extends Command {
         }
     };
 
-function playMusic(id, msg) {
+function playMusic(id, msg, ref) {
     ref.voiceChannel = msg.member.voiceChannel;
     console.log(msg.member)
     console.log(msg.member.GuildMember)
