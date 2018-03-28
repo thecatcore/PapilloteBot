@@ -41,13 +41,13 @@ module.exports = class PlayCommand extends Command {
         var skipReq = 0
         var skippers = []
         ref.set({
-            queue: "queue",
-            queueNames: "queueNames",
+            queue: [{"queueNames":"space"}],
+            queueNames: [{"queueNames":"space"}],
             isPlaying: isPlaying,
             dispatcher: "dispatcher",
-            voiceChannel: "Channel",
+            voiceChannel: 111,
             skipReq: skipReq,
-            skippers: "skippers"
+            skippers: [{"queueNames":"space"}]
         })
         ref.once("value", function (snap) {
         if (snap.val().isPlaying) {
