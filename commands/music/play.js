@@ -85,7 +85,7 @@ module.exports = class PlayCommand extends Command {
 
 function playMusic(id, msg) {
     var ref = database.ref(`music/${msg.guild.id}`)
-    voiceChannel = msg.member.voiceChannel;
+    voiceChannel =  new String(msg.member.voiceChannel)
     ref.update({
         voiceChannel: voiceChannel,
     })
