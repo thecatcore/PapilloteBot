@@ -33,14 +33,21 @@ module.exports = class PlayCommand extends Command {
 
     run(msg, { linkname }) {
         var ref = database.ref(`music/${msg.guild.id}`)
+        var queue = []
+        var queueNames = []
+        var isPlaying = false
+        var dispatcher = null
+        var voiceChannel = null
+        var skipReq = 0
+        var skippers = []
         ref.set({
-            queue: [],
-            queueNames: [],
-            isPlaying: false,
-            dispatcher: null,
-            voiceChannel: null,
-            skipReq: 0,
-            skippers: []
+            queue: queue,
+            queueNames: queueNames,
+            isPlaying: isPlaying,
+            dispatcher: dispatcher,
+            voiceChannel: voiceChannel,
+            skipReq: skipReq,
+            skippers: skippers
         })
         console.log(ref)
         if (ref.isPlaying) {
@@ -50,30 +57,46 @@ module.exports = class PlayCommand extends Command {
                     if (err) throw new Error(err);
                     msg.say(" Ajoutée à la queue : " + videoInfo.title);
                     var videoname = videoInfo.title
+                    queueNames.push(videoname)
                     ref.set({
-                        queueNames : [{
-                            videoname
-                            }
-                        ]})
+                        queue: queue,
+                        queueNames: queueNames,
+                        isPlaying: isPlaying,
+                        dispatcher: dispatcher,
+                        voiceChannel: voiceChannel,
+                        skipReq: skipReq,
+                        skippers: skippers
+                    })
                     })
             });
         } else {
+            isPlaying = true
             ref.set({
-                isPlaying: true
-            });
+                queue: queue,
+                queueNames: queueNames,
+                isPlaying: isPlaying,
+                dispatcher: dispatcher,
+                voiceChannel: voiceChannel,
+                skipReq: skipReq,
+                skippers: skippers
+            })
             getID(linkname, function(id) {
-                ref.queue.push("placeholder");
                 playMusic(id, msg);
                 fetchVideoInfo(id, function(err, videoInfo) {
                     if (err) throw new Error(err);
                     console.log(videoInfo)
                     msg.say(" Joue maintenant : " + videoInfo.title);
                     var videoname = videoInfo.title
+                    queueNames.push(videoname)
                     ref.set({
-                        queueNames : [{
-                            videoname
-                            }
-                        ]})
+                        queue: queue,
+                        queueNames: queueNames,
+                        isPlaying: isPlaying,
+                        dispatcher: dispatcher,
+                        voiceChannel: voiceChannel,
+                        skipReq: skipReq,
+                        skippers: skippers
+                    })
                     })
                 })
             }
