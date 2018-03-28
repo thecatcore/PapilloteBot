@@ -33,9 +33,10 @@ module.exports = class PlayCommand extends Command {
 
     run(msg, { linkname }) {
         var ref = database.ref(`music/${msg.guild.id}`)
-        var queue = [{
-            length: 0
-        }]
+        var queue = {
+            length: 0,
+            song : []
+        }
         var queueNames = []
         var isPlaying = false
         var dispatcher = null
