@@ -49,7 +49,8 @@ module.exports = class PlayCommand extends Command {
             skipReq: skipReq,
             skippers: skippers
         })
-        console.log(ref)
+        console.log("length" + ref.queue.length)
+        console.log("isPlaying" + ref.isPlaying)
         if (ref.isPlaying) {
             getID(linkname, function (id) {
                 add_to_queue(id, msg, ref);
@@ -84,7 +85,6 @@ module.exports = class PlayCommand extends Command {
                 playMusic(id, msg, ref);
                 fetchVideoInfo(id, function(err, videoInfo) {
                     if (err) throw new Error(err);
-                    console.log(videoInfo)
                     msg.say(" Joue maintenant : " + videoInfo.title);
                     var videoname = videoInfo.title
                     queueNames.push(videoname)
@@ -105,9 +105,6 @@ module.exports = class PlayCommand extends Command {
 
 function playMusic(id, msg, ref) {
     ref.voiceChannel = msg.member.voiceChannel;
-    console.log(msg.member)
-    console.log(msg.member.GuildMember)
-    console.log(ref.voiceChannel)
     ref.voiceChannel.join().then(function (connection) {
         stream = ytdl("https://www.youtube.com/watch?v=" + id, {
             filter: "audioonly"
@@ -155,7 +152,6 @@ function add_to_queue(strID, msg) {
 function search_video(query, callback) {
     request("https://www.googleapis.com/youtube/v3/search?part=id&type=video&q=" + encodeURIComponent(query) + "&key=" + process.env.YT_KEY, function(error, response, body) {
        var json = JSON.parse(body);
-       console.log(json);
        if (!json.items[0]) callback("3_-a9nVZYjk");
        else {
         callback(json.items[0].id.videoId)
