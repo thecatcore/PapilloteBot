@@ -53,7 +53,7 @@ module.exports = class PlayCommand extends Command {
             skippers: skippers
         })
         //console.log("length" + ref.queue.length)
-        var music = ref.child("music");
+        var music = ref.child(`music/${msg.guild.id}`);
         console.log(music)
         if (ref.isPlaying) {
             getID(linkname, function (id) {
