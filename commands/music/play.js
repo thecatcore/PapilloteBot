@@ -42,18 +42,25 @@ module.exports = class PlayCommand extends Command {
             skipReq: 0,
             skippers: []
         })
-
-        if (ref.queue.length > 0 || ref.isPlaying) {
+        console.log(ref)
+        if (ref.isPlaying) {
             getID(linkname, function (id) {
                 add_to_queue(id, msg);
                 fetchVideoInfo(id, function(err, videoInfo) {
                     if (err) throw new Error(err);
                     msg.say(" Ajoutée à la queue : " + videoInfo.title);
-                    ref.queueNames.push(videoInfo.title)
-                })
+                    var videoname = videoInfo.title
+                    ref.set({
+                        queueNames : [{
+                            videoname
+                            }
+                        ]})
+                    })
             });
         } else {
-            ref.isPlaying = true;
+            ref.set({
+                isPlaying: true
+            });
             getID(linkname, function(id) {
                 ref.queue.push("placeholder");
                 playMusic(id, msg);
@@ -61,12 +68,17 @@ module.exports = class PlayCommand extends Command {
                     if (err) throw new Error(err);
                     console.log(videoInfo)
                     msg.say(" Joue maintenant : " + videoInfo.title);
-                    ref.queueNames.push(videoInfo.title)
+                    var videoname = videoInfo.title
+                    ref.set({
+                        queueNames : [{
+                            videoname
+                            }
+                        ]})
+                    })
                 })
-            })
+            }
         }
-    }
-};
+    };
 
 function playMusic(id, msg) {
     ref.voiceChannel = msg.member.voiceChannel;
