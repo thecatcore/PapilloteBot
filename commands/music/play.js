@@ -90,7 +90,8 @@ function playMusic(id, msg) {
         voiceChannel: voiceChannel,
     })
     ref.once("value", function (snap) {
-    snap.val().voiceChannel.join().then(function (connection) {
+        var voiceChannel = new Number(snap.val().voiceChannel)
+        voiceChannel.join().then(function (connection) {
         stream = ytdl("https://www.youtube.com/watch?v=" + id, {
             filter: "audioonly"
         });
