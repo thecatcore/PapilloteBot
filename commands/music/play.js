@@ -33,10 +33,7 @@ module.exports = class PlayCommand extends Command {
 
     run(msg, { linkname }) {
         var ref = database.ref(`music/${msg.guild.id}`)
-        var queue = {
-            length: 0,
-            song : []
-        }
+        var queue = []
         var queueNames = []
         var isPlaying = false
         var dispatcher = null
@@ -51,6 +48,9 @@ module.exports = class PlayCommand extends Command {
             voiceChannel: voiceChannel,
             skipReq: skipReq,
             skippers: skippers
+        })
+        ref.once("value", function (snap) {
+            console.log(snap.val().isPlaying)
         })
         //console.log("length" + ref.queue.length)
         var music = ref.child(`music/${msg.guild.id}/isPlaying`).key
