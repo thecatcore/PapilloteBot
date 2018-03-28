@@ -1,7 +1,7 @@
 const Commando = require("discord.js-commando");
 const path = require("path");
 const config = require("./config.json");
-const configg = require("./config.1.json");
+//const configg = require("./config.1.json");
 var secondes = 0;
 var minutes = 0;
 var heures = 0;
@@ -77,7 +77,7 @@ client.on("ready", () => {
       uptime();
 });
 
-client.login(configg.token);
+client.login(process.env.BOT_TOKEN);
 
 const sqlite = require("sqlite");
 
@@ -85,85 +85,85 @@ client.setProvider(
     sqlite.open(path.join(__dirname, "settings.sqlite3")).then((db) => new Commando.SQLiteProvider(db))
 ).catch(console.error);
 
-const Discord = require("discord.js");
-const clientt = new Discord.Client();
-const ytdl = require("ytdl-core");
-const request = require("request");
-const getYouTubeID = require("get-youtube-id");
-const fetchVideoInfo = require("youtube-info");
+// const Discord = require("discord.js");
+// const clientt = new Discord.Client();
+// const ytdl = require("ytdl-core");
+// const request = require("request");
+// const getYouTubeID = require("get-youtube-id");
+// const fetchVideoInfo = require("youtube-info");
 
-var prefix = config.prefix
-// var guilds = {};
+// var prefix = config.prefix
+// // var guilds = {};
 
-clientt.login(configg.token);
+// clientt.login(configg.token);
 
-clientt.on("message", function (message) {
-    const member = message.member;
-    const mess = message.content.toLowerCase();
-    const args = message.content.split(" ").slice(1).join(" ");
+// clientt.on("message", function (message) {
+//     const member = message.member;
+//     const mess = message.content.toLowerCase();
+//     const args = message.content.split(" ").slice(1).join(" ");
 
-    // if (!guilds[message.guild.id]) {
-    //     guilds[message.guild.id] = {
-    //         queue: [],
-    //         queueNames: [],
-    //         isPlaying: false,
-    //         dispatcher: null,
-    //         voiceChannel: null,
-    //         skipReq: 0,
-    //         skippers: []
-    //     }
-    // }
+//     // if (!guilds[message.guild.id]) {
+//     //     guilds[message.guild.id] = {
+//     //         queue: [],
+//     //         queueNames: [],
+//     //         isPlaying: false,
+//     //         dispatcher: null,
+//     //         voiceChannel: null,
+//     //         skipReq: 0,
+//     //         skippers: []
+//     //     }
+//     // }
 
-    if (mess.startsWith(prefix + "play")) {
-        // if (guilds[message.guild.id].queue.length > 0 || guilds[message.guild.id].isPlaying) {
-        //     getID(args, function (id) {
-        //         add_to_queue(id, message);
-        //         fetchVideoInfo(id, function(err, videoInfo) {
-        //             if (err) throw new Error(err);
-        //             message.reply(" Ajoutée à la queue : " + videoInfo.title);
-        //             guilds[message.guild.id].queueNames.push(videoInfo.title)
-        //         })
-        //     });
-        // } else {
-        //     guilds[message.guild.id].isPlaying = true;
-        //     getID(args, function(id) {
-        //         guilds[message.guild.id].queue.push("placeholder");
-        //         playMusic(id, message);
-        //         fetchVideoInfo(id, function(err, videoInfo) {
-        //             if (err) throw new Error(err);
-        //             console.log(videoInfo)
-        //             message.reply(" Joue maintenant : " + videoInfo.title);
-        //             guilds[message.guild.id].queueNames.push(videoInfo.title)
-        //         })
-        //     })
-        // }
-    } else if (mess.startsWith(prefix + "skip")) {
-        // if (guilds[message.guild.id].skippers.indexOf(message.author.id) === -1) {
-        //     guilds[message.guild.id].skippers.push(message.author.id);
-        //     guilds[message.guild.id].skipReq++;
-        //     skip_song(message);
-        //     message.reply("Skip en cours !")
-        // }
-    } else if (mess.startsWith(prefix + "queue")) {
-        // var message2 = "```";
-        // for (var i = 0; i < guilds[message.guild.id].queueNames.length; i++) {
-        //     var temp = (i + 1) + ": " + guilds[message.guild.id].queueNames[i] + (i === 0 ? "**(Musique actuelle)**" : "") + "\n";
-        //     if ((message2 + temp).length <= 2000 - 3) {
-        //         message2 += temp;
-        //     } else {
-        //         message2 += "```";
-        //         message.channel.send(message2)
-        //         message2 = "```";
-        //     }
-        // }
-        // message2 += "```";
-        // message.channel.send(message2)
-    }
-});
+//     if (mess.startsWith(prefix + "play")) {
+//         // if (guilds[message.guild.id].queue.length > 0 || guilds[message.guild.id].isPlaying) {
+//         //     getID(args, function (id) {
+//         //         add_to_queue(id, message);
+//         //         fetchVideoInfo(id, function(err, videoInfo) {
+//         //             if (err) throw new Error(err);
+//         //             message.reply(" Ajoutée à la queue : " + videoInfo.title);
+//         //             guilds[message.guild.id].queueNames.push(videoInfo.title)
+//         //         })
+//         //     });
+//         // } else {
+//         //     guilds[message.guild.id].isPlaying = true;
+//         //     getID(args, function(id) {
+//         //         guilds[message.guild.id].queue.push("placeholder");
+//         //         playMusic(id, message);
+//         //         fetchVideoInfo(id, function(err, videoInfo) {
+//         //             if (err) throw new Error(err);
+//         //             console.log(videoInfo)
+//         //             message.reply(" Joue maintenant : " + videoInfo.title);
+//         //             guilds[message.guild.id].queueNames.push(videoInfo.title)
+//         //         })
+//         //     })
+//         // }
+//     } else if (mess.startsWith(prefix + "skip")) {
+//         // if (guilds[message.guild.id].skippers.indexOf(message.author.id) === -1) {
+//         //     guilds[message.guild.id].skippers.push(message.author.id);
+//         //     guilds[message.guild.id].skipReq++;
+//         //     skip_song(message);
+//         //     message.reply("Skip en cours !")
+//         // }
+//     } else if (mess.startsWith(prefix + "queue")) {
+//         // var message2 = "```";
+//         // for (var i = 0; i < guilds[message.guild.id].queueNames.length; i++) {
+//         //     var temp = (i + 1) + ": " + guilds[message.guild.id].queueNames[i] + (i === 0 ? "**(Musique actuelle)**" : "") + "\n";
+//         //     if ((message2 + temp).length <= 2000 - 3) {
+//         //         message2 += temp;
+//         //     } else {
+//         //         message2 += "```";
+//         //         message.channel.send(message2)
+//         //         message2 = "```";
+//         //     }
+//         // }
+//         // message2 += "```";
+//         // message.channel.send(message2)
+//     }
+// });
 
-clientt.on("ready", function () {
-    console.log("Je suis prêt !")
-})
+// clientt.on("ready", function () {
+//     console.log("Je suis prêt !")
+// })
 
 // function skip_song(message) {
 //     guilds[message.guild.id].dispatcher.end();
