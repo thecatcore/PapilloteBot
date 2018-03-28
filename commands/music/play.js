@@ -53,7 +53,7 @@ module.exports = class PlayCommand extends Command {
             skippers: skippers
         })
         //console.log("length" + ref.queue.length)
-        console.log("isPlaying" + ref.isPlaying)
+        console.log(firebase.auth())
         if (ref.isPlaying) {
             getID(linkname, function (id) {
                 add_to_queue(id, msg, ref);
