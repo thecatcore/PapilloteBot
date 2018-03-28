@@ -5,6 +5,8 @@ const request = require("request");
 const getYouTubeID = require("get-youtube-id");
 const fetchVideoInfo = require("youtube-info");
 var fs = require("fs");
+var firebase = require("firebase");
+var database = firebase.database()
 
 var guilds = {};
 
@@ -30,42 +32,41 @@ module.exports = class PlayCommand extends Command {
     }
 
     run(msg, { linkname }) {
-        if (!guilds[msg.guild.id]) {
-            guilds[msg.guild.id] = {
-                queue: [],
-                queueNames: [],
-                isPlaying: false,
-                dispatcher: null,
-                voiceChannel: null,
-                skipReq: 0,
-                skippers: []
-            }
-        }
+        var ref = database.ref(`music/${msg.guild.id}`)
+        ref.set({
+            queue: [],
+            queueNames: [],
+            isPlaying: false,
+            dispatcher: null,
+            voiceChannel: null,
+            skipReq: 0,
+            skippers: []
+        })
 
-        if (guilds[msg.guild.id].queue.length > 0 || guilds[msg.guild.id].isPlaying) {
-            getID(linkname, function (id) {
-                add_to_queue(id, msg);
-                fetchVideoInfo(id, function(err, videoInfo) {
-                    if (err) throw new Error(err);
-                    msg.say(" Ajoutée à la queue : " + videoInfo.title);
-                    guilds[msg.guild.id].queueNames.push(videoInfo.title)
-                    fs.writeFileSync("./song.json", guilds);
-                })
-            });
-        } else {
-            guilds[msg.guild.id].isPlaying = true;
-            getID(linkname, function(id) {
-                guilds[msg.guild.id].queue.push("placeholder");
-                playMusic(id, msg);
-                fetchVideoInfo(id, function(err, videoInfo) {
-                    if (err) throw new Error(err);
-                    console.log(videoInfo)
-                    msg.say(" Joue maintenant : " + videoInfo.title);
-                    guilds[msg.guild.id].queueNames.push(videoInfo.title)
-                    fs.writeFileSync("./song.json", guilds);
-                })
-            })
-        }
+        // if (guilds[msg.guild.id].queue.length > 0 || guilds[msg.guild.id].isPlaying) {
+        //     getID(linkname, function (id) {
+        //         add_to_queue(id, msg);
+        //         fetchVideoInfo(id, function(err, videoInfo) {
+        //             if (err) throw new Error(err);
+        //             msg.say(" Ajoutée à la queue : " + videoInfo.title);
+        //             guilds[msg.guild.id].queueNames.push(videoInfo.title)
+        //             fs.writeFileSync("./song.json", guilds);
+        //         })
+        //     });
+        // } else {
+        //     guilds[msg.guild.id].isPlaying = true;
+        //     getID(linkname, function(id) {
+        //         guilds[msg.guild.id].queue.push("placeholder");
+        //         playMusic(id, msg);
+        //         fetchVideoInfo(id, function(err, videoInfo) {
+        //             if (err) throw new Error(err);
+        //             console.log(videoInfo)
+        //             msg.say(" Joue maintenant : " + videoInfo.title);
+        //             guilds[msg.guild.id].queueNames.push(videoInfo.title)
+        //             fs.writeFileSync("./song.json", guilds);
+        //         })
+        //     })
+        // }
     }
 };
 
