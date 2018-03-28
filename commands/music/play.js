@@ -50,7 +50,7 @@ module.exports = class PlayCommand extends Command {
             skippers: skippers
         })
         ref.once("value", function (snap) {
-        if (snap.val().queue.length || snap.val().isPlaying) {
+        if (snap.val().isPlaying) {
             getID(linkname, function (id) {
                 add_to_queue(ref, id, msg, ref);
                 fetchVideoInfo(id, function(err, videoInfo) {
