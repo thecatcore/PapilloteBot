@@ -6,6 +6,7 @@
     "ffmpeg-binaries": "3.2.2",
     "firebase": "4.12.1",
     "fs": "0.0.2",
+    "protobufjs":"6.8.6",
     "get-youtube-id": "1.0.0",
     "opusscript": "0.0.6",
     "request": "2.85.0",
