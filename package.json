@@ -9,7 +9,7 @@
     "protobufjs":"6.8.6",
     "get-youtube-id": "1.0.0",
     "opusscript": "0.0.6",
-    "hawk":"5.0.0",
+    "hawk":"5.1.2",
     "request": "2.85.0",
     "sqlite": "2.9.1",
     "hoek":"5.0.3",
