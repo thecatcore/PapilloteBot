@@ -8,6 +8,28 @@ const Enmap = require("enmap")
 client.config = require("./config.json")
 client.login(client.config.token)
 
+fs.readdir("./events/", (err, files) => {
+
+    if (err) {
+
+        return console.error(err)
+
+    }
+    files.forEach((file) => {
+
+        if (!file.endsWith(".js")) {
+
+            return
+
+        }
+        let event = require(`./events/${file}`)
+        let eventName = file.split(".")[0]
+
+        client.on(eventName, event.bind(null, client))
+
+    })
+
+})
 // const Commando = require("discord.js-commando");
 // const path = require("path");
 // const config = require("./config.json");
