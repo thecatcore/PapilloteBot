@@ -1,10 +1,2 @@
 
 \.DS_Store
-
-*.log
-
-config\.1\.json
-/.project
-node_modules/
-
-renovate
