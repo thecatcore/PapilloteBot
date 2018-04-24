@@ -4,3 +4,7 @@
 config\.json
 
 node_modules/
+
+config\.1\.json
+
+renovate
