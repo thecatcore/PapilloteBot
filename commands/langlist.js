@@ -1,3 +1,5 @@
+const fs = require("fs")
+exports.run = (client, msg) => {
 const serverlang = require(`./langs/${server.lang}`)
 msg.channel.send(serverlang.langlist)
 fs.readdir("./langs/", (err, files) => {
@@ -21,3 +23,4 @@ fs.readdir("./langs/", (err, files) => {
     })
 
 })
+}
