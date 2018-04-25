@@ -3,7 +3,7 @@
 
 *.log
 
-config\.1\.json
+config.json
 /.project
 node_modules/
 
