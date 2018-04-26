@@ -68,7 +68,6 @@ client.on("ready", function () {
 })
 
 function skip_song(message) {
-    console.log(guilds)
     guilds[message.guild.id].dispatcher.end();
     if (guilds[message.guild.id].queue.length > 1) {
         playMusic(guilds[message.guild.id].queue[0].message);
