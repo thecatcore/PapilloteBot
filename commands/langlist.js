@@ -5,34 +5,19 @@ const guild = msg.guild;
 var database = firebase.database();
 var ref = database.ref(`server/${guild.id}/lang`);
 function gotData(data) {
-    var lang = data.node_.value_;
-    const serverlang = require(`./langs/${lang}.json`)
-    msg.channel.send(serverlang.langlist)
-    fs.readdir("./commands/langs/", (err, files) => {
-
-        if (err) {
-
-            return console.error(err)
-
-        }
-        files.forEach((file) => {
-
-            if (!file.endsWith(".json")) {
-
-                return
-
-            }
-            let langName = file.split(".")[0]
-
-            msg.channel.send(langName);
-
-        })
-
-    })
+    var serverlang = data.node_.value_;
+    var lang = database.ref(`langs/${serverlang}/langlist`)
+    function gotDataa(dataa) {
+        var langlist = dataa.node_.value_
+        msg.channel.send(`${langlist}\nen_US\nfr_FR`)
+    }
+    function errDataa(erra) {
+        msg.channel.send(`Erreur: ${erra}`)
+    }
+    lang.on("value", gotDataa, errDataa)
 }
 function errData(err) {
-    console.log("Erreur !");
-    console.log(err);
+    msg.channel.send(`Erreur: ${err}`)
 }
 
 ref.on("value", gotData, errData);
