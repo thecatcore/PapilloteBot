@@ -2,6 +2,7 @@ const ytdl = require("ytdl-core");
 const request = require("request");
 const getYouTubeID = require("get-youtube-id");
 const fetchVideoInfo = require("youtube-info");
+const Discord = require("discord.js")
 exports.run = (client, message, [subcommand, args]) => {
 var guilds = {};
 
@@ -35,7 +36,26 @@ if (guilds[message.guild.id].queue.length > 0 || guilds[message.guild.id].isPlay
         fetchVideoInfo(id, function(err, videoInfo) {
             if (err) throw new Error(err);
             console.log(videoInfo)
-            message.reply(" Joue maintenant : " + videoInfo.title);
+            var embed = new Discord.RichEmbed()
+                .setThumbnail(videoInfo.thumbnailUrl)
+                .setAuthor(videoInfo.owner)
+                .setTitle(videoInfo.title)
+                .setImage(videoInfo.embedURL)
+                .setURL(videoInfo.url)
+                .addField("Date de publication", videoInfo.datePublished)
+                .addField("Nombre de vue", videoInfo.views)
+                .addField("Likes", videoInfo.likeCount)
+                .addField("Dislike", videoInfo.dislikeCount)
+                .addField("Genre", videoInfo.genre)
+                .addField("Nombre de commentaires", videoInfo.commentCount)
+                .addField("Durée", videoInfo.duration)
+            message.channel.send({ embed })
+            message.channel.send("Description")
+            if (videoInfo.description.length > 1999) {
+                message.channel.send("Désoler mais la description est trop longue :-( ")
+            } else {
+            message.channel.send(videoInfo.description)
+            }
             guilds[message.guild.id].queueNames.push(videoInfo.title)
         })
     })
@@ -79,9 +99,6 @@ function skip_song(message) {
 
 function playMusic(id, message) {
     guilds[message.guild.id].voiceChannel = message.member.voiceChannel;
-    console.log(message.member)
-    console.log(message.member.GuildMember)
-    console.log(guilds[message.guild.id].voiceChannel)
     guilds[message.guild.id].voiceChannel.join().then(function (connection) {
         stream = ytdl("https://www.youtube.com/watch?v=" + id, {
             filter: "audioonly"
@@ -129,7 +146,6 @@ function add_to_queue(strID, message) {
 function search_video(query, callback) {
     request("https://www.googleapis.com/youtube/v3/search?part=id&type=video&q=" + encodeURIComponent(query) + "&key=" + client.config.ytkey, function(error, response, body) {
        var json = JSON.parse(body);
-       console.log(json);
        if (!json.items[0]) callback("3_-a9nVZYjk");
        else {
         callback(json.items[0].id.videoId)
