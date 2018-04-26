@@ -6,6 +6,7 @@
     "firebase": "^4.13.1",
     "fs": "0.0.1-security",
     "get-youtube-id": "^1.0.0",
+    "node-opus": "^0.2.7",
     "querystring": "^0.2.0",
     "request": "^2.85.0",
     "snekfetch": "^4.0.0",

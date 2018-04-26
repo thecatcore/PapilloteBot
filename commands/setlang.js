@@ -7,4 +7,12 @@ exports.run = (client, member, [lang]) => {
             lang: lang
     };
     ref.set(lang);
+    function gotData(data) {
+        console.log("\n")
+    }
+    function errData(err) {
+        console.log("\n")
+    }
+    
+    ref.on("value", gotData, errData);
 }
