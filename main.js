@@ -1,7 +1,7 @@
-const Discord = require("discord.js")
-const client = new Discord.Client()
-const fs = require("fs")
-const Enmap = require("enmap")
+const Discord = require("discord.js");
+const client = new Discord.Client();
+const fs = require("fs");
+const Enmap = require("enmap");
 
 const firebase = require("firebase");
 var config = {
@@ -14,37 +14,41 @@ var config = {
 };
 firebase.initializeApp(config);
 
-client.config = require("./config.json")
-client.login(client.config.token)
+client.config = require("./config.json");
+client.login(client.config.token);
 
 fs.readdir("./events/", (err, files) => {
 
     if (err) {
 
-        return console.error(err)
+        return console.error(err);
 
     }
     files.forEach((file) => {
 
         if (!file.endsWith(".js")) {
 
-            return
+            return;
 
         }
-        let event = require(`./events/${file}`)
-        let eventName = file.split(".")[0]
+        let event = require(`./events/${file}`);
+        let eventName = file.split(".")[0];
 
-        client.on(eventName, event.bind(null, client))
+        client.on(eventName, event.bind(null, client));
 
-    })
+    });
 
-})
+});
 client.commands = new Enmap();
 
 fs.readdir("./commands/", (err, files) => {
-    if (err) return console.error(err);
+    if (err) {
+        return console.error(err);
+    }
     files.forEach((file) => {
-        if (!file.endsWith(".js")) return;
+        if (!file.endsWith(".js")) {
+            return;
+        }
         // Load the command file itself
         let props = require(`./commands/${file}`);
         // Get just the command name from the file name

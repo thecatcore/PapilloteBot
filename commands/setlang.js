@@ -1,18 +1,18 @@
-const firebase = require("firebase")
+const firebase = require("firebase");
 exports.run = (client, member, [lang]) => {
     const guild = member.guild;
     var database = firebase.database();
     var ref = database.ref(`server/${guild.id}`);
-    var lang = {
+    var langg = {
             lang: lang
     };
-    ref.set(lang);
+    ref.set(langg);
     function gotData(data) {
-        console.log("\n")
+        console.log("\n");
     }
     function errData(err) {
-        console.log("\n")
+        console.log("\n");
     }
     
     ref.on("value", gotData, errData);
-}
+};
