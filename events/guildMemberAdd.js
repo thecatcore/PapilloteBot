@@ -7,7 +7,7 @@ module.exports = (client, member) => {
         newUsers[guild.id] = new Discord.Collection();
     }
     newUsers[guild.id].set(member.id, member.user);
-    const userlist = newUsers[guild.id].map(u => u.toString()).join(" ");
+    const userlist = newUsers[guild.id].map((u) => u.toString()).join(" ");
     guild.channels.find("name", "general").send("Bienvenue sur le serveur !\n" + userlist);
     newUsers[guild.id].clear();
     // var database = firebase.database();
