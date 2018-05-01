@@ -1,51 +1,6 @@
 {
     "recette": [
         {
-            "name":"gâteau au chocolat",
-            "ingrédients":"100g de beurre\n100g de chocolat\n3 oeufs entiers\n100g de sucre\n60g de farine",
-            "étapes": [
-                {
-                    "description":"Faire fondre au bain marie : 100g de beurre\n                             100g de chocloat"
-                },
-                {
-                    "description":"Battre longtemps : 3 oeufs entier\n                   100g de surce\n                   60g de farine"
-                },
-                {
-                    "description":"Mélanger les deux appareils."
-                },
-                {
-                    "description":"Faire cuire 20 mn therm 6/7 dans un moule beurré."
-                },
-                {
-                    "description":"Bien respecter le temps de cuisson. Ne pas dépasser."
-                }
-            ],
-            "options": [
-                {
-                    "name":"nappage pour gâteau",
-                    "ingrédients":"10g de beurre\n80g de chocolat\n2 cuillerées à soupe de crème (pas au bain marie)"
-                }
-            ]
-        },
-        {
-            "name":"sauce vinaigrette",
-            "ingrédients":"1 cuilleréé de vinaigre\n3 cuillerées d'huile\nfines herbes hachées\nsel et poivre",
-            "étapes": [
-                {
-                    "description":"Faire fondre le sel dans le vinaigre"
-                },
-                {
-                    "description":"Tout mélanger"
-                }
-            ],
-            "options":[
-                {
-                    "name":"Variante agréable pour poulet ou poisson",
-                    "ingrédients":"Remplacer les 3 cuillerées d'huile par 2 cuillerées de concentré de tomates délayé dans la cuillerée de vinaigre"
-                }
-            ]
-        },
-        {
             "name":"boeuf bourguignon",
             "ingrédients":"700g de boeuf\n100g de lard salé\n50g de beurre\n60g d'oignons\n100g de champignons\n30g de farine\n3dl de vin rouge\n3dl de bouillon\nbouquet garni",
             "étapes":[

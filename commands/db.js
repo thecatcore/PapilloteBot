@@ -1,5 +1,5 @@
 exports.run = (client) => {
-    var ref = client.db.ref("recette")
+    var ref = client.db.ref("recette/-LBQZb9IOU52GVIIGkqs/étapes")
     function gotData(data) {
         console.log(data.val());
     }

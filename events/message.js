@@ -16,7 +16,7 @@ module.exports = (client, message) => {
     var length = keys.length;
     for (i=0;i < length;i++) {
       var k = keys[i];
-      if (message.content = client.config.prefix + recette[k].name) {
+      if (message.content === client.config.prefix + recette[k].name) {
         var recettes = recette[k]
         var nom = recettes.name
         var ingrédients = recettes.ingrédients
