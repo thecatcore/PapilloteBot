@@ -1,5 +1,7 @@
 exports.run = (client, message, args) => {
-    if(!args || args.size < 1) return message.reply("Vous devez nommer une commande à recharger.");
+    if(!args || args.size < 1) {
+        return message.reply("Vous devez nommer une commande à recharger.");
+    }
     const commandName = args[0];
     // Check if the command exists and is valid
     if(!client.commands.has(commandName)) {
@@ -13,4 +15,4 @@ exports.run = (client, message, args) => {
     const props = require(`./${commandName}.js`);
     client.commands.set(commandName, props);
     message.reply(`La commande ${commandName} a bien été rechargée`);
-  };
+};
