@@ -13,7 +13,7 @@ var config = {
     messagingSenderId: "68194330678"
 };
 firebase.initializeApp(config);
-
+client.db = firebase.database();
 client.config = require("./config.json");
 client.login(client.config.token);
 

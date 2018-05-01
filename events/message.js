@@ -7,6 +7,15 @@ module.exports = (client, message) => {
   if (message.content.indexOf(client.config.prefix) !== 0) {
     return;
   }
+  var ref = client.db.ref("recette")
+  function gotData(data) {
+    console.log(data);
+  }
+  function errData(err) {
+    console.log(err);
+  }
+
+  ref.on("value", gotData, errData);
   // Our standard argument/command name definition.
   const args = message.content.slice(client.config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
