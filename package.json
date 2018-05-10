@@ -16,7 +16,7 @@
     "superagent": "3.8.3",
     "weather-js": "2.0.0",
     "youtube-info": "1.2.0",
-    "ytdl-core": "0.20.2"
+    "ytdl-core": "0.20.3"
   },
   "scripts": {
     "test": "snyk test"
