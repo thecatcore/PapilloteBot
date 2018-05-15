@@ -22,7 +22,7 @@
     "test": "snyk test"
   },
   "devDependencies": {
-    "snyk": "1.80.0"
+    "snyk": "1.80.1"
   },
   "engines": {
     "npm": "5.7.x"
