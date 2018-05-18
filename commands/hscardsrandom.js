@@ -11,20 +11,76 @@ var random = Math.floor(Math.random() * cards.length);
         }
         console.log("hearthstone cards random Command");
         var embed = new RichEmbed()
-            .setTitle("Carte aléatoire")
-            .addField("Nom", card.name)
-            .addField("Coût", card.cost)
-            .addField("Attack", card.attack)
-            .addField("PV", card.health)
-            .addField("Rareté", card.rarity)
-            .addField("Texte", card.text)
-            .addField("Description dans la collection", card.flavor)
-            .addField("Artiste", card.artist)
-            .addField("Classe", card.cardClass)
-            .addField("Race", card.race)
-            .addField("Type", card.type)
-            .addField("ID texte", card.id)
-            .addField("ID nombre", card.dbfId)
-            .addField("Collectionable", packet);
-return msg.embed(embed);
+            .setTitle("Carte aléatoire");
+        if (!card.name) {
+                return
+        } else {
+                embed.addField("Nom", card.name)
+        }
+        if (!card.cost) {
+                return
+        } else {
+                embed.addField("Coût", card.cost)
+        }
+        if (!card.attack) {
+                return
+        } else {
+                embed.addField("Attack", card.attack)
+        }
+        if (!card.health) {
+                return
+        } else {
+                embed.addField("PV", card.health)
+        }
+        if (!card.rarity) {
+                return
+        } else {
+                embed.addField("Rareté", card.rarity)
+        }
+        if (!card.text) {
+                return
+        } else {
+                embed.addField("Texte", card.text)
+        }
+        if (!card.flavor) {
+                return
+        } else {
+                embed.addField("Description dans la collection", card.flavor)
+        }
+        if (!card.artist) {
+                return
+        } else {
+                embed.addField("Artiste", card.artist)
+        }
+        if (!card.cardClass) {
+                return
+        } else {
+                embed.addField("Classe", card.cardClass)
+        }
+        if (!card.race) {
+                return
+        } else {
+                embed.addField("Race", card.race)
+        }
+        if (!card.type) {
+                return
+        } else {
+                embed.addField("Type", card.type)
+        }
+        if (!card.id) {
+                return
+        } else {
+                embed.addField("ID texte", card.id)
+        }
+        if (!card.dbfId) {
+                return
+        } else {
+                embed.addField("ID nombre", card.dbfId)
+        }
+        if (!packet) {
+                return
+        } else {
+                embed.addField("Collectionable", packet);
+        }
+        return message.channel.send(embed);
 }
