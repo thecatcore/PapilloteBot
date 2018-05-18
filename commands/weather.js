@@ -1,4 +1,6 @@
-{
+const { RichEmbed } = require("discord.js")
+const weather = require("weather")
+exports.run = (client, msg, [degree, ...lieu]) => {
 weather.find({search: lieu, degreeType: degree}, function(err, result) {
             if (err) {
                 return msg.channel.send(err);
