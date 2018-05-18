@@ -1,3 +1,6 @@
+const { RichEmbed } = require("discord.js");
+const cards = require("./tools/cards.json");
+exports.run = (client, message, [type, number, ...texttocode]) => {
 var random = Math.floor(Math.random() * cards.length);
         var card = cards[random];
         var packet;
@@ -24,3 +27,4 @@ var random = Math.floor(Math.random() * cards.length);
             .addField("ID nombre", card.dbfId)
             .addField("Collectionable", packet);
 return msg.embed(embed);
+}
