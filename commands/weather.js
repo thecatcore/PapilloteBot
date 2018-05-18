@@ -6,7 +6,7 @@ weather.find({search: lieu, degreeType: degree}, function(err, result) {
                 return msg.channel.send(err);
             }
             if (result.length === 0) {
-                return msg.say("Veuillez indiquer une localisation valide !");
+                return msg.channel.reply("Veuillez indiquer une localisation valide !");
             }
             var current = result[0].current;
             var location = result[0].location;
@@ -22,7 +22,7 @@ weather.find({search: lieu, degreeType: degree}, function(err, result) {
                 .addField("Ressenti", `${current.feelslike}${location.degreetype}`)
                 .addField("Humiditée", `${current.humidity}%`)
                 .addField("Vent", current.winddisplay);
-            msg.embed(currentembed);
+            msg.channel.send(currentembed);
             var i;
             for (i = 2; i < forecast.length; i++) {
                 var embed = new RichEmbed()
@@ -33,7 +33,7 @@ weather.find({search: lieu, degreeType: degree}, function(err, result) {
                     .addField("Température minimum", `${forecast[i].low}${location.degreetype}`)
                     .addField("Température maximum", `${forecast[i].high}${location.degreetype}`)
                     .addField("Précipitation", `${forecast[i].precip}%`);
-                msg.embed(embed);
+                msg.channel.send(embed);
             }
                 
             
