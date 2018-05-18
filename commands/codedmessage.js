@@ -27,7 +27,8 @@ exports.run = (client, message, [type, number, ...texttocode]) => {
       }
     }
     }
-    var resultembed = new client.RichEmbed()
+    const Discord = require("discord.js")
+    var resultembed = new Discord.RichEmbed()
       .settitle("Voici votre message codé)
   } else if (type=="dm") {
     if (number==undifined) return message.reply(numbererror)
