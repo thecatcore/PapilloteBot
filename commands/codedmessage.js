@@ -1,35 +1,62 @@
 exports.run = (client, message, [type, number, ...texttocode]) => {
   if (type=="server") {
-    if (number==undifined) return message.reply(numbererror)
+    if (!number) return message.reply(numbererror)
     var a;
     var b;
-    var texttocoded = texttocode.split("")
-    console.log(texttocoded)
+    var c;
+    var word;
+    var texttocoded = "";
+    for (c=0;c < texttocode.length; c++) {
+    word = texttocode[c].split("")
+    console.log(word)
+    
     var textcoding = ""
-    for (b=0;b < texttocode.length;b++) {
-      const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+    var cletter
+      var letternum
+      const alphabetlower = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+      const alphabetupper = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
       var oletter;
-    for (a=0;a < alphabet.length;a++) {
-      oletter = texttocoded[b];
-      console.log(oletter)
-      var cletter
-      var cletternum
-      var oletternum
-      if (oletter == alphabet[a]) {
-        oletternum = a;
-        console.log(oletternum);
-        cletternum = oletternum + number;
-        console.log(oletternum + "->" + cletternum);
-        cletter = alphabet[cletternum];
-        console.log(oletter + "->" + cletter);
-        textcoding = textcoding + cletter;
-        console.log(textcoding)
+    for (b=0;b < word.length;b++) {
+      oletter = word[b];
+      if (oletter == "'" || oletter ==  "." || oletter ==  "?" || oletter ==  "!" || oletter == ",") {
+        textcoding = textcoding + oletter
+      } else {
+      for (a=0;a < alphabetlower.length;a++) {
+        if (oletter === alphabetlower[a]) {
+          letternum = a;
+          letternum = letternum + Number(number);
+          if (letternum >= 25) {
+            cletter = alphabetlower[letternum - 26]
+          }else{
+          cletter = alphabetlower[letternum];
+          }
+          console.log(oletter + "->" + cletter);
+          textcoding = textcoding + cletter;
+        
+        } else {
+          if (oletter === alphabetupper[a]) {
+            letternum = a;
+          letternum = letternum + Number(number);
+          if (letternum >= 25) {
+            cletter = alphabetupper[letternum - 26]
+          }else{
+          cletter = alphabetupper[letternum];
+          }
+          console.log(oletter + "->" + cletter);
+          textcoding = textcoding + cletter;
+          }
+        }
       }
     }
     }
-    const Discord = require("discord.js")
-    var resultembed = new Discord.RichEmbed()
-      .settitle("Voici votre message codé)
+    console.log(textcoding)
+    texttocoded = texttocoded + " " + textcoding
+  }
+  const {RichEmbed} = require("discord.js")
+    var resultembed = new RichEmbed()
+      .setTitle("Voici votre message codé")
+      .setDescription(texttocoded);
+    return message.channel.send(resultembed)
   } else if (type=="dm") {
     if (number==undifined) return message.reply(numbererror)
   } else {

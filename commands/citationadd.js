@@ -10,7 +10,7 @@ exports.run = (client, message, [auteur, ...citation]) => {
         }
 
         ref.on("value", gotData, errData);
-        msg.channel.send(`Ajout de la citation:\n${citation}\nde ${auteur} par ${message.author} à la base de données.`);
+        message.channel.send(`Ajout de la citation:\n${citation}\nde ${auteur} par ${message.author} à la base de données.`);
         var cont = new String(message.author);
         var data = {
             citation: citation,
