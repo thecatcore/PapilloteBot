@@ -1,14 +1,8 @@
 
 \.DS_Store
 
-*.log
+config\.json
 
-config.json
-/.project
 node_modules/
 
 renovate
-
-build/
-
-\.space
