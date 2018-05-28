@@ -11,10 +11,10 @@ exports.run = (client, message, [auteur, ...citiation]) => {
 
         ref.on("value", gotData, errData);
         var citation = "";
-        for (a=0;a < citiation.length; a++) {
-            citation = citation + " " + citiation[a]
+        for (var a=0;a < citiation.length; a++) {
+            citation = citation + " " + citiation[a];
         }
-        console.log(citation)
+        console.log(citation);
         message.channel.send(`Ajout de la citation:\n${citation}\nde ${auteur} par ${message.author} à la base de données.`);
         var cont = new String(message.author);
         var data = {
@@ -23,4 +23,4 @@ exports.run = (client, message, [auteur, ...citiation]) => {
             contributeur: cont.toString()
         };
         ref.push(data);
-}
+};
