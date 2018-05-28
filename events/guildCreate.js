@@ -1,4 +1,4 @@
-const firebase = require("firebase")
+const firebase = require("firebase");
 module.exports = (client, member) => {
     var database = firebase.database();
     var ref = database.ref(`server/${member.guild.id}`);
@@ -6,4 +6,4 @@ module.exports = (client, member) => {
             lang: "en_US"
     };
     ref.set(defaultSettings);
-}
+};
