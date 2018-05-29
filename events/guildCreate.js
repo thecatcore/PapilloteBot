@@ -6,5 +6,5 @@ module.exports = (client, guild, message) => {
             lang: "en_US"
     };
     ref.set(defaultSettings);
-    message.channel(450692646940180500).send(`J'ai rejoint le serveur ${guild.name}, avec l'id ${guild.id} !`)
+    message.channels.get(450692646940180500).send(`J'ai rejoint le serveur ${guild.name}, avec l'id ${guild.id} !`)
 };
