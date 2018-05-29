@@ -27,7 +27,7 @@ if (!process.env.BOT_TOKEN) {
         
     }
 } else {
-    client.config.token = !process.env.BOT_TOKEN
+    client.config.token = process.env.BOT_TOKEN
 }
 client.login(client.config.token);
 
