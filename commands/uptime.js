@@ -1,8 +1,13 @@
 exports.run = (client, message) => {
-  var ms = client.uptime
-  var seconde = Math.floor(ms/1000)
-  var minute = Math.floor(seconde/60)
-  var heure = Math.floor(minute/60)
-  var jour = Math.floor(heure/24)
+  var mss = client.uptime
+  var secondee = Math.floor(mss/1000)
+  var minutee = Math.floor(secondee/60)
+  var heuree = Math.floor(minutee/60)
+  var jour = Math.floor(heuree/24)
+  var ms = mss - ((secondee * 1000) + (minutee * 60 * 1000) + (heuree * 60 * 60 * 1000) + (jour * 24 * 60 * 60 * 1000))
+  var seconde = secondee - ((minutee * 60) + (heuree * 60 * 60) + (jour * 24 * 60 * 60))
+  var minute = minutee - ((heuree * 60) + (jour * 24 * 60))
+  var heure = heuree - (jour * 24)
+  console.log("ms : " + ms + " ou " + mss)
   message.channel.send(`Le bot est en ligne depuis ${ms} millisecondes, ${seconde} secondes, ${minute} minutes, ${heure} heures et ${jour} jour(s)`)
 }
