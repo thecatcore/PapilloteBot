@@ -14,7 +14,21 @@ var config = {
 };
 firebase.initializeApp(config);
 client.db = firebase.database();
-client.config = require("./config.json");
+client.config = {}
+client.config.prefix = "+"
+
+if (!process.env.BOT_TOKEN) {
+    console.log("Vous n'êtes pas sur heroku ?")
+    configfile = require("./config.json");
+    if (!configfile.token) {
+        console.log("Il manque le token idiot !")
+    } else {
+        client.config.token = configfile.token
+        
+    }
+} else {
+    client.config.token = !process.env.BOT_TOKEN
+}
 client.login(client.config.token);
 
 fs.readdir("./events/", (err, files) => {
