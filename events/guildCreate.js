@@ -6,6 +6,6 @@ module.exports = (client, guild) => {
             lang: "en_US"
     };
     ref.set(defaultSettings);
-    var chan = client.channels.find("id", 450692646940180500)
+    var chan = client.channels.get("450692646940180500")
     chan.send(`J'ai rejoint le serveur ${guild.name}, avec l'id ${guild.id} !`)
 };
