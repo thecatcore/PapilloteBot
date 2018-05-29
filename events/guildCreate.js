@@ -1,10 +1,10 @@
 const firebase = require("firebase");
-module.exports = (client, member, message) => {
+module.exports = (client, guild, message) => {
     var database = firebase.database();
-    var ref = database.ref(`server/${member.guild.id}`);
+    var ref = database.ref(`server/${guild.id}`);
     var defaultSettings = {
             lang: "en_US"
     };
     ref.set(defaultSettings);
-    message.channel(450692646940180500).send(`J'ai rejoint le serveur ${member.guild.name}, avec l'id ${member.guild.id} !`)
+    message.channel(450692646940180500).send(`J'ai rejoint le serveur ${guild.name}, avec l'id ${guild.id} !`)
 };
