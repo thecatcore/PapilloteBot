@@ -7,7 +7,7 @@ exports.run = (client, message) => {
   const embed = new RichEmbed()
 	   .setColor(0x954D23)
 	   .setTitle("Meow :cat:")
-     	   .setImage(body.message);
+     .setImage(body.file);
   return message.channel.send(embed);
   }
   cat();
