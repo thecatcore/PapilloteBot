@@ -1,5 +1,5 @@
 const firebase = require("firebase");
-module.exports = (client, guild, message) => {
+module.exports = (client, message, guild) => {
     var database = firebase.database();
     var ref = database.ref(`server/${guild.id}`);
     var defaultSettings = {
