@@ -44,5 +44,4 @@ async function googleCommand(msg, args) {
      searchMessage.edit('No results found!');
   });
 }
-googleCommand(message, args);
 }
