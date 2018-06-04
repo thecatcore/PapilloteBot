@@ -18,11 +18,11 @@ const cheerio = require('cheerio'),
 // Depending on your command framework (or if you use one), it doesn't have to
 // edit messages so you can rework it to fit your needs. Again, this doesn't have
 // to be async if you don't care about message editing.
-async function googleCommand(msg, args) {
+async function googleCommand(message, args) {
 
    // These are our two variables. One of them creates a message while we preform a search,
    // the other generates a URL for our crawler.
-   let searchMessage = await msg.reply('Searching... Sec.');
+   let searchMessage = await message.reply('Searching... Sec.');
    let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(args)}`;
 
    // We will now use snekfetch to crawl Google.com. Snekfetch uses promises so we will
@@ -44,4 +44,5 @@ async function googleCommand(msg, args) {
      searchMessage.edit('No results found!');
   });
 }
+    googleCommand();
 }
