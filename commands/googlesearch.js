@@ -5,8 +5,8 @@ exports.run = (client, message, args) => {/*
 
     REMINDER: <Message> is what you defined in the <Client>.on('<Message>', <Message>) event.
 */
-var arg = "";
-for (var c = 0; c < args.length; c++) {
+var arg = args[0]
+for (var c = 1; c < args.length; c++) {
   arg = arg + " " + args[c];
 }
 
