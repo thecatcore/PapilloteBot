@@ -2,10 +2,10 @@ const Discord = require("discord.js");
 
 module.exports = (client, message) => {
   // Ignore all bots
-  client.message = message
   if (message.author.bot) {
     return;
   }
+  
   // Ignore messages not starting with the prefix (in config.json)
   if (message.content.indexOf(client.config.prefix) !== 0) {
     return;
