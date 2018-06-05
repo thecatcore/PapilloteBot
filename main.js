@@ -14,20 +14,20 @@ var config = {
 };
 firebase.initializeApp(config);
 client.db = firebase.database();
-client.config = {}
-client.config.prefix = "+"
+client.config = {};
+client.config.prefix = "+";
 
 if (!process.env.BOT_TOKEN) {
-    console.log("Vous n'êtes pas sur heroku ?")
-    configfile = require("./config.json");
+    console.log("Vous n'êtes pas sur heroku ?");
+    var configfile = require("./config.json");
     if (!configfile.token) {
-        console.log("Il manque le token idiot !")
+        console.log("Il manque le token idiot !");
     } else {
-        client.config.token = configfile.token
+        client.config.token = configfile.token;
         
     }
 } else {
-    client.config.token = process.env.BOT_TOKEN
+    client.config.token = process.env.BOT_TOKEN;
 }
 client.login(client.config.token);
 
