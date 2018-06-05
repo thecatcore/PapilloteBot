@@ -1,13 +1,13 @@
-exports.run = (client, message, ...search) => {/*
+exports.run = (client, message, arg) => {/*
     Example By Nomsy#7453
     
     This will require knowledge of ES7's await/async functions found in node 7+
 
     REMINDER: <Message> is what you defined in the <Client>.on('<Message>', <Message>) event.
 */
-var args = ""
-for (var c = 0; c < search.length; c++) {
-  args = args + " " + search[c]
+var args = "";
+for (var c = 0; c < arg.length; c++) {
+  args = args + " " + arg[c];
 }
 
 // The modules we are using are cheerio, snekfetch, and querystring for this.
@@ -45,4 +45,4 @@ async function googleCommand(message, args) {
   });
 }
     googleCommand();
-}
+};
