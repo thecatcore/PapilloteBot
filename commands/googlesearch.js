@@ -1,13 +1,13 @@
-exports.run = (client, message, arg) => {/*
+exports.run = (client, message, args) => {/*
     Example By Nomsy#7453
     
     This will require knowledge of ES7's await/async functions found in node 7+
 
     REMINDER: <Message> is what you defined in the <Client>.on('<Message>', <Message>) event.
 */
-var args = "";
-for (var c = 0; c < arg.length; c++) {
-  args = args + " " + arg[c];
+var arg = "";
+for (var c = 0; c < args.length; c++) {
+  arg = arg + " " + args[c];
 }
 
 // The modules we are using are cheerio, snekfetch, and querystring for this.
@@ -18,7 +18,7 @@ const cheerio = require('cheerio'),
 // Depending on your command framework (or if you use one), it doesn't have to
 // edit messages so you can rework it to fit your needs. Again, this doesn't have
 // to be async if you don't care about message editing.
-async function googleCommand(message, args) {
+async function googleCommand(message, arg) {
 
    // These are our two variables. One of them creates a message while we preform a search,
    // the other generates a URL for our crawler.
