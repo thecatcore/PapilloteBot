@@ -41,6 +41,7 @@ async function googleCommand(message, args) {
 
   // If no results are found, we catch it and return 'No results are found!'
   }).catch((err) => {
+     message.channel.send("Erreur !!!! : " + err);
      searchMessage.edit('No results found!');
   });
 }
