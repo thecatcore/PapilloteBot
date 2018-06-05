@@ -1,19 +1,18 @@
 {
   "dependencies": {
-
     "cheerio": "^1.0.0-rc.2",
     "discord.js": "^11.3.2",
-    "enmap": "^2.1.1",
+    "enmap": "^2.6.1",
     "firebase": "^5.0.0",
     "get-youtube-id": "^1.0.0",
     "opusscript": "0.0.6",
     "querystring": "^0.2.0",
-    "request": "^2.85.0",
-    "snekfetch": "^4.0.0",
+    "request": "^2.87.0",
+    "snekfetch": "^4.0.1",
     "superagent": "^3.8.3",
     "weather-js": "^2.0.0",
     "youtube-info": "^1.2.0",
-    "ytdl-core": "^0.20.2"
+    "ytdl-core": "^0.20.4"
   },
   "engines": {
     "npm": "6.1.x"
