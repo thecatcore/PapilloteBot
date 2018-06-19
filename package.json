@@ -12,9 +12,15 @@
     "superagent": "^3.8.3",
     "weather-js": "^2.0.0",
     "youtube-info": "^1.2.0",
-    "ytdl-core": "^0.20.4"
+    "ytdl-core": "^0.20.4",
+    "snyk": "^1.83.0"
   },
   "engines": {
     "npm": "6.1.x"
-  }
+  },
+  "scripts": {
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
+  },
+  "snyk": true
 }
