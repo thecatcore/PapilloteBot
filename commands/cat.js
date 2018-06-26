@@ -1,7 +1,6 @@
 const { RichEmbed } = require("discord.js");
 const superagent = require("superagent");
-exports.run = (client, message) => {
-  async function cat () {
+exports.run = async (client, message) => {
   const { body } = await superagent
 	   .get("http://aws.random.cat/meow");
   const embed = new RichEmbed()
@@ -9,6 +8,4 @@ exports.run = (client, message) => {
 	   .setTitle("Meow :cat:")
      .setImage(body.file);
   return message.channel.send(embed);
-  }
-  cat();
 };

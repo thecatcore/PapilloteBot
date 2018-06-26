@@ -1,6 +1,6 @@
 const { RichEmbed } = require("discord.js");
 const cards = require("./tools/cards.json");
-exports.run = (client, message, [type, number, ...texttocode]) => {
+exports.run = (client, message) => {
 var random = Math.floor(Math.random() * cards.length);
         var card = cards[random];
         var packet;

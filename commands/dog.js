@@ -1,7 +1,7 @@
 const superagent = require("superagent");
 const { RichEmbed } = require("discord.js");
-exports.run = (client, message) => {
-  async function run() {
+exports.run = async (client, message) => {
+
      const { body } = await superagent
         .get("https://dog.ceo/api/breeds/image/random");
      const embed = new RichEmbed()
@@ -10,6 +10,5 @@ exports.run = (client, message) => {
 	.setImage(body.message);
      return message.channel.send(embed);
         //msg.channel.send("https://random.dog");
-}
-  run();
+
 };
