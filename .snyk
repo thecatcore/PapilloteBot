@@ -12,3 +12,6 @@ patch:
         patched: '2018-06-19T03:00:17.678Z'
     - youtube-info > request > hawk > cryptiles > boom > hoek:
         patched: '2018-06-19T03:00:17.678Z'
+  'npm:lodash:20180130':
+    - youtube-info > cheerio > lodash:
+        patched: '2018-07-03T03:00:20.560Z'
