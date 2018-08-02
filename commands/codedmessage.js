@@ -24,7 +24,7 @@ exports.run = (client, message, [number, ...texttocode]) => {
         if (oletter === alphabetlower[a]) {
           letternum = a;
           letternum = letternum + Number(number);
-          if (letternum >= 25) {
+          if (letternum >= 26) {
             cletter = alphabetlower[letternum - 26];
           }else{
           cletter = alphabetlower[letternum];
