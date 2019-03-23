@@ -4,7 +4,7 @@
     "discord.js": "^11.3.2",
     "enmap": "^4.0.0",
     "firebase": "^5.0.0",
-    "get-youtube-id": "^1.0.0",
+    "get-youtube-id": "^1.0.1",
     "opusscript": "0.0.6",
     "querystring": "^0.2.0",
     "request": "^2.87.0",
