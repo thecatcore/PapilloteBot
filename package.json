@@ -2,7 +2,7 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "discord.js": "^11.4.2",
-    "enmap": "^4.0.0",
+    "enmap": "^4.0.6",
     "firebase": "^5.0.0",
     "get-youtube-id": "^1.0.1",
     "opusscript": "0.0.6",
