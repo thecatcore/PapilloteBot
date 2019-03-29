@@ -7,7 +7,7 @@
     "get-youtube-id": "^1.0.1",
     "opusscript": "0.0.6",
     "querystring": "^0.2.0",
-    "request": "^2.87.0",
+    "request": "^2.88.0",
     "snekfetch": "^4.0.4",
     "snyk": "^1.89.0",
     "superagent": "^4.1.0",
