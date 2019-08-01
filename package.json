@@ -13,7 +13,7 @@
     "superagent": "^5.1.0",
     "weather-js": "^2.0.0",
     "youtube-info": "^1.3.2",
-    "ytdl-core": "^0.29.3",
+    "ytdl-core": "^0.29.5",
     "snyk": "^1.163.1"
   },
   "engines": {
