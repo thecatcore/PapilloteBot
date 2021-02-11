@@ -1,6 +1,13 @@
 {
   "dependencies": {
-    "discord.js": "^12.5.1"
+    "cheerio": "1.0.0-rc.5",
+    "discord.js": "^12.5.1",
+    "enmap": "5.8.4",
+    "firebase": "8.2.6",
+    "querystring": "0.2.0",
+    "snekfetch": "4.0.4",
+    "superagent": "6.1.0",
+    "weather-js": "2.0.0"
   },
   "scripts": {
     "run": "node main.js"
