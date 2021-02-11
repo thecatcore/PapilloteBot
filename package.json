@@ -16,9 +16,6 @@
     "snyk": "^1.208.0",
     "ytdl-core": "^0.29.5"
   },
-  "engines": {
-    "npm": "6.4.x"
-  },
   "scripts": {
     "snyk-protect": "snyk protect",
     "prepare": "npm run snyk-protect"
