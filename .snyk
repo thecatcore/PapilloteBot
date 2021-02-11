@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.12.0
+version: v1.19.0
 ignore: {}
 # patches apply the minimum changes required to fix a vulnerability
 patch:
@@ -15,3 +15,40 @@ patch:
   'npm:lodash:20180130':
     - youtube-info > cheerio > lodash:
         patched: '2018-07-03T03:00:20.560Z'
+  SNYK-JS-HTTPSPROXYAGENT-469131:
+    - snyk > proxy-agent > https-proxy-agent:
+        patched: '2021-02-11T15:58:39.871Z'
+    - snyk > proxy-agent > pac-proxy-agent > https-proxy-agent:
+        patched: '2021-02-11T15:58:39.871Z'
+  SNYK-JS-LODASH-567746:
+    - cheerio > lodash:
+        patched: '2021-02-11T15:58:39.871Z'
+    - enmap > lodash:
+        patched: '2021-02-11T15:58:39.871Z'
+    - snyk > @snyk/dep-graph > lodash:
+        patched: '2021-02-11T15:58:39.871Z'
+    - snyk > @snyk/dep-graph > graphlib > lodash:
+        patched: '2021-02-11T15:58:39.871Z'
+    - snyk > snyk-go-plugin > graphlib > lodash:
+        patched: '2021-02-11T15:58:39.871Z'
+    - snyk > snyk-nodejs-lockfile-parser > graphlib > lodash:
+        patched: '2021-02-11T15:58:39.871Z'
+    - youtube-info > request-promise > request-promise-core > lodash:
+        patched: '2021-02-11T15:58:39.871Z'
+    - snyk > lodash:
+        patched: '2021-02-11T15:58:39.871Z'
+    - snyk > inquirer > lodash:
+        patched: '2021-02-11T15:58:39.871Z'
+    - snyk > snyk-config > lodash:
+        patched: '2021-02-11T15:58:39.871Z'
+    - snyk > snyk-mvn-plugin > lodash:
+        patched: '2021-02-11T15:58:39.871Z'
+    - snyk > snyk-nodejs-lockfile-parser > lodash:
+        patched: '2021-02-11T15:58:39.871Z'
+    - snyk > snyk-nuget-plugin > lodash:
+        patched: '2021-02-11T15:58:39.871Z'
+    - snyk > snyk-php-plugin > @snyk/composer-lockfile-parser > lodash:
+        patched: '2021-02-11T15:58:39.871Z'
+  SNYK-JS-TREEKILL-536781:
+    - snyk > snyk-sbt-plugin > tree-kill:
+        patched: '2021-02-11T15:58:39.871Z'
