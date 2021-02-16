@@ -4,7 +4,7 @@
     "discord.js": "^12.5.1",
     "enmap": "5.8.4",
     "firebase": "8.2.6",
-    "querystring": "0.2.0",
+    "querystring": "0.2.1",
     "snekfetch": "4.0.4",
     "superagent": "6.1.0",
     "weather-js": "2.0.0"
