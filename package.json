@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "cheerio": "1.0.0-rc.5",
+    "cheerio": "1.0.0-rc.6",
     "discord.js": "^12.5.1",
     "enmap": "5.8.4",
     "firebase": "8.2.6",
